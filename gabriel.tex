@@ -79,17 +79,17 @@
 % ---
 % Configurações do pacote backref
 % Usado sem a opção hyperpageref de backref
-\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backrefpagesname}{ }
 % Texto padrão antes do número das páginas
-\renewcommand{\backref}{}
+\renewcommand{\backref}{\ABNTEXchapterfont}
 % Define os textos da citação
 \renewcommand*{\backrefalt}[4]{
 	\ifcase #1 %
-		Nenhuma citação no texto.%
+		%
 	\or
-		Citado na página #2.%
+		%
 	\else
-		Citado #1 vezes nas páginas #2.%
+		%
 	\fi}%
 % ---
 
@@ -140,7 +140,7 @@
 		pdfauthor={\@author},
     	pdfsubject={\imprimirpreambulo},
 	    pdfcreator={LaTeX with abnTeX2},
-		pdfkeywords={abnt}{latex}{abntex}{abntex2}{trabalho acadêmico}, 
+		pdfkeywords={beacon}{raspberry pi}{internet das coisas}{abntex2}{trabalho acadêmico}, 
 		colorlinks=true,       		% false: boxed links; true: colored links
     	linkcolor=blue,          	% color of internal links
     	citecolor=blue,        		% color of links to bibliography
@@ -182,7 +182,7 @@
 % ----------------------------------------------------------
 % ELEMENTOS PRÉ-TEXTUAIS
 % ----------------------------------------------------------
-% \pretextual
+\pretextual
 
 \ABNTEXchapterfont {
 
@@ -387,7 +387,7 @@ contribuirão para a evolução do \abnTeX.
 % ---
 % RESUMOS
 % ---
-
+\ifabstract
 % resumo em português
 \setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 \begin{resumo}
@@ -401,12 +401,11 @@ contribuirão para a evolução do \abnTeX.
  resumo, antecedidas da expressão Palavras-chave:, separadas entre si por
  ponto e finalizadas também por ponto.
 
- \textbf{Palavras-chave}: Beacon. Raspberry Pi. Internet das Coisas.
+ \textbf{Palavras-chave}: \textit{Beacon}. Raspberry Pi. Internet das Coisas.
 }
 \end{resumo}
 
 % resumo em inglês
-\ifabstract
 \begin{resumo}[Abstract]
  \begin{otherlanguage*}{english}
    This is the english abstract.
@@ -503,7 +502,7 @@ Como exemplo podemos citar: geladeira ligada a internet informando a falta de co
 
 Diversas áreas tiveram o seu crescimento alavancado por conta da IoT. O mais marcante é o ramo do DIY (\textit{Do It Yourself}, ou faça você mesmo), em que pessoas criam ou adaptam coisas para suas necessidades. Isso se dá por conta de ter aparecido no mercado dispositivos e componentes que auxiliam a criação e adaptação de eletrônicos e outros. Um ótimo exemplo é o Arduino, um dispositivo que nos ajuda a criar os projetos de eletrônica que consiste de duas partes: o hardware e o software. Com eles é possível construir praticamente de tudo, desde um LED piscante a um robô que envia um \textit{tweet} quando sua planta está sem água. \cite{ben-arduino}. \cite{sorrel-arduino}.
 
-Além do Arduino existem diversos outros \textit{devices} com funcionalidades similares ou até complementares. Podemos citar o Raspberry Pi, um computador do tamanho de um cartão de crédito e de baixo custo. \cite{raspberrypi-rpi}. Por ser um computador é possível executar um sistema operacional (como Linux, \textit{RISC OS}, \textit{Windows 10 for IoT}). Dependendo do modelo possui portas USB (1 a 4) para conexão com periféricos (como mouse, teclado, adaptador WiFi, Bluetooth), e também porta Ethernet para conexão a internet cabeada (exceto modelo A e A+). Também possui de 26 (modelo A e B) a 40 pinos (modelo A+, B+ e 2) para conexões gerais de entrada e saída digitais (GPIO - \textit{General Input and Output}). 
+Além do Arduino existem diversos outros \textit{devices} com funcionalidades similares ou até complementares. Podemos citar o \textit{Raspberry Pi}, um computador do tamanho de um cartão de crédito e de baixo custo. \cite{raspberrypi-rpi}. Por ser um computador é possível executar um sistema operacional (como Linux, \textit{RISC OS}, \textit{Windows 10 for IoT}). Dependendo do modelo possui portas USB (1 a 4) para conexão com periféricos (como mouse, teclado, adaptador WiFi, Bluetooth), e também porta Ethernet para conexão a internet cabeada (exceto modelo A e A+). Também possui de 26 (modelo A e B) a 40 pinos (modelo A+, B+ e 2) para conexões gerais de entrada e saída digitais (GPIO - \textit{General Input and Output}). 
 
 Através desses pinos pode-se conectar uma diversidade de componentes eletrônicos como sensores, atuadores, outros dispositivos para comunicação. Dessa forma, suas funcionalidades são expandidas de uma forma absurda, ficando a cargo de cada pessoa montar uma nova aplicação. Uma boa aplicação é a conexão de um adaptador bluetooth pela USB para comunicação com smartphones, tablets, PCs e outros dispositivos tipo sensores sem fio.
 
@@ -525,11 +524,11 @@ Os \textit{beacons} foram pouco explorados até o momento, seu uso está sendo m
 
 A Macy's (grande rede norte americana de loja de departamentos) está realizando testes em algumas de suas lojas para enviar alertas a pessoas que entrarem em suas lojas, com promoções e melhores indicações, utilizando o padrão \textit{iBeacon} da Apple. Até o momento esse teste está limitado a usuários de iPhone, e somente quando entrar na loja. Em um teste futuro espera-se que seja possível separar por departamentos, para que quando um usuário percorra a loja apareça as notícias relativo ao local da loja que ela está. \cite{kastrenakes-macys-beacon}
 
-Porém as maiores aplicações são voltadas a smartphones e tablets como receptores e identificadores dos \textit{beacons}. Existem diversas empresas desenvolvendo variados tipos de beacons, mas a maioria delas utiliza aplicativos para \textit{mobile devices} como identificadores. 
+Porém as maiores aplicações são voltadas a smartphones e tablets como receptores e identificadores dos \textit{beacons}. Existem diversas empresas desenvolvendo variados tipos de \textit{beacons}, mas a maioria delas utiliza aplicativos para \textit{mobile devices} como identificadores. 
 
 Alguns motivos podem ser apresentados para isso, mas o mais relevante é que até o momento poucas pessoas, grupos e empresas dedicaram tempo e dinheiro para investir nessa nova tecnologia. Um grande problema também é a necessidade de ter o \textit{bluetooth} ligado e permitindo conexões para que um smartphone consiga identificar os \textit{beacons}.
 
-Esse projeto se propõe a desenvolver um protótipo utilizando outro meio para rastrear os beacons, neste caso o \textit{Raspberry Pi}. Desta forma será possível explorar maiores aplicações aos \textit{beacons}.
+Esse projeto se propõe a desenvolver um protótipo utilizando outro meio para rastrear os \textit{beacons}, neste caso o \textit{Raspberry Pi}. Desta forma será possível explorar maiores aplicações aos \textit{beacons}.
 
 
 
@@ -545,18 +544,9 @@ Os \textit{beacons} ainda estão em fase de descobrimento, não existem aplicaç
 
 Como visto anteriormente, o \textit{Raspberry Pi} é um computador pequeno e de baixo custo, e também tem portas de entrada e saída digitais e portas USB. Por conta disso é possível expandir suas funcionalidades conectando módulos de \textit{bluetooth}, \textit{WiFi}, entre outros, podendo ser utilizado como um ótimo dispositivo de prototipagem.
 
-		\begin{figure}[h!]
-			\ABNTEXchapterfont {
-				\centering
-				\includegraphics[width=0.6\textwidth]{img/rpia-rpi2b.jpg}
-				\caption{\textit{Raspberry Pi} modelo A+ e \textit{Raspberry Pi} 2 modelo B.}
-				\label{fig:rpia-rpi2b}
-			}
-		\end{figure}
-
 Por ter uma comunidade grande e ativa, o seu estudo é facilitado. Um bom número de sites e comunidades estão desenvolvendo projetos com esse dispositivo e publicando suas conquistas. É possível encontrar tutoriais e passo-a-passo de um bom número de projetos, porém somente para aprendizado. Ao desenvolver um projeto mais elaborado isso pode servir como guia de estudo e aprofundamento.
 
-As empresas tem investido um bom dinheiro na área de \textit{DIY} e \textit{IoT}. 
+As empresas tem investido um bom dinheiro na área de \textit{DIY} e \textit{IoT}. Existe uma grande expectativa para o futuro, por ser uma tecnologia barata para ser aplicada a grandes volumes, ter bastante gente envolvida e engajada, e também sua grande facilidade de criação.
 
 
 
@@ -574,7 +564,7 @@ As empresas tem investido um bom dinheiro na área de \textit{DIY} e \textit{IoT
 \section{Objetivos Gerais}
 % ---
 
-O objetivo geral desse projeto é pesquisar sobre as tecnologias de \textit{beacons} e \textit{Raspberry Pi}, assim como suas dependências. Também é um objetivo desenvolver um protótipo de rastreador de \textit{beacons} utilizando o \textit{Raspberry Pi}.
+O objetivo geral desse projeto é planejar e desenvolver um protótipo de rastreador de \textit{beacons} utilizando o \textit{Raspberry Pi}.
 
 % ---
 
@@ -583,11 +573,11 @@ O objetivo geral desse projeto é pesquisar sobre as tecnologias de \textit{beac
 % ---
 
 \begin{alineas}
-	\item Estudar o funcionamento de \textit{beacons} e \textit{Raspberry Pi}, assim como suas aplicações.
+	\item Estudar o funcionamento de \textit{beacons}, comunicação via \textit{bluetooth low energy} e \textit{Raspberry Pi}, assim como suas aplicações.
 	\item Identificar os requerimentos básicos de funcionamento de \textit{beacons} e \textit{Raspberry Pi}.
 	\item Definir os elementos para desenvolvimento do protótipo.
 	\item Planejar a estrutura do sistema.
-	\item Implementar o protótimo de acordo com a estrutura e elementos planejados.
+	\item Implementar o protótipo de acordo com a estrutura e elementos planejados.
 \end{alineas}
 
 % ---
@@ -598,7 +588,13 @@ O objetivo geral desse projeto é pesquisar sobre as tecnologias de \textit{beac
 \chapter{Método de Pesquisa}
 % ---
 
-\lipsum[1]
+O levantamento bibliográfico relacionado ao tema será a primeira fase dessa pesquisa, se buscará os assuntos relacionados a: \textit{Raspberry Pi}, comunicação via \textit{Bluetooth Low Energy}, \textit{beacons}. Concomitantemente será realizado o estudo das tecnologias, suas capacidades, limitações, aplicações, etc.
+
+O segundo passo se planejará o projeto baseado na análise do levantamento bibliográfico, assim sua estrutura será definida. Essa etapa será necessária para facilitar e agilizar a implementação e testes dos componentes, definindo assim um escopo inicial de funcionalidades que o sistema deverá ter, assim como outras tarefas a serem realizadas.
+
+Em seguida inicializará implementação e teste do protótipo. O projeto será desenvolvido por etapas, sendo que a primeira será o estudo de identificação dos \textit{beacons} via smartphone, a segunda o desenvolvimento software de identificação no \textit{Raspberry Pi}, e a terceira um aprimoramento do software embarcado para rastrear os \textit{beacons}. Em seguida serão realizados testes unitários experimentais em laboratório para que o protótipo possa ser aprimorado. Será testado com mais de um modelo de \textit{Raspberry Pi} e também mais de um \textit{beacon}, em ambiente aberto e fechado. Ao final espera-se ter um protótipo finalizado.
+
+A etapa de testes será realizada por observação e experimentação nos ambientes. Os dados serão apresentados ao final do projeto pela confecção e apresentação da monografia.
 
 % ---
 
@@ -608,7 +604,48 @@ O objetivo geral desse projeto é pesquisar sobre as tecnologias de \textit{beac
 \chapter{Fundamentação Teórica}
 % ---
 
-\lipsum[1]
+A área de IoT está em uma onda crescente, com um grande número de pessoas gastando nesse mercado, e um bom número de profissionais migrando para essa área. Há uma estimativa de que existem 19 milhões de profissionais trabalhando na indústria de desenvolvimento de software, e desses, 19\% trabalham em algum projeto relacionado a IoT. \cite{cw-iot}.
+
+\begin{citacao}
+''A próxima onda na era da computação será fora do domínio do ambiente de trabalho tradicional. No paradigma da IoT, muitos dos objetos que nos rodeiam estarão na rede de uma forma ou de outra. RFID (Radio Frequency Identification - Identificadores via Rádio Frequência) e as tecnologias de redes de sensores crescerão para enfrentar este novo desafio, em que os sistemas de informação e comunicação estão embutidos nos ambientes que nos rodeiam, de forma invisível.''. \cite{iot-article}. 
+\end{citacao}
+
+É notável o crescimento dessa área. Há uma expectativa de que, em 2020, o número de carros conectados a internet supere o número de carros não conectados, sendo esses carros possíveis de se comunicar com outros veículos e a infraestrutura das ruas, como os semáforos. \cite{goldmansachs-iot}. Segundo \citeonline{press-iot}, em 2014 a IoT substituiu a área da \textit{Big Data} como a tecnologia mais empolgante, ou seja, a tecnologia que mais pessoas iriam migrar e se interessar. 
+
+Quando se pesquisa algo relacionado a IoT é praticamente impossível não achar relação e links para \textit{Raspberry Pi} (figura~\ref{fig:rpia-rpi2b}), Arduinos, e toda a área de \textit{DIY}. 
+
+
+		\begin{figure}[h!]
+			\ABNTEXchapterfont {
+				\centering
+				\includegraphics[width=0.6\textwidth]{img/rpia-rpi2b.jpg}
+				\caption{\textit{Raspberry Pi} modelo A+ (esquerda) e \textit{Raspberry Pi} 2 modelo B (direita).}
+				\label{fig:rpia-rpi2b}
+			}
+		\end{figure}
+
+O \textit{Raspberry Pi} é um computador bem pequeno, demonstrado na figura~\ref{fig:rpia-rpi2b}. Segundo \citeonline{raspberrypi-rpi}, a fundação responsável pela criação desse pequeno dispositivo gostaria de ver ele ser usado por crianças e pessoas carentes do mundo todo para aprender a programar e como a computação funciona. É facilmente configurável, utilizando um cartão de memória como HD para salvar dados e o sistema operacional.
+
+Por meio de suas portas de entrada e saída digitais é possível conectar uma gama ampla de sensores, atuadores, compontentes eletrônicos, ficando a cargo do programador e criador do projeto a escolher como esses pinos serão conectados e aproveitados. Atualmente existem diversos módulos para expandir os meios de comunicação entre diferentes \textit{devices}, e um deles é via \textit{bluetooth}.
+
+A tecnologia do \textit{bluetooth} vem sendo amplamente utilizada, principalmente após a criação da versão 4.0, ou \textit{BLE} (\textit{Bluetooth Low Energy} - Bluetooth de Baixa Energia), por conta de ter um baixíssimo gasto energético, podendo preservar a bateria do dispositivo que a utiliza. Um ótimo exemplo são os \textit{beacons}, pequenos sensores que são capazes de identificar objetos com precisão dentro de ambientes fechados. \cite{teixeira-beacon}.
+
+\begin{citacao}
+Como muitos espaços fechados (restaurantes, museus, shopping centers, casas de show) possuem estrutura metálica ou utilizam algum tipo de metal em sua construção, é comum que o sinal de GPS fique enfraquecido quando os usuários estão dentro daquele local. Nesse caso, os \textit{Beacons} são uma ótima solução: um hardware relativamente barato, e pequeno o suficiente para ser plugado na parede ou instalado sobre um balcão. \cite{teixeira-beacon}.
+\end{citacao}
+
+		\begin{figure}[h!]
+			\ABNTEXchapterfont {
+				\centering
+				\includegraphics[width=0.6\textwidth]{img/beacon-mpact.jpg}
+				\caption{Modelo de \textit{beacon} proprietário - MPact, da Zebra Technologies Corporation}
+				\label{fig:beacon-mpact}
+			}
+		\end{figure}
+
+Segundo \citeonline{teixeira-beacon}, os \textit{beacons} utilizam o \textit{BLE} para detectar um dispositivo próximo e transmitir seu identificador único e avisar que está ali presente. \citeonline{teixeira-beacon} também diz que os \textit{beacons} não são inteligentes, toda a interação deve depender do dispositivo que recebe a informação do identificador único.
+
+Atualmente os usos de \textit{beacons} estão restritos a aplicativos em smartphones realizando a leitura e interagindo com o usuário, porém existem ainda diversas áreas a serem exploradas, e um bom exemplo são as casas inteligentes. Segundo \citeonline{grothaus-smarthomes}, a \textit{Apple} está apostando em um kit de desenvolvimento (\textit{HomeKit}) que permita aos desenvolvedores interagirem com \textit{smart devices} presentes no ambiente.
 
 % ---
 
@@ -618,16 +655,41 @@ O objetivo geral desse projeto é pesquisar sobre as tecnologias de \textit{beac
 \chapter{Cronograma}
 % ---
 
-\lipsum[1]
+A proposta é dividir o projeto em sete atividades: Pesquisa Bibliográfica, Estudo das Tecnologias, Análise e Planejamento, Definição da Estrutura, Implementação, Testes, Finalização do Projeto, conforme cronograma apresentado na Tabela~\ref{table:cronograma}.
+
+\begin{table}[htb]
+\IBGEtab{%
+\ABNTEXchapterfont {
+  \caption{Cronograma de Atividades Propostas}%
+  \label{table:cronograma}
+}
+}{%
+  \begin{tabular}{ccccccccc}
+  \toprule
+   Atividade & Jun & Jul & Ago & Set & Out & Nov & Dez & Jan \\
+  \midrule \midrule
+   Pesquisa Bibliográfica & X & X & X &   &   &   &   &   \\
+  \midrule 
+   Estudo das Tecnologias &  & X & X &   &   &   &   &   \\
+  \midrule 
+   Análise e Planejamento &   &   & X & X &   &   &   &   \\
+  \midrule 
+   Definição da Estrutura &   &   & X & X &   &   &   &   \\
+  \midrule 
+   Implementação &   &   &   & X & X & X &   &   \\
+  \midrule 
+   Testes &   &   &   &   & X & X & X &   \\
+  \midrule 
+   Finalização do Projeto &   &   &   &   &   &   & X & X \\
+  \bottomrule
+\end{tabular}%
+}{%
+  \fonte{Produzido pelo autor.}%
+  }
+\end{table}
 
 % ---
 
-% ----------------------------------------------------------
-% Finaliza a parte no bookmark do PDF
-% para que se inicie o bookmark na raiz
-% e adiciona espaço de parte no Sumário
-% ----------------------------------------------------------
-%\phantompart
 
 % ---
 % Conclusão
@@ -650,7 +712,7 @@ O objetivo geral desse projeto é pesquisar sobre as tecnologias de \textit{beac
 % ----------------------------------------------------------
 % ELEMENTOS PÓS-TEXTUAIS
 % ----------------------------------------------------------
-%\postextual
+
 % ----------------------------------------------------------
 
 % ----------------------------------------------------------
@@ -658,14 +720,5 @@ O objetivo geral desse projeto é pesquisar sobre as tecnologias de \textit{beac
 % ----------------------------------------------------------
 \bibliography{referencias}
 
-
-%---------------------------------------------------------------------
-% INDICE REMISSIVO
-%---------------------------------------------------------------------
-\phantompart
-\printindex
-%---------------------------------------------------------------------
-
 }
-
 \end{document}
