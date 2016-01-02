@@ -29,7 +29,7 @@
 % alterando a capa
 \renewcommand{\imprimircapa}{%
   \begin{capa}%
-    \center
+      \center
       \ABNTEXchapterfont{
         { \uppercase {\textbf{Universidade Estadual Paulista\\"Júlio de Mesquita Filho"}} \\Faculdade de Ciências - Campus Bauru}
 
@@ -90,9 +90,7 @@
 
       \vspace*{\fill}
 
-      {\abntex@ifnotempty{\imprimirinstituicao}{\imprimirinstituicao\vspace*{\fill}}}
-
-      {\ImprimirLocal\\\imprimirdata}
+      {\ImprimirLocal \\ \imprimirdata}
     }
   \end{center}
 }
