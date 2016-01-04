@@ -52,14 +52,7 @@
 \usepackage[scaled]{helvet}
 \renewcommand*\familydefault{\sfdefault} 	% Only if the base font of the document is to be sans serif
 										% Foi necessário para acertar o documento, continha diversos erros
-%\usepackage{ifxetex}
-% \ifxetex
-%   \usepackage{fontspec}
-%   \defaultfontfeatures{Ligatures={TeX}}
-%  \else
-%   \usepackage[utf8]{inputenc}
-%   \usepackage[T1]{fontenc}
-%  \fi
+										
 \usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}	% Codificacao do documento (conversão automática dos acentos)
 \usepackage{lastpage}		% Usado pela Ficha catalográfica
@@ -83,7 +76,6 @@
 % ----------------------------------------------------------
 \usepackage[alf]{abntex2cite}				% Citações padrão ABNT
 
-
 % ----------------------------------------------------------
 % CONFIGURAÇÕES DE PACOTES
 % ----------------------------------------------------------
@@ -91,7 +83,11 @@
 % ----------------------------------------------------------
 % Configurações do pacote backref
 % ----------------------------------------------------------
-
+\definecolor{thered}{rgb}{0.65,0.04,0.07}
+\definecolor{thegreen}{rgb}{0.06,0.44,0.08}
+\definecolor{thegrey}{gray}{0.5}
+\definecolor{theshade}{rgb}{1,1,0.97}
+\definecolor{theframe}{gray}{0.6}
 % ----------------------------------------------------------
 
 
@@ -369,17 +365,21 @@
 \iffinal
 	\begin{agradecimentos}
 
-Agradeço ao meu orientador, Prof. Dr. Eduardo Morgado, por todo o tempo e trajetória no LTIA\footnote{Laboratório de Tecnologia da Informação Aplicada}, pela confiança, apoio e incentivo. Os quatro anos no LTIA foram essenciais para meu crescimento profissional e pessoal.
+Agradeço ao meu orientador Prof. Dr. Eduardo Morgado, por todo o tempo e trajetória no LTIA\footnote{Laboratório de Tecnologia da Informação Aplicada}, pela confiança, apoio e incentivo. Agradeço também pelo auxílio em todas as etapas desse projeto, desde a definição do tema até a apresentação final.
 
-Agradeço a todos os professores, pois com muito esforço diário passaram não somente as informações técnicas e práticas de cada disciplina, mas lições que servirão para toda vida.
+A Henrique Lopes Santos, pela ajuda na realização das fotos e também criação do logotipo para o protótipo.
 
-Agradeço a todos os colegas de curso, que de alguma forma auxiliaram a chegar ao último semestre da melhor maneira possível.
+A Elisa Castro, pelo apoio na correção e melhorias na digitação do texto contido nesse documento.
 
-Agradeço aos meus amigos e familiares pelo apoio e incentivo na escolha e decorrer do curso, com muita compreensão e encorajamento.
+A Giovanna Aguirre, pelo apoio, incentivo, paciência e companhia nos momentos mais importantes de minha vida.
 
-Agradeço a Henrique Lopes Santos pela ajuda na realização das fotos e também criação do logotipo para o protótipo.
+A todos os colegas do laboratório, pela incrível parceria, trabalho em equipe e organização de projetos. Os quatro anos percorridos com eles foram essenciais para meu crescimento profissional e pessoal.
 
-Agradeço a todos os colegas do LTIA pela incrível parceria, trabalho em equipe e organização de projetos.
+A todos os professores, pois com muito esforço diário passaram não somente as informações técnicas e práticas de cada disciplina, mas lições que servirão para toda vida.
+
+A todos os colegas de curso, que de alguma forma auxiliaram a chegar ao último semestre da melhor maneira possível.
+
+Aos meus amigos e familiares, pelo apoio e incentivo na escolha e decorrer do curso, com muita compreensão e encorajamento.
 
 	\end{agradecimentos}
 \fi
@@ -532,7 +532,7 @@ Além do Arduino existem diversos outros \textit{devices} com funcionalidades si
 
 Através desses pinos pode-se conectar uma diversidade de componentes eletrônicos como sensores, atuadores, outros dispositivos para comunicação. Dessa forma, suas funcionalidades são expandidas de uma forma absurda, ficando a cargo de cada pessoa montar uma nova aplicação. Uma boa aplicação é a conexão de um adaptador bluetooth pela USB para comunicação com smartphones, tablets, PCs e outros dispositivos tipo sensores sem fio.
 
-Um exemplo desses sensores externos são os \textit{beacons}, pequenos modelos sem fio que se comunicam por meio do Bluetooth 4.0 ou BLE (\textit{Bluetooth Low Energy} - Bluetooth de Baixa Energia). Como o próprio nome diz, esse padrão de comunicação utiliza muita pouca energia. Desta forma, um \textit{beacon} pode funcionar por anos. ''Na prática, ela permite localizar objetos (ou pessoas que carregam esses objetos) com muito mais precisão dentro de ambientes fechados.'' \cite{teixeira-beacon}.
+Um exemplo desses sensores externos são os \textit{beacons}, pequenos modelos sem fio que se comunicam por meio do Bluetooth 4.0 ou BLE (\textit{Bluetooth Low Energy} - Bluetooth de Baixa Energia). Como o próprio nome diz, esse padrão de comunicação utiliza pouca energia. Desta forma, um \textit{beacon} pode funcionar por anos. ''Na prática, ela permite localizar objetos (ou pessoas que carregam esses objetos) com muito mais precisão dentro de ambientes fechados.'' \cite{teixeira-beacon}.
 
 Os \textit{beacons} foram pouco explorados até o momento, seu uso está sendo mais notado na área de grandes lojas do varejo.
 
@@ -548,13 +548,13 @@ A Macy's (grande rede norte americana de loja de departamentos) está realizando
 % ----------------------------------------------------------
 % Objetivos
 % ----------------------------------------------------------
-\chapter{Objetivos}\label{cap:objetivos}
+\chapter{Objetivos}\label{cap:objetivos-justificativa}
 % ----------------------------------------------------------
 
 % ---
 % Objetivos Gerais
 % ---
-\section{Objetivos Gerais}
+\section{Objetivos Gerais}\label{sec:objetivos-gerais}
 % ---
 
 O objetivo geral desse projeto é planejar e desenvolver um protótipo de rastreador de \textit{iBeacons} utilizando o \textit{Raspberry Pi}.
@@ -562,7 +562,7 @@ O objetivo geral desse projeto é planejar e desenvolver um protótipo de rastre
 % ---
 
 % ---
-\section{Objetivos Específicos}
+\section{Objetivos Específicos}\label{sec:objetivos-especificos}
 % ---
 
 \begin{alineas}
@@ -583,10 +583,10 @@ O objetivo geral desse projeto é planejar e desenvolver um protótipo de rastre
 % ----------------------------------------------------------
 
 % ---
-\section{Internet das Coisas}
+\section{Internet das Coisas}\label{sec:internet-das-coisas}
 % ---
 
-A área de IoT está em uma onda crescente, com um grande número de pessoas gastando nesse mercado, e um bom número de profissionais migrando para essa área. Há uma estimativa de que existem 19 milhões de profissionais trabalhando na indústria de desenvolvimento de software, e desses, 19\% trabalham em algum projeto relacionado a IoT. \cite{cw-iot}.
+A área de IoT está em uma onda crescente, com um grande número de pessoas investindo nesse mercado, e um bom número de profissionais migrando para essa área. Há uma estimativa de que existem 19 milhões de profissionais trabalhando na indústria de desenvolvimento de software, e desses, 19\% trabalham em algum projeto relacionado a IoT. \cite{cw-iot}.
 
 \begin{citacao}
 ''A próxima onda na era da computação será fora do domínio do ambiente de trabalho tradicional. No paradigma da IoT, muitos dos objetos que nos rodeiam estarão na rede de uma forma ou de outra. RFID (Radio Frequency Identification - Identificadores via Rádio Frequência) e as tecnologias de redes de sensores crescerão para enfrentar este novo desafio, em que os sistemas de informação e comunicação estão embutidos nos ambientes que nos rodeiam, de forma invisível.''. \cite{iot-article}. 
@@ -596,10 +596,10 @@ A área de IoT está em uma onda crescente, com um grande número de pessoas gas
 
 
 % ---
-\section{Raspberry Pi}
+\section{Raspberry Pi}\label{sec:raspberry-pi}
 % ---
 
-Quando se pesquisa algo relacionado a IoT é praticamente impossível não achar relação e links para \textit{Raspberry Pi}, Arduinos, e toda a área de \textit{DIY}. Atualmente existem três modelos, conforme a tabela \autoref{table:comparativo-rpi} e figura \autoref{fig:todos-rpi}. 
+Quando se pesquisa algo sobre IoT é praticamente impossível não achar relação e links para \textit{Raspberry Pi}, Arduinos, e toda a área de \textit{DIY}. Atualmente existem três modelos, conforme a tabela \autoref{table:comparativo-rpi} e figura \autoref{fig:todos-rpi}. 
 
 \begin{figure}[htb]
 	\caption{\label{fig:todos-rpi}\textit{RPi} versão A+ (esquerda), versão B+ (centro) e versão 2 Modelo B (direita).}
@@ -634,11 +634,11 @@ Quando se pesquisa algo relacionado a IoT é praticamente impossível não achar
   	}
 \end{table}
 
-Segundo \citeonline{raspberrypi-rpi}, a fundação responsável pela criação desse pequeno dispositivo gostaria de ver ele ser usado por crianças e pessoas carentes do mundo todo para aprender a programar e como a computação funciona. É facilmente configurável, utilizando um cartão de memória como HD para salvar dados e o sistema operacional.
+Segundo \citeonline{raspberrypi-rpi}, a fundação responsável por esse pequeno dispositivo criou com intuito de ser utilizado por crianças e pessoas carentes do mundo todo para aprender programação e computação. É facilmente configurável, utilizando um cartão de memória como HD para o sistema operacional e dados.
 
-Por meio de suas portas de entrada e saída digitais é possível conectar uma gama ampla de sensores, atuadores, compontentes eletrônicos, ficando a cargo do programador e criador do projeto a escolher como esses pinos serão conectados e aproveitados. Atualmente existem diversos módulos para expandir os meios de comunicação entre diferentes \textit{devices}, e um deles é via \textit{bluetooth}.
+Por meio de suas portas de entrada e saída digitais é possível conectar uma gama ampla de sensores, atuadores, compontentes eletrônicos, ficando a cargo do programador e criador do projeto escolher como esses pinos serão conectados e aproveitados. Atualmente existem diversos módulos para expandir os meios de comunicação entre diferentes \textit{devices}, e um deles é via \textit{bluetooth}.
 
-Atualmente existem diferentes sistemas operacionais portados para o \textit{RPi}. Entre eles, temos os seguintes:
+Atualmente existem diferentes sistemas operacionais portados para o \textit{RPi}.
 
 \begin{alineas}
 	\item \textbf{Raspbian}: baseado na distribuição \textit{Linux} chamada \textit{Debian}. Atualmente é a suportada oficialmente pela \textit{RPi Foundation}. \cite{rpi-download}.
@@ -648,7 +648,7 @@ Atualmente existem diferentes sistemas operacionais portados para o \textit{RPi}
 \end{alineas}
 
 % ---
-\section{Bluetooth Low Energy}
+\section{Bluetooth Low Energy}\label{sec:ble}
 % ---
 
 A tecnologia do \textit{bluetooth} vem sendo amplamente utilizada, principalmente após a criação da versão 4.0, ou \textit{BLE} (\textit{Bluetooth Low Energy} - Bluetooth de Baixa Energia), por conta de ter um baixíssimo gasto energético, podendo preservar a bateria do dispositivo que a utiliza. O \textit{BLE} faz parte da tecnologia nomeada \textit{Bluetooth Smart} inteligente e eficiente energeticamente, voltada para \textit{devices} que usam pequenas fontes de energia. \cite{bluetooth-smart}.
@@ -705,7 +705,7 @@ Um \textit{BLE Advertisement Packet} é formado conforme figura~\ref{fig:ble-adv
 O importante do \textit{BLE Advertising Packet} é o tipo de anúncio feito, ou quais são as informações do pacote. \citeonline{gap-ble} apresenta uma tabela com os possíveis valores e também o significado de cada uma. Por exemplo, o valor 0xFF significa que o pacote contém dados específicos do fabricante, ou seja, existe a flexibilidade de manipular o pacote da forma que for precisa, contanto que mantenha a estrutura original de 6 a 37 bytes de \textit{payload}, conforme figura~\ref{fig:ble-adv-packet}. \cite{ble-packets}.
 
 % ---
-\section{Beacon}
+\section{Beacon}\label{sec:beacon}
 % ---
 
 Os \textit{beacons} são pequenos sensores que são capazes de identificar objetos com precisão dentro de ambientes fechados. \cite{teixeira-beacon}.
@@ -727,39 +727,39 @@ Segundo \citeonline{teixeira-beacon}, os \textit{beacons} utilizam o \textit{BLE
 Atualmente os usos de \textit{beacons} estão restritos a aplicativos em smartphones realizando a leitura e interagindo com o usuário, porém existem ainda diversas áreas a serem exploradas, e um bom exemplo são as casas inteligentes. Segundo \citeonline{grothaus-smarthomes}, a \textit{Apple} está apostando em um kit de desenvolvimento (\textit{HomeKit}) que permita aos desenvolvedores interagirem com \textit{smart devices} presentes no ambiente.
 
 % ---
-\subsection{\textit{iBeacon}}
+\subsection{\textit{iBeacon}}\label{sec:ibeacon}
 % ---
 
 O protocolo \textit{iBeacon} foi apresentado pela Apple juntamente com o iOS 7, versão de seu sistema operacional para dispositivos móveis. É uma tecnologia baseada nos \textit{beacons}, porém adaptada para as necessidades e aplicações de seu sistema móvel.
 
-Apple criou uma adaptação do pacote genérico de \textit{beacon} para transmitir um total de três dados:
+A Apple adaptou o pacote genérico de \textit{beacon} para transmitir três dados:
 
 \begin{alineas}
-	\item \textbf{UUID}: Identificador único formado de 16 bytes (128 bits). Focado em ser único para cada aplicação, cada aplicativo ou desenvolvimento deve ter o seu.
+	\item \textbf{UUID}: Identificador único formado de 16 bytes (128 bits). Focado em ser único para cada aplicação. Cada aplicação deve ter um único UUID.
 	\item \textbf{Major}: Identificador de 2 bytes que identifica uma sub-região grande. Usado, por exemplo, para dividir as lojas de um grande varejista.
-	\item \textbf{Minor}: Identificador de 2 bytes que identifica uma sub divisão de região, ou seja, uma região menor que o Minor.
+	\item \textbf{Minor}: Identificador de 2 bytes que identifica uma sub-divisão de região, ou seja, uma região menor que o Major.
 \end{alineas}
 
-Um exemplo de aplicação é citado na tabela~\ref{table:stores-apple}. Utiliza-se um único UUID para todas as lojas, com um único Major por loja e um Minor por departamento, podendo ser repetido entre as lojas. Dessa forma amplia-se o número de possíveis aplicações, aumentando a quantidade de números disponíveis.
+Um exemplo de aplicação é citado na tabela~\ref{table:stores-apple}. Utiliza-se um único UUID para todas as lojas, um número Major por loja e um Minor por departamento, podendo este último ser repetido entre as lojas.
 
 \begin{table}[htb]
 	\IBGEtab{%
-  		\caption{\textit{Exemplo de aplicação}}%
+  		\caption{Exemplo de aplicação}%
   		\label{table:stores-apple}
 	}{%
   		\begin{tabular}{cccc}
 	  		\toprule
 	 			Localização da Loja & São Francisco & Paris & Londres \\
-  			\midrule \midrule
+  			\midrule
 				UUID & \multicolumn{3}{c}{D9B9EC1F-3925-43D0-80A9-1E39D4CEA95C} \\
 			\midrule
 				Major & 1 & 2 & 3 \\
 			\midrule 
-				Minor - Roupas & 10 & 10 & 10 \\
+				Minor (Roupas) & 10 & 10 & 10 \\
   			\midrule 
-				Minor - Utilidades Domésticas & 20 & 20 & 20 \\
+				Minor (Utilidades Domésticas) & 20 & 20 & 20 \\
 			\midrule 
-				Minor - Automotivo & 30 & 30 & 30 \\
+				Minor (Automotivo) & 30 & 30 & 30 \\
   			\bottomrule
 		\end{tabular}%
 	}{%
@@ -767,7 +767,7 @@ Um exemplo de aplicação é citado na tabela~\ref{table:stores-apple}. Utiliza-
   	}
 \end{table}
 
-O pacote \textit{BLE} utilizado pela tecnologia iBeacon pode ser visto na figura~\ref{fig:ibeacon-packet}. Segundo \citeonline{arm-beacons}, o significado do prefixo iBeacon é:
+O pacote \textit{BLE} utilizado pela tecnologia iBeacon pode ser visto na \autoref{fig:ibeacon-packet}. Segundo \citeonline{arm-beacons}, o prefixo determinado para o protocolo \textit{iBeacon} é:
 
 \begin{alineas}
 	\item \textit{\textbf{Adv Flags}}: determinam que é um pacote \textit{BLE} de descobrimento geral, e que somente transmite e não permite conexões.
@@ -790,7 +790,7 @@ Os \textit{iBeacons} foram criados com intuito de serem descobertos por smartpho
 Uma outra aplicação interessante citada por \citeonline{arm-beacons} é a possibilidade do smartphone transmitir pacotes \textit{iBeacon}, sem necessidade de um hardware externo. Dessa forma, pode-se por exemplo automatizar o check-in em um evento e rastrear o movimento dos usuários entre os estabelecimentos.
 
 % ---
-\subsection{Outros Protocolos}
+\subsection{Outros Protocolos}\label{sec:outros-protocolos}
 % ---
 
 Existem mais protocolos baseados na tecnologia \textit{beacon}. Dois se destacam por ser abertos e passíveis de alterações: \textit{AltBeacon} e \textit{Eddystone}, este último criado pela Google. O \textit{AltBeacon} possui um modelo bastante parecido com o \textit{iBeacon}, porém com possibilidade de alterar o número do fabricante, ter possibilidade de código de \textit{beacons} diferentes, e também a possibilidade do fabricante colocar sua informação ao final do pacote, conforme figura~\ref{fig:altbeacon-packet} \cite{arm-beacons}.
@@ -814,72 +814,53 @@ Segundo \citeonline{eddystone-google}, o protocolo \textit{Eddystone} possui tr�
 
 
 % ----------------------------------------------------------
-% Proposta do Projeto
-% ----------------------------------------------------------
-%\chapter{Proposta do Projeto}
-% ----------------------------------------------------------
-
-%Porém as maiores aplicações são voltadas a smartphones e tablets como receptores e identificadores dos \textit{beacons}. Existem diversas empresas desenvolvendo variados tipos de \textit{beacons}, mas a maioria delas utiliza aplicativos para \textit{mobile devices} como identificadores. 
-
-%Alguns motivos podem ser apresentados para isso, mas o mais relevante é que até o momento poucas pessoas, grupos e empresas dedicaram tempo e dinheiro para investir nessa nova tecnologia. Um grande problema também é a necessidade de ter o \textit{bluetooth} ligado e permitindo conexões para que um smartphone consiga identificar os \textit{beacons}.
-
-%Como visto anteriormente, o \textit{RPi} é um computador pequeno e de baixo custo, e também tem portas de entrada e saída digitais e portas USB. Por conta disso é possível expandir suas funcionalidades conectando módulos de \textit{bluetooth}, \textit{WiFi}, entre outros, podendo ser utilizado como um ótimo dispositivo de prototipagem.
-
-%Por ter uma comunidade grande e ativa, o seu estudo é facilitado. Um bom número de sites e comunidades estão desenvolvendo projetos com esse dispositivo e publicando suas conquistas. É possível encontrar tutoriais e passo-a-passo de um bom número de projetos, porém somente para aprendizado. Ao desenvolver um projeto mais elaborado isso pode servir como guia de estudo e aprofundamento.
-
-%As empresas tem investido um bom dinheiro na área de \textit{DIY} e \textit{IoT}. Existe uma grande expectativa para o futuro, por ser uma tecnologia barata para ser aplicada a grandes volumes, ter bastante gente envolvida e engajada, e também sua grande facilidade de criação.
-
-%Esse projeto se propõe a desenvolver um protótipo utilizando outro meio para rastrear os \textit{iBeacons}, neste caso o \textit{RPi}. Desta forma será possível explorar maiores aplicações aos \textit{beacons}.
-
-% ----------------------------------------------------------
-
-
-% ----------------------------------------------------------
-% Método de Pesquisa
-% ----------------------------------------------------------
-\chapter{Método de Pesquisa}
-% ----------------------------------------------------------
-
-O levantamento bibliográfico relacionado ao tema foi a primeira fase dessa pesquisa, foram realizadas buscas relacionadas aos assuntos: \textit{Raspberry Pi}, comunicação via \textit{Bluetooth Low Energy}, \textit{beacons}. Concomitantemente foi realizado o estudo das tecnologias, suas capacidades, limitações, aplicações, etc.
-
-O segundo passo foi planejar o projeto baseado na análise do levantamento bibliográfico, assim como a definição de sua estrutura. Essa etapa foi necessária para facilitar e agilizar a implementação e testes dos componentes no próximo passo, definindo assim um escopo inicial de funcionalidades que o sistema terá, assim como outras tarefas a serem realizadas. Todo o processo será citado no tópico 6 (Experimentos e Resultados).
-
-Em seguida será iniciada a implementação e testes do protótipo. O projeto será desenvolvido por etapas, sendo que a primeira será o estudo de identificação dos \textit{beacons} via smartphone, a segunda será o desenvolvimento do software de identificação no \textit{RPi}, e a terceira um aprimoramento do software embarcado para rastrear os \textit{beacons}. Em seguida serão realizados testes unitários experimentais em laboratório para que o protótipo possa ser aprimorado. Será testado com mais de um modelo de \textit{RPi} e também mais de um \textit{beacon}, em ambiente aberto e fechado. Ao final espera-se ter um protótipo finalizado.
-
-A etapa de testes será realizada por observação e experimentação nos ambientes. Os dados serão apresentados ao final do projeto pela confecção e apresentação da monografia.
-
-Será desenvolvido no espaço do LTIA (Laboratório de Tecnologia da Informação Aplicada), da Universidade Estadual Paulista "Júlio de Mesquita Filho" - Campus Bauru. Os \textit{beacons MPact} e iPad Mini são de propriedade do próprio laboratório.
-
-% ----------------------------------------------------------
-
-
-% ----------------------------------------------------------
 % Materiais
 % ----------------------------------------------------------
 \chapter{Materiais e Métodos}\label{cap:materiais-e-metodos}
 % ----------------------------------------------------------
 
-A versão escolhida para início do projeto foi a 2 Modelo B, por ter um melhor processamento e mais memória RAM (figura~\ref{fig:rpi2-utilizado}), conforme informado no item 3.2. Para os testes futuros será utilizado também a versão B+.
+% ---
+\section{Métodos e Etapas}\label{sec:metodos-etapas}
+% ---
+
+O projeto foi dividido em etapas para facilitar o desenvolvimento completo. A primeira etapa foi o levantamento bibliográfico relacionado ao tema, realizadas buscas relacionadas aos assuntos: \textit{Raspberry Pi}, comunicação via \textit{Bluetooth Low Energy}, \textit{beacons}. Concomitantemente foi realizado o estudo das tecnologias, levando em conta suas capacidades, limitações, aplicações, etc.
+
+A segunda etapa foi planejar o projeto baseado na análise do levantamento bibliográfico, assim como a definição de sua estrutura. Essa etapa foi necessária para facilitar e agilizar a implementação e testes dos componentes nas próximas etapas, definindo assim um escopo inicial de funcionalidades que o sistema terá, assim como outras tarefas a serem realizadas. O processo está detalhado no \autoref{cap:experimentos-resultados} - \nameref{cap:experimentos-resultados}.
+
+A terceira etapa foi a implementação e testes do protótipo. As funcionalidades foram desenvolvidas por parte e em seguida testadas, seguindo a metodologia de desenvolvimento ágil.
+
+Todo o projeto foi desenvolvido no espaço do LTIA\footnote{Laboratório de Tecnologia da Informação Aplicada - \url{http://www.ltia.fc.unesp.br/}}, da Universidade Estadual Paulista "Júlio de Mesquita Filho"\ - Campus Bauru.
+
+
+% ---
+\section{Materiais Utilizados}\label{sec:materiais-utilizados}
+% ---
+
+% ---
+\subsection{Raspberry Pi e Acessórios}\label{sec:rpi-acessorios}
+% ---
+
+A versão do Raspberry Pi escolhida para o projeto foi a 2 Modelo B, por ter mais processamento e mais memória RAM (\autoref{fig:rpi2-utilizado}), conforme informado na \autoref{sec:raspberry-pi}.
 
 \begin{figure}[htb]
 	\caption{\label{fig:rpi2-utilizado}\textit{RPi} 2 modelo B utilizado nesse projeto.}
 	\begin{center}
-		\includegraphics[width=0.6\textwidth]{img/rpi2.jpg}
+		\includegraphics[width=0.5\textwidth]{img/rpi2.jpg}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
 
-É necessário o uso de um adaptador \textit{WiFi} para conexão a internet sem necessidade de cabo \textit{Ethernet} e também um adaptador Bluetooth 4.0 com suporte a \textit{BLE} para fazer a busca dos pacotes \textit{beacon}. Os modelos de adaptadores usados serão Orico BTA-406 (bluetooth) e EDUP N8508GS (\textit{WiFi}), conforme figura~\ref{fig:adaptadores}.
+É necessário o uso de um adaptador \textit{WiFi} para conexão a internet sem necessidade de cabo \textit{Ethernet} e também um adaptador Bluetooth 4.0 com suporte a \textit{BLE} para fazer a busca dos pacotes \textit{beacon}. Os modelos de adaptadores usados foram Orico BTA-406 (bluetooth) e EDUP N8508GS (\textit{WiFi}), conforme \autoref{fig:adaptadores}. O \textit{RPi} e os adaptadores são de propriedade do autor.
 
 \begin{figure}[htb]
 	\caption{\label{fig:adaptadores}Orico BTA-406 a esquerda e EDUP N8508GS a direita.}
 	\begin{center}
-		\includegraphics[width=0.4\textwidth]{img/adaptadores.jpg}
+		\includegraphics[width=0.35\textwidth]{img/adaptadores.jpg}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
 
-Todo o sistema operacional fica instalado em um cartão microSD, com no mínimo 4 GB de espaço. O cartão utilizado nesse projeto é um SanDisk Ultra Class 10 de 8 GB, conforme figura~\ref{fig:cartaomicrosd}.
+O sistema operacional executado no RPi é instalado em um cartão microSD, com no mínimo 4 GB de espaço. O cartão utilizado nesse projeto é um SanDisk Ultra Class 10 de 8 GB, conforme \autoref{fig:cartaomicrosd}. O sistema utilizado foi o Raspbian Wheezy. Durante o desenvolvimento do projeto, a versão Raspbian Jessie foi lançada, com inúmeras melhorias, porém preferiu-se por permanecer na versão Wheezy por possíveis incompatibilidades com os softwares utilizados.
 
 \begin{figure}[htb]
 	\caption{\label{fig:cartaomicrosd}Cartão microSD SanDisk Ultra Class 10 utilizado no projeto.}
@@ -889,7 +870,11 @@ Todo o sistema operacional fica instalado em um cartão microSD, com no mínimo 
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
 
-O sistema Raspbian permite que conecte remotamente via \textit{SSH} (\textit{Secure Shell}), sem necessidade de estar conectado a monitor e teclado. O computador utilizado para realização do projeto é um MacBook Pro, com sistema Mac OS X 10.10. Nesse sistema o uso de \textit{SSH} é simples, bastando abrir o aplicativo Terminal e utilizar o comando "\textit{ssh usuario@computador}", conforme imagem~\ref{fig:ex-terminal}. Esse tipo de abordagem é bastante utilizado para conexão a servidores na nuvem, para executar comandos, softwares, entre outros.
+% ---
+\subsection{Computadores e Softwares}\label{sec:comp-softwares}
+% ---
+
+A conexão com o \textit{RPi} foi realizada utilizando \textit{SSH}\footnote{\textit{Secure Shell}}, sem necessidade de monitor e teclado. O computador utilizado no projeto foi um MacBook Pro com sistema Mac OS X 10.10 (posteriormente atualizado para 10.11), de propriedade do autor. Nesse sistema o uso de \textit{SSH} é simples, basta abrir o aplicativo Terminal e utilizar o comando "\textit{ssh usuario@computador}", conforme \autoref{fig:ex-terminal}. Esse tipo de abordagem é bastante utilizada para conexão a servidores na nuvem, para executar comandos, softwares, entre outros.
 
 \begin{figure}[htb]
 	\caption{\label{fig:ex-terminal}Conexão com o \textit{RPi} via \textit{SSH}.}
@@ -899,7 +884,25 @@ O sistema Raspbian permite que conecte remotamente via \textit{SSH} (\textit{Sec
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
 
-O \textit{beacon} utilizado para testes foi o \textit{Zebra MPact}, conforme figura~\ref{fig:zebra-mpact}. Utiliza uma bateria CR2450 para alimentação de energia. A \textit{Zebra} tem um sistema de administração e gerenciamento nomeado \textit{MPact Toolbox}, instalado em um servidor do LTIA com sistema Debian 8.1. Esse sistema foi utilizado somente para conhecimento da tecnologia \textit{beacon} e atualização do \textit{firmware}, feito somente por essa \textit{Toolbox}. Esse software também apresenta a porcentagem de bateria, conforme imagem~\ref{fig:exemplo-toolbox}, permitindo a configuração de vários \textit{beacons} simultaneamente. Permite também a mudança do modo de funcionamento, de \textit{iBeacon} para \textit{MPact}, protocolo criado pela fabricante.
+% ---
+\subsection{Smartphones e Tablets}\label{sec:smartphone-tablets}
+% ---
+
+Foi utilizado o smartphone Moto Maxx com sistema Android 5.0.1 e o tablet iPad mini Retina com sistema iOS 8.4 confirme \autoref{fig:motomaxx-ipad}. O aplicativo utilizado em ambos foi o \textit{Locate Beacon} da \textit{Radius Networks}, que nos permite identificar os \textit{beacons} e também simular um, para realizar os testes com diferentes tipos, podendo alterar os valores de UUID, Major, Minor e potência de transmissão. O Moto Maxx é de propriedade do autor, e o iPad é de propriedade do LTIA, foi utilizado nas dependências do laboratório.
+
+\begin{figure}[htb]
+	\caption{\label{fig:motomaxx-ipad}Moto Maxx (esquerda) e iPad Mini (direita).}
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]{img/motomaxx-ipad.jpg}
+	\end{center}
+	\legend{Fonte: elaborado pelo autor}
+\end{figure}
+
+% ---
+\subsection{Beacons}\label{sec:beacons-modo}
+% ---
+
+O \textit{beacon} utilizado para testes foi o \textit{Zebra MPact}, conforme \autoref{fig:zebra-mpact}. Utiliza uma bateria CR2450 para alimentação de energia. A \textit{Zebra} tem um sistema de administração e gerenciamento nomeado \textit{MPact Toolbox}, instalado em um servidor do LTIA com sistema Debian 8.1. Esse sistema foi utilizado somente para conhecimento da tecnologia \textit{beacon} e atualização do \textit{firmware}, somente disponível por essa \textit{Toolbox}. Esse software também apresenta a porcentagem de bateria, conforme \autoref{fig:exemplo-toolbox}. Permite a configuração de vários \textit{beacons} simultaneamente, além de alterar o modo de funcionamento, de \textit{iBeacon} para \textit{MPact}, protocolo criado pela fabricante. Os \textit{beacons} são de propriedade do LTIA, e foram utilizados dentro das dependências do laboratório em todas as etapas.
 
 \begin{figure}[htb]
 	\caption{\label{fig:zebra-mpact}\textit{Beacon} Zebra MPact utilizado para testes.}
@@ -912,20 +915,87 @@ O \textit{beacon} utilizado para testes foi o \textit{Zebra MPact}, conforme fig
 \begin{figure}[htb]
 	\caption{\label{fig:exemplo-toolbox}\textit{Beacon} configurado na \textit{Toolbox} apresentando a porcentagem de bateria.}
 	\begin{center}
-		\includegraphics[width=0.5\textwidth]{img/toolbox-exemplo.png}
+		\includegraphics[width=0.8\textwidth]{img/toolbox-exemplo.png}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
 
-Foi utilizado o smartphone Moto Maxx com sistema Android 5.0.1 e o tablet iPad mini Retina com sistema iOS 8.4 confirme imagem~\ref{fig:motomaxx-ipad}. O aplicativo utilizado em ambos foi o \textit{Locate Beacon} da \textit{Radius Networks}, que nos permite identificar os \textit{beacons} e também simular um, para realizar os testes com diferentes tipos, podendo alterar os valores de UUID, Major, Minor e potência de transmissão.
+% ---
+\subsection{Acessórios para o Protótipo}\label{sec:acess-prototipo}
+% ---
+
+O protótipo foi criado em uma caixa de metal (\autoref{fig:caixa-metal}), furada conforme projeto e pintada de preto. Esse processo está detalhado na \autoref{TODO}. 
 
 \begin{figure}[htb]
-	\caption{\label{fig:motomaxx-ipad}Moto Maxx (esquerda) e iPad Mini (direita).}
+	\caption{\label{fig:caixa-metal}Caixa de metal utilizada para o protótipo}
 	\begin{center}
-		\includegraphics[width=0.6\textwidth]{img/motomaxx-ipad.jpg}
+		\includegraphics[width=0.8\textwidth]{img/caixa-metal.jpg}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
+
+Para o protótipo final foram utilizados seis LEDs, resistores, barra de pinos, um display azul de 16 colunas por 2 linhas, três botões do tipo clique, cabos \textit{flat} do tipo IDE e \textit{floppy}, placas com furação para soldagem de componentes, cabos finos removidos de um cabo de rede \textit{ethernet} para ligações entre os componentes e cola quente para fixação dos componentes internos. Esses materiais podem ser vistos na \autoref{fig:prot-interno}.
+
+Durante a fase de estudo das tecnologias utilizou-se uma protoboard e fios de conexão (\autoref{fig:proto-teste}) para testes de código, modo de conexão, entre outros, detalhado na \autoref{TODO}.
+
+\begin{figure}[htb]
+	\label{teste}
+	\centering
+ 	\begin{minipage}{0.43\textwidth}
+		\centering
+		\caption{\label{fig:prot-interno}Parte interna do protótipo}
+		\includegraphics[width=0.7\textwidth]{img/prot-interno.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.55\textwidth}
+		\centering
+		\caption{\label{fig:proto-teste}Protoboard na etapa de estudo}
+		\includegraphics[width=1\textwidth]{img/proto-teste.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+\end{figure}
+
+% ----------------------------------------------------------
+
+% ----------------------------------------------------------
+% Tecnologias e Ferramentas
+% ----------------------------------------------------------
+\chapter{Tecnologias e Ferramentas}\label{cap:tecnologias-ferramentas}
+% ----------------------------------------------------------
+
+
+% ---
+\section{Raspberry Pi}\label{sec:rpi-tecnologia}
+% ---
+
+O \textit{RPi} é a tecnologia mais importante desse projeto. Já foi explicado na \autoref{sec:raspberry-pi} e \autoref{sec:rpi-acessorios}, porém nessa parte será abordado diretamente seu uso.
+
+
+
+% ---
+\section{Node.js}\label{sec:node-js}
+% ---
+
+
+
+% ---
+\section{CouchDB}\label{sec:couchdb}
+% ---
+
+
+
+% ---
+\section{Git}\label{sec:git}
+% ---
+
+Git é um software de controle de versão para repositórios. Registra as mudanças nos arquivos ao longo do tempo, de forma que as versões possam ser recuperadas. \cite{pro-git}
+
+% ---
+\subsection{GitHub}\label{sec:github}
+% ---
+
+
 
 % ----------------------------------------------------------
 
@@ -933,7 +1003,7 @@ Foi utilizado o smartphone Moto Maxx com sistema Android 5.0.1 e o tablet iPad m
 % ----------------------------------------------------------
 % Experimentos e Resultados
 % ----------------------------------------------------------
-\chapter{Experimentos e Resultados}
+\chapter{Experimentos e Resultados}\label{cap:experimentos-resultados}
 % ----------------------------------------------------------
 
 Os experimentos realizados inicialmente foram a tentativa de identificação de um \textit{beacon} com o \textit{RPi}, para o estudo de funcionamento e comportamento dessas tecnologias. Para isso, o ambiente foi configurado conforme figura~\ref{fig:inicio-ambiente}. 
@@ -981,7 +1051,7 @@ Em seguida, com os softwares em execução e os pacotes sendo analisados, o \tex
 
 Com o adaptador Orico BTA-406 e posicionamento na mesa conforme figuras~\ref{fig:inicio-ambiente} e~\ref{fig:movimenta-beacon}, cerca de 1,3 a 1,4 metros de distância entre o \textit{RPi} e o \textit{beacon} os pacotes já começaram a falhar e a leitura não ser tão constante.
 
-O posicionamento do \textit{RPi} foi alterado para testes, conforme figura~\ref{fig:posiciona-rpi}. Com essa nova posição foi notado uma melhoria na recepção dos pacotes. A 1,5 metros entre o \textit{RPi} e o \textit{beacon} os pacotes começaram a falhar, com recepção notada até 1,6 metros.
+O posicionamento do \textit{RPi} foi alterado para testes, conforme figura~\ref{fig:posiciona-rpi}. Com essa nova posição notou-se uma melhoria na recepção dos pacotes. A 1,5 metros entre o \textit{RPi} e o \textit{beacon} os pacotes começaram a falhar, com recepção notada até 1,6 metros.
 
 \begin{figure}[htb]
 	\caption{\label{fig:posiciona-rpi}\textit{RPi} posicionado de outra maneira}
@@ -1073,16 +1143,79 @@ Certas atividades de extrema importancia ainda serão realizadas, mas o projeto 
 \begin{apendicesenv}
 
 % ----------------------------------------------------------
-\chapter{\LaTeX\ e \abnTeX}\label{ap:latex}
+\chapter{LaTeX}\label{ap:latex}
 % ----------------------------------------------------------
 
-\lipsum[50]
+Para o desenvolvimento desse documento foi utilizado uma ferramenta denominada TeX, um processador de texto baseado em comandos. Normalmente é grafado usando o comando (ou macro) \texttt{\detokenize{\TeX}}, resultando em \TeX. 
 
-% ----------------------------------------------------------
-\chapter{Nullam elementum urna vel imperdiet sodales elit ipsum pharetra ligula
-ac pretium ante justo a nulla curabitur tristique arcu eu metus}
-% ----------------------------------------------------------
-\lipsum[55-57]
+Não é comum o uso do TeX por si só. Utiliza-se uma outra ferramenta denominada LaTeX (ou \LaTeX), uma série de macros definidas para auxiliar o desenvolvimento.
+
+Essa abordagem é muito utilizada no meio acadêmico e científico, pois o ponto mais importante dessa ferramenta é o conteúdo. O design final ficará sempre para o compilador gerar. Isso evita erros de formatação, como por exemplo devido a diferenças entre versões de programas.
+
+Congressos e revistas científicas já disponibilizam arquivos no formato \texttt{.sty}\footnote{Modelo de estilos \TeX.} para que os pesquisadores enviem os artigos preenchidos em \texttt{.pdf} formatado conforme modelo próprio. Dessa forma todos os artigos seguirão o mesmo formato, auxiliando também os pesquisadores a escreverem os documentos rapidamente.
+
+Por ser um documento de texto no formato \texttt{.tex}, qualquer editor comum como o Bloco de Notas do Windows pode ser utilizado. Dessa forma a compilação é feita por meio da linha de comando, com algumas opções de compiladores. As mais utilizadas são \texttt{pdflatex} e \texttt{xelatex}.
+
+O meio mais utilizado para escrita de documentos \LaTeX\ de forma a facilitar a compilação são programas próprios. Existem diversas opções, mas as mais utilizadas são MiKTeX\footnote{\url{http://miktex.org/}} para Windows e MacTeX\footnote{\url{http://tug.org/mactex}} para Mac OSX. O programa utilizado para esse documento foi o TeXworks, um editor de texto para \TeX\ multiplataforma e de código aberto, conforme imagem \ref{fig:texworks}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:texworks}TeXworks, programa utilizado para escrever o código \TeX}
+	\begin{center}
+		\includegraphics[width=0.65\textwidth]{img/texworks.jpg}
+	\end{center}
+	\legend{Fonte: elaborado pelo autor}
+\end{figure}
+
+% ---
+\section{abnTeX2}
+% ---
+
+Devido a esse Trabalho de Conclusão de Curso seguir as normas ABNT\footnote{Associação Brasileira de Normas Técnicas.} para escrita e formatação de documentos científicos, foi utilizado a biblioteca de macros abnTeX2 (\abnTeX)\footnote{\url{https://github.com/abntex/abntex2}} para formatação do documento conforme as normas vigentes. Essa biblioteca é livre, com código fonte aberto e disponível para qualquer um auxiliar.
+
+Uma ferramenta muito útil disponível com o \abnTeX\ é a criação das Referências Bibliográficas no formato ABNT de forma automática. Para tal, é criado um arquivo \texttt{.bib} com todas as informações de citações e referências utilizadas no texto.
+
+As chaves de citação são os valores que serão utilizados nas macros do \abnTeX\ para que as referências sejam corretamente configuradas. Por exemplo, se desejamos referenciar um artigo de \citeonline{windows10-iot}, adicionamos todas as informações como nome dos autores, organização, data, edição, entre outros, e adicionamos a chave \texttt{windows10-iot}. 
+
+Utilizando a macro \texttt{\detokenize{\cite{windows10-iot}}}, no local ficará o texto \cite{windows10-iot}, e nas referências será adicionado conforme modelo ABNT: \texttt{MICROSOFT. A Internet das suas coisas. https://dev.windows.com/pt-br/iot, 2015.} Para citações \textit{inline}, ou na mesma linha, o comando \texttt{\detokenize{\citeonline{windows10-iot}}} é utilizado, gerando o texto \citeonline{windows10-iot}.
+
+O arquivo \texttt{.bib} pode ser criado manualmente ou por meio de programas. Para esse artigo foi utilizado o programa BibDesk\footnote{\url{http://bibdesk.sourceforge.net/}} para Mac OSX, conforme \autoref{fig:bibdesk}. Esse programa já cria o arquivo no formato correto com as chaves de citação configuradas.
+
+\begin{figure}[htb]
+	\caption{\label{fig:bibdesk}BibDesk, programa utilizado para editar as referências do TeX}
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{img/bibdesk.png}
+	\end{center}
+	\legend{Fonte: elaborado pelo autor}
+\end{figure}
+
+Além de formatar o documento, \abnTeX\ também disponibiliza macros para criação de conteúdo citados na ABNT. Por exemplo, tabelas que seguem o formato do IBGE\footnote{Instituto Brasileiro de Geografia e Estatística} podem ser facilmente criadas com macros disponíveis, como exemplo da \autoref{table:ble-physical}:
+
+\begin{verbatim}
+\begin{table}[htb]
+     \IBGEtab{%
+          \caption{\textit{BLE Physical Layer}}%
+          \label{table:ble-physical}
+     }{%
+          \begin{tabular}{ccc}
+               \toprule
+                    & BLE & Classic \\
+               \midrule \midrule
+                    Modulação & GFSK 0.45 a 0.55 & GFSK 0.28 a 0.35 \\
+               \midrule
+                    Velocidade de Transferência & 1 Mbit/s & 1 Mbit/s \\
+               \midrule 
+                    Canais & 40 & 79 \\
+               \midrule 
+                    Espaçamento & 2 MHz & 1 MHz \\
+               \bottomrule
+          \end{tabular}%
+     }{%
+          \fonte{\cite{ble-packets}}%
+     }
+\end{table}
+\end{verbatim}
+
+O código desse documento, assim como a versão em \texttt{.pdf} pode ser acessado pelo repositório no GitHub\footnote{\url{https://github.com/gabrielboliveira/Monografia-Peacon}}. Está disponível para livre consulta, tanto de professores quanto de alunos que tenham interesse em saber mais sobre o \LaTeX.
 
 \end{apendicesenv}
 % ---
