@@ -1,30 +1,9 @@
-%% abtex2-modelo-trabalho-academico.tex, laurocesar
-%% Copyright 2012-2015 by abnTeX2 group at http://www.abntex.net.br/ 
-%%
-%% This work may be distributed and/or modified under the
-%% conditions of the LaTeX Project Public License, either version 1.3
-%% of this license or (at your option) any later version.
-%% The latest version of this license is in
-%%   http://www.latex-project.org/lppl.txt
-%% and version 1.3 or later is part of all distributions of LaTeX
-%% version 2005/12/01 or later.
-%%
-%% This work has the LPPL maintenance status `maintained'.
-%% 
-%% The Current Maintainer of this work is the abnTeX2 team, led
-%% by Lauro César Araujo. Further information are available on 
-%% http://www.abntex.net.br/
-%%
-%% This work consists of the files abntex2-modelo-trabalho-academico.tex,
-%% abntex2-modelo-include-comandos and abntex2-modelo-references.bib
-%%
-
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
-% abnTeX2: Modelo de Trabalho Academico (tese de doutorado, dissertacao de
-% mestrado e trabalhos monograficos em geral) em conformidade com 
-% ABNT NBR 14724:2011: Informacao e documentacao - Trabalhos academicos -
-% Apresentacao
+% Monografia Peacon
+% Trabalho de Conclusão de Curso
+% Baseia-se no documento modelo de TCC do abntex2
+% Para saber mais, acesse https://github.com/abntex/abntex2
 % ------------------------------------------------------------------------
 % ------------------------------------------------------------------------
 
@@ -52,7 +31,6 @@
 \usepackage[scaled]{helvet}
 \renewcommand*\familydefault{\sfdefault} 	% Only if the base font of the document is to be sans serif
 										% Foi necessário para acertar o documento, continha diversos erros
-										
 \usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
 \usepackage[utf8]{inputenc}	% Codificacao do documento (conversão automática dos acentos)
 \usepackage{lastpage}		% Usado pela Ficha catalográfica
@@ -819,9 +797,9 @@ Segundo \citeonline{eddystone-google}, o protocolo \textit{Eddystone} possui tr�
 \chapter{Materiais e Métodos}\label{cap:materiais-e-metodos}
 % ----------------------------------------------------------
 
-% ---
+% ----------------------------------------------------------
 \section{Métodos e Etapas}\label{sec:metodos-etapas}
-% ---
+% ----------------------------------------------------------
 
 O projeto foi dividido em etapas para facilitar o desenvolvimento completo. A primeira etapa foi o levantamento bibliográfico relacionado ao tema, realizadas buscas relacionadas aos assuntos: \textit{Raspberry Pi}, comunicação via \textit{Bluetooth Low Energy}, \textit{beacons}. Concomitantemente foi realizado o estudo das tecnologias, levando em conta suas capacidades, limitações, aplicações, etc.
 
@@ -832,9 +810,9 @@ A terceira etapa foi a implementação e testes do protótipo. As funcionalidade
 Todo o projeto foi desenvolvido no espaço do LTIA\footnote{Laboratório de Tecnologia da Informação Aplicada - \url{http://www.ltia.fc.unesp.br/}}, da Universidade Estadual Paulista "Júlio de Mesquita Filho"\ - Campus Bauru.
 
 
-% ---
+% ----------------------------------------------------------
 \section{Materiais Utilizados}\label{sec:materiais-utilizados}
-% ---
+% ----------------------------------------------------------
 
 % ---
 \subsection{Raspberry Pi e Acessórios}\label{sec:rpi-acessorios}
@@ -956,45 +934,51 @@ Durante a fase de estudo das tecnologias utilizou-se uma protoboard e fios de co
 	\end{minipage}
 \end{figure}
 
-% ----------------------------------------------------------
 
 % ----------------------------------------------------------
-% Tecnologias e Ferramentas
-% ----------------------------------------------------------
-\chapter{Tecnologias e Ferramentas}\label{cap:tecnologias-ferramentas}
+\section{Tecnologias e Ferramentas}\label{cap:tecnologias-ferramentas}
 % ----------------------------------------------------------
 
 
 % ---
-\section{Raspberry Pi}\label{sec:rpi-tecnologia}
+\subsection{Raspberry Pi}\label{sec:rpi-tecnologia}
 % ---
 
-O \textit{RPi} é a tecnologia mais importante desse projeto. Já foi explicado na \autoref{sec:raspberry-pi} e \autoref{sec:rpi-acessorios}, porém nessa parte será abordado diretamente seu uso.
-
-
-
-% ---
-\section{Node.js}\label{sec:node-js}
-% ---
+O \textit{RPi} é a tecnologia mais importante desse projeto. Já foi abordado na \autoref{sec:raspberry-pi} e \autoref{sec:rpi-acessorios}, porém nessa seção outros aspectos serão comentados.
 
 
 
 % ---
-\section{CouchDB}\label{sec:couchdb}
+\subsection{Node.js}\label{sec:node-js}
 % ---
 
 
 
 % ---
-\section{Git}\label{sec:git}
+\subsection{CouchDB}\label{sec:couchdb}
 % ---
 
-Git é um software de controle de versão para repositórios. Registra as mudanças nos arquivos ao longo do tempo, de forma que as versões possam ser recuperadas. \cite{pro-git}
+
 
 % ---
-\subsection{GitHub}\label{sec:github}
+\subsection{Git}\label{sec:git}
 % ---
 
+Git é um software de controle de versão para repositórios. Registra as mudanças nos arquivos (ou grupo de arquivos) ao longo do tempo, de forma que as versões possam ser recuperadas futuramente. \cite{pro-git}. Se for necessário voltar algumas versões por bug no código, mal funcionamento de uma função recém implementada ou outras razões, as alterações estarão todas salvas.
+
+Atualmente o Git é muito utilizado por projetos de código aberto, como por exemplo o Swift\footnote{\url{https://github.com/apple/swift}} que é uma linguagem de programação criada pela Apple voltada para seus sistemas operacionais, e o AngularJS\footnote{\url{https://github.com/angular/angular.js}}, framework Javascript mantido pelo Google.
+
+% ---
+\subsubsection{GitHub}\label{sec:github}
+% ---
+
+
+
+% ---
+\subsection{Outras Ferramentas}\label{sec:outras-ferramentas}
+% ---
+
+Durante o desenvolvimento desse trabalho foi necessário a criação de uma proposta e um relatório parcial, ambos para a disciplina de Projeto e Implementação de Sistemas I. Para tal, o autor utilizou a ferramenta denominada LaTeX. Como não está entre os objetivos desse projeto, mas é informação de grande acréscimo, está detalhado no \autoref{ap:latex}.
 
 
 % ----------------------------------------------------------
@@ -1146,9 +1130,9 @@ Certas atividades de extrema importancia ainda serão realizadas, mas o projeto 
 \chapter{LaTeX}\label{ap:latex}
 % ----------------------------------------------------------
 
-Para o desenvolvimento desse documento foi utilizado uma ferramenta denominada TeX, um processador de texto baseado em comandos. Normalmente é grafado usando o comando (ou macro) \texttt{\detokenize{\TeX}}, resultando em \TeX. 
+Para o desenvolvimento dessa monografia utilizou-se uma ferramenta denominada TeX, um processador de texto baseado em comandos e macros. Normalmente é grafado usando a macro \texttt{\detokenize{\TeX}}, resultando em \TeX. 
 
-Não é comum o uso do TeX por si só. Utiliza-se uma outra ferramenta denominada LaTeX (ou \LaTeX), uma série de macros definidas para auxiliar o desenvolvimento.
+Não é comum o uso do \TeX\ por si só. Utiliza-se uma outra ferramenta denominada LaTeX (grafada \LaTeX), uma série de macros definidas para auxiliar o desenvolvimento.
 
 Essa abordagem é muito utilizada no meio acadêmico e científico, pois o ponto mais importante dessa ferramenta é o conteúdo. O design final ficará sempre para o compilador gerar. Isso evita erros de formatação, como por exemplo devido a diferenças entre versões de programas.
 
@@ -1170,7 +1154,7 @@ O meio mais utilizado para escrita de documentos \LaTeX\ de forma a facilitar a 
 \section{abnTeX2}
 % ---
 
-Devido a esse Trabalho de Conclusão de Curso seguir as normas ABNT\footnote{Associação Brasileira de Normas Técnicas.} para escrita e formatação de documentos científicos, foi utilizado a biblioteca de macros abnTeX2 (\abnTeX)\footnote{\url{https://github.com/abntex/abntex2}} para formatação do documento conforme as normas vigentes. Essa biblioteca é livre, com código fonte aberto e disponível para qualquer um auxiliar.
+Devido a esse Trabalho de Conclusão de Curso seguir as normas ABNT\footnote{Associação Brasileira de Normas Técnicas.} para escrita e formatação de documentos científicos, utilizou-se a biblioteca de macros abnTeX2 (\abnTeX)\footnote{\url{https://github.com/abntex/abntex2}} para formatação do documento conforme as normas vigentes. Essa biblioteca é livre, com código fonte aberto e disponível para qualquer um auxiliar.
 
 Uma ferramenta muito útil disponível com o \abnTeX\ é a criação das Referências Bibliográficas no formato ABNT de forma automática. Para tal, é criado um arquivo \texttt{.bib} com todas as informações de citações e referências utilizadas no texto.
 
@@ -1188,14 +1172,13 @@ O arquivo \texttt{.bib} pode ser criado manualmente ou por meio de programas. Pa
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
 
-Além de formatar o documento, \abnTeX\ também disponibiliza macros para criação de conteúdo citados na ABNT. Por exemplo, tabelas que seguem o formato do IBGE\footnote{Instituto Brasileiro de Geografia e Estatística} podem ser facilmente criadas com macros disponíveis, como exemplo da \autoref{table:ble-physical}:
+Além de formatar o documento, \abnTeX\ também disponibiliza macros para criação de conteúdo citados na ABNT. Por exemplo, tabelas que seguem o formato do IBGE\footnote{Instituto Brasileiro de Geografia e Estatística} podem ser facilmente criadas com macros disponíveis, como exemplo da \autoref{table:ble-physical2}.
 
-\begin{verbatim}
 \begin{table}[htb]
-     \IBGEtab{%
-          \caption{\textit{BLE Physical Layer}}%
-          \label{table:ble-physical}
-     }{%
+     \IBGEtab{
+          \caption{Exemplo de tabela gerada com o \LaTeX}
+          \label{table:ble-physical2}
+     }{
           \begin{tabular}{ccc}
                \toprule
                     & BLE & Classic \\
@@ -1208,14 +1191,48 @@ Além de formatar o documento, \abnTeX\ também disponibiliza macros para criaç
                \midrule 
                     Espaçamento & 2 MHz & 1 MHz \\
                \bottomrule
-          \end{tabular}%
-     }{%
-          \fonte{\cite{ble-packets}}%
+          \end{tabular}
+     }{
+          \fonte{\cite{ble-packets}}
+     }
+\end{table}
+
+O código para geração da \autoref{table:ble-physical2}, conforme a documentação da \abnTeX\, é:
+\\ % para pular mais uma linha
+\begin{verbatim}
+\begin{table}[htb]
+     \IBGEtab{
+          \caption{\textit{BLE Physical Layer}}
+          \label{table:ble-physical}
+     }{
+          \begin{tabular}{ccc}
+               \toprule
+                    & BLE & Classic \\
+               \midrule \midrule
+                    Modulação & GFSK 0.45 a 0.55 & GFSK 0.28 a 0.35 \\
+               \midrule
+                    Velocidade de Transferência & 1 Mbit/s & 1 Mbit/s \\
+               \midrule 
+                    Canais & 40 & 79 \\
+               \midrule 
+                    Espaçamento & 2 MHz & 1 MHz \\
+               \bottomrule
+          \end{tabular}
+     }{
+          \fonte{\cite{ble-packets}}
      }
 \end{table}
 \end{verbatim}
 
-O código desse documento, assim como a versão em \texttt{.pdf} pode ser acessado pelo repositório no GitHub\footnote{\url{https://github.com/gabrielboliveira/Monografia-Peacon}}. Está disponível para livre consulta, tanto de professores quanto de alunos que tenham interesse em saber mais sobre o \LaTeX.
+Diversas razões podem ser elencadas a favor do uso do \LaTeX\ e \abnTeX\ nessa monografia, entre elas:
+
+\begin{alineas}
+	\item Facilidade de criação do conteúdo: não é necessário criar o modelo do documento conforme as normas da ABNT, pois o \abnTeX\ já criará o documento final formatado;
+	\item Evitar erros de formatação ao alterar o conteúdo do arquivo: muito comum quando utilizado o Microsoft Word, ao alterar o conteúdo de uma seção, as partes subsequentes facilmente perdem a formatação, sendo necessário uma revisão minunciosa para que esses erros sejam evitados;
+	\item Continuação dos outros relatórios: como o autor gostaria de aprender essa tecnologia, utilizou para desenvolver a proposta desse trabalho. Portanto, para facilitar, continuou os outros relatórios utilizando a mesma ferramenta;
+\end{alineas}
+
+O código dessa monografia, assim como a versão final em \texttt{.pdf} pode ser acessado pelo repositório no GitHub\footnote{\url{https://github.com/gabrielboliveira/Monografia-Peacon}}. Está disponível para livre consulta, tanto de professores quanto de alunos interessados em saber mais sobre o \LaTeX.
 
 \end{apendicesenv}
 % ---
