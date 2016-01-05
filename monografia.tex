@@ -524,9 +524,9 @@ Aos meus amigos e familiares, pelo apoio e incentivo na escolha e decorrer do cu
 \section{Métodos e Etapas}\label{sec:metodos-etapas}
 % ----------------------------------------------------------
 
-O projeto foi dividido em etapas para facilitar o desenvolvimento completo. A primeira etapa foi o levantamento bibliográfico relacionado ao tema, realizadas buscas relacionadas aos assuntos: \textit{Raspberry Pi}, comunicação via \textit{Bluetooth Low Energy}, \textit{beacons}. Concomitantemente foi realizado o estudo das tecnologias, levando em conta suas capacidades, limitações, aplicações, etc.
+O projeto foi dividido em etapas para facilitar o desenvolvimento completo. A primeira etapa foi o levantamento bibliográfico relacionado ao tema, realizadas buscas relacionadas aos assuntos: \textit{Raspberry Pi}, comunicação via \textit{Bluetooth Low Energy}, \textit{beacons}. Concomitantemente foi realizado o estudo das tecnologias, levando em conta suas capacidades, limitações, e aplicações.
 
-A segunda etapa foi planejar o projeto baseado na análise do levantamento bibliográfico, assim como a definição de sua estrutura. Essa etapa foi necessária para facilitar e agilizar a implementação e testes dos componentes nas próximas etapas, definindo assim um escopo inicial de funcionalidades que o sistema terá, assim como outras tarefas a serem realizadas. O processo está detalhado no \autoref{cap:experimentos-resultados} - \nameref{cap:experimentos-resultados}.
+A segunda etapa foi planejar o projeto baseado na análise do levantamento bibliográfico, assim como a definição de sua estrutura. Essa etapa foi necessária para facilitar e agilizar a implementação e testes dos componentes nas próximas etapas, definindo assim um escopo inicial de funcionalidades que o sistema terá, assim como outras tarefas a serem realizadas. O processo está detalhado no \autoref{cap:desenvolvimento} - \nameref{cap:desenvolvimento}.
 
 A terceira etapa foi a implementação e testes do protótipo. As funcionalidades foram desenvolvidas por parte e em seguida testadas, seguindo a metodologia de desenvolvimento ágil.
 
@@ -561,7 +561,7 @@ A versão do Raspberry Pi escolhida para o projeto foi a 2 Modelo B, por ter mai
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
 
-O sistema operacional executado no RPi é instalado em um cartão microSD, com no mínimo 4 GB de espaço. O cartão utilizado nesse projeto é um SanDisk Ultra Class 10 de 8 GB, conforme \autoref{fig:cartaomicrosd}. O sistema utilizado foi o Raspbian Wheezy. Durante o desenvolvimento do projeto, a versão Raspbian Jessie foi lançada, com inúmeras melhorias, porém preferiu-se por permanecer na versão Wheezy por possíveis incompatibilidades com os softwares utilizados.
+O sistema operacional executado no RPi é instalado em um cartão microSD, com no mínimo 4 GB de espaço. O cartão utilizado nesse projeto é um SanDisk Ultra Class 10 de 8 GB, conforme \autoref{fig:cartaomicrosd}. O sistema utilizado foi o Raspbian Wheezy. Durante o desenvolvimento do projeto, a versão Raspbian Jessie foi lançada, com inúmeras melhorias, porém preferiu-se por permanecer na versão Wheezy para evitar possíveis incompatibilidades com os softwares utilizados.
 
 \begin{figure}[htb]
 	\caption{\label{fig:cartaomicrosd}Cartão microSD SanDisk Ultra Class 10 utilizado no projeto.}
@@ -570,6 +570,8 @@ O sistema operacional executado no RPi é instalado em um cartão microSD, com n
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
+
+Na \autoref{sec:tecnologias-ferramentas} - \nameref{sec:tecnologias-ferramentas}, \autoref{sec:rpi-tecnologia} - \nameref{sec:rpi-tecnologia} será abordado como o \textit{RPi} funciona na prática, como foi utilizado para esse projeto e como suas capacidades foram aproveitadas.
 
 % ---
 \subsection{Computadores e Softwares}\label{sec:comp-softwares}
@@ -589,7 +591,11 @@ A conexão com o \textit{RPi} foi realizada utilizando \textit{SSH}\footnote{\te
 \subsection{Smartphones e Tablets}\label{sec:smartphone-tablets}
 % ---
 
-Foi utilizado o smartphone Moto Maxx com sistema Android 5.0.1 e o tablet iPad mini Retina com sistema iOS 8.4 confirme \autoref{fig:motomaxx-ipad}. O aplicativo utilizado em ambos foi o \textit{Locate Beacon} da \textit{Radius Networks}, que nos permite identificar os \textit{beacons} e também simular um, para realizar os testes com diferentes tipos, podendo alterar os valores de UUID, Major, Minor e potência de transmissão. O Moto Maxx é de propriedade do autor, e o iPad é de propriedade do LTIA, foi utilizado nas dependências do laboratório.
+Foi utilizado o smartphone Moto Maxx com sistema Android 5.0.1 e o tablet iPad mini Retina com sistema iOS 8.4 confirme \autoref{fig:motomaxx-ipad}. 
+
+O aplicativo utilizado em ambos foi o \textit{Locate Beacon} da \textit{Radius Networks}, que nos permite identificar os \textit{beacons} e também simular um, para realizar os testes com diferentes tipos, podendo alterar os valores de UUID, Major, Minor e potência de transmissão. 
+
+O Moto Maxx é de propriedade do autor, e o iPad é de propriedade do LTIA, foi utilizado nas dependências do laboratório.
 
 \begin{figure}[htb]
 	\caption{\label{fig:motomaxx-ipad}Moto Maxx (esquerda) e iPad Mini (direita).}
@@ -603,20 +609,24 @@ Foi utilizado o smartphone Moto Maxx com sistema Android 5.0.1 e o tablet iPad m
 \subsection{Beacons}\label{sec:beacons-modo}
 % ---
 
-O \textit{beacon} utilizado para testes foi o \textit{Zebra MPact}, conforme \autoref{fig:zebra-mpact}. Utiliza uma bateria CR2450 para alimentação de energia. A \textit{Zebra} tem um sistema de administração e gerenciamento nomeado \textit{MPact Toolbox}, instalado em um servidor do LTIA com sistema Debian 8.1. Esse sistema foi utilizado somente para conhecimento da tecnologia \textit{beacon} e atualização do \textit{firmware}, somente disponível por essa \textit{Toolbox}. Esse software também apresenta a porcentagem de bateria, conforme \autoref{fig:exemplo-toolbox}. Permite a configuração de vários \textit{beacons} simultaneamente, além de alterar o modo de funcionamento, de \textit{iBeacon} para \textit{MPact}, protocolo criado pela fabricante. Os \textit{beacons} são de propriedade do LTIA, e foram utilizados dentro das dependências do laboratório em todas as etapas.
+O \textit{beacon} utilizado para testes foi o \textit{Zebra MPact}, conforme \autoref{fig:zebra-mpact}. Utiliza uma bateria CR2450 para alimentação de energia. 
 
 \begin{figure}[htb]
 	\caption{\label{fig:zebra-mpact}\textit{Beacon} Zebra MPact utilizado para testes.}
 	\begin{center}
-		\includegraphics[width=0.5\textwidth]{img/beacon-mpact2.jpg}
+		\includegraphics[width=0.6\textwidth]{img/beacon-mpact2.jpg}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
 
+A \textit{Zebra} tem um sistema de administração e gerenciamento nomeado \textit{MPact Toolbox}, instalado em um servidor do LTIA com sistema Debian 8.1. Esse sistema foi utilizado somente para conhecimento da tecnologia \textit{beacon} e atualização do \textit{firmware}, somente disponível por essa \textit{Toolbox}. Esse software também apresenta a porcentagem de bateria, conforme \autoref{fig:exemplo-toolbox}. 
+
+Permite a configuração de vários \textit{beacons} simultaneamente, além de alterar o modo de funcionamento, de \textit{iBeacon} para \textit{MPact}, protocolo criado pela fabricante. Os \textit{beacons} são de propriedade do LTIA, e foram utilizados dentro das dependências do laboratório em todas as etapas.
+
 \begin{figure}[htb]
 	\caption{\label{fig:exemplo-toolbox}\textit{Beacon} configurado na \textit{Toolbox} apresentando a porcentagem de bateria.}
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{img/toolbox-exemplo.png}
+		\includegraphics[width=0.7\textwidth]{img/toolbox-exemplo.png}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
@@ -625,7 +635,7 @@ O \textit{beacon} utilizado para testes foi o \textit{Zebra MPact}, conforme \au
 \subsection{Acessórios para o Protótipo}\label{sec:acess-prototipo}
 % ---
 
-O protótipo foi criado em uma caixa de metal (\autoref{fig:caixa-metal}), furada conforme projeto e pintada de preto. Esse processo está detalhado na \autoref{TODO}. 
+O protótipo foi criado em uma caixa de metal (\autoref{fig:caixa-metal}), furada conforme projeto e pintada de preto. Esse processo está detalhado na \autoref{sec:segunda-etapa}. 
 
 \begin{figure}[htb]
 	\caption{\label{fig:caixa-metal}Caixa de metal utilizada para o protótipo}
@@ -637,7 +647,7 @@ O protótipo foi criado em uma caixa de metal (\autoref{fig:caixa-metal}), furad
 
 Para o protótipo final foram utilizados seis LEDs, resistores, barra de pinos, um display azul de 16 colunas por 2 linhas, três botões do tipo clique, cabos \textit{flat} do tipo IDE e \textit{floppy}, placas com furação para soldagem de componentes, cabos finos removidos de um cabo de rede \textit{ethernet} para ligações entre os componentes e cola quente para fixação dos componentes internos. Esses materiais podem ser vistos na \autoref{fig:prot-interno}.
 
-Durante a fase de estudo das tecnologias utilizou-se uma protoboard e fios de conexão (\autoref{fig:proto-teste}) para testes de código, modo de conexão, entre outros, detalhado na \autoref{TODO}.
+Durante a fase de estudo das tecnologias utilizou-se uma protoboard e fios de conexão (\autoref{fig:proto-teste}) para testes de código, modo de conexão, entre outros, detalhado na \autoref{sec:segunda-etapa}.
 
 \begin{figure}[htb]
 	\label{teste}
@@ -657,9 +667,19 @@ Durante a fase de estudo das tecnologias utilizou-se uma protoboard e fios de co
 	\end{minipage}
 \end{figure}
 
+Como o \textit{RPi} tem limitações quanto a quantidade de pinos de entrada e saída digitais (explicados na \autoref{sec:rpi-tecnologia}), os componentes definidos para o protótipo foram determinados conforme possibilidade de conexões. Cada componente necessita de:
+
+\begin{alineas}
+	\item Para cada LED, um pino de saída digital (GPIO) para acender ou apagar;
+	\item Para cada botão, um pino de entrada digital para leitura de botão pressionado ou não;
+	\item Para o display de LCD, seis pinos de saída no total, sendo quatro para dados, um para \textit{enable} (ou ativar), e outro para \textit{register select}, para posicionar os dados nos registradores corretos.
+\end{alineas}
+
+O uso desses componentes foram determinados na segunda etapa, detalhada na \autoref{sec:segunda-etapa} - \nameref{sec:segunda-etapa}.
+
 
 % ----------------------------------------------------------
-\section{Tecnologias e Ferramentas}\label{cap:tecnologias-ferramentas}
+\section{Tecnologias e Ferramentas}\label{sec:tecnologias-ferramentas}
 % ----------------------------------------------------------
 
 
@@ -669,13 +689,14 @@ Durante a fase de estudo das tecnologias utilizou-se uma protoboard e fios de co
 
 O \textit{RPi} é a tecnologia mais importante desse projeto. Já foi abordado na \autoref{sec:raspberry-pi} e \autoref{sec:rpi-acessorios}, porém nessa seção outros aspectos serão comentados.
 
+% TODO Falar das GPIOs, quantidade de pinos digitais, voltagem 3.3V
 
 
 % ---
 \subsection{Node.js}\label{sec:node-js}
 % ---
 
-
+% TODO falar dos pacotes utilizados, npm
 
 % ---
 \subsection{CouchDB}\label{sec:couchdb}
@@ -710,15 +731,19 @@ Durante o desenvolvimento desse trabalho foi necessário a criação de uma prop
 % ----------------------------------------------------------
 % Experimentos e Resultados
 % ----------------------------------------------------------
-\chapter{Experimentos e Resultados}\label{cap:experimentos-resultados}
+\chapter{Desenvolvimento}\label{cap:desenvolvimento}
 % ----------------------------------------------------------
 
-Os experimentos realizados inicialmente foram a tentativa de identificação de um \textit{beacon} com o \textit{RPi}, para o estudo de funcionamento e comportamento dessas tecnologias. Para isso, o ambiente foi configurado conforme figura~\ref{fig:inicio-ambiente}. 
+% ----------------------------------------------------------
+\section{Primeira Etapa}\label{sec:primeira-etapa}
+% ----------------------------------------------------------
+
+Nessa etapa foram realizados os estudos práticos das tecnologias. O primeiro experimentos realizado foi a tentativa de identificação de um \textit{beacon} com o \textit{RPi}, para o estudo de funcionamento e comportamento dessas tecnologias. Para isso, o ambiente foi configurado conforme \autoref{fig:inicio-ambiente}. 
 
 \begin{figure}[htb]
 	\caption{\label{fig:inicio-ambiente}Primeiro teste realizado, com \textit{RPi} e \textit{beacon MPact}}
 	\begin{center}
-		\includegraphics[width=0.5\textwidth]{img/ambiente1.jpg}
+		\includegraphics[width=0.65\textwidth]{img/ambiente1.jpg}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
@@ -726,49 +751,278 @@ Os experimentos realizados inicialmente foram a tentativa de identificação de 
 O computador ficou conectado via SSH com o \textit{RPi}, recebendo as informações de leitura de pacotes \textit{BLE}. Os softwares utilizados para isso foram, conforme \citeonline{stack-overflow-ibeacon}, os seguintes:
 
 \begin{alineas}
-	\item \textbf{hcitool}: configurado da maneira \textit{hcitool lescan --duplicates}, faz um scan na frequência \textit{BLE} procurando por dispositivos que estejam transmitindo, conforme figura~\ref{fig:hcitool-lescan}.
-	\item \textbf{hcidump}: em conjunto com o \textit{hcitool}, apresenta todos os pacotes escaneados na rede. Executado da maneira \textit{hcidump --raw}, conforme figura~\ref{fig:hcidump}.
+	\item \textbf{hcitool}: configurado da maneira \textit{hcitool lescan --duplicates}, faz um scan na frequência \textit{BLE} procurando por dispositivos que estejam transmitindo, conforme \autoref{fig:hcitool-lescan}.
+	
+	\begin{figure}[htb]
+		\caption{\label{fig:hcitool-lescan}Software \textit{hcitool} executando}
+		\begin{center}
+			\includegraphics[width=0.6\textwidth]{img/hcitool-lescan.png}
+		\end{center}
+		\legend{Fonte: elaborado pelo autor}
+	\end{figure}
+
+	\item \textbf{hcidump}: em conjunto com o \textit{hcitool}, apresenta todos os pacotes escaneados na rede. Executado da maneira \textit{hcidump --raw}, conforme \autoref{fig:hcidump}.
+	
+	\begin{figure}[htb]
+		\caption{\label{fig:hcidump}Software \textit{hcidump} executando}
+		\begin{center}
+			\includegraphics[width=0.6\textwidth]{img/hcidump.png}
+		\end{center}
+		\legend{Fonte: elaborado pelo autor}
+	\end{figure}
+
 \end{alineas}
 
-\begin{figure}[htb]
-	\caption{\label{fig:hcitool-lescan}Software \textit{hcitool} executando}
-	\begin{center}
-		\includegraphics[width=0.7\textwidth]{img/hcitool-lescan.png}
-	\end{center}
-	\legend{Fonte: elaborado pelo autor}
-\end{figure}
-
-\begin{figure}[htb]
-	\caption{\label{fig:hcidump}Software \textit{hcidump} executando}
-	\begin{center}
-		\includegraphics[width=0.7\textwidth]{img/hcidump.png}
-	\end{center}
-	\legend{Fonte: elaborado pelo autor}
-\end{figure}
-
-Em seguida, com os softwares em execução e os pacotes sendo analisados, o \textit{beacon} foi movido em cima da mesa para ficar a diferentes distâncias do \textit{RPi}, conforme figura~\ref{fig:movimenta-beacon}. Esse passo foi necessário para verificar o formato dos pacotes recebidos e também analisar a distância máxima de identificação.
+Em seguida, com os softwares em execução e os pacotes sendo analisados, o \textit{beacon} foi movido em cima da mesa para ficar a diferentes distâncias do \textit{RPi}, conforme \autoref{fig:movimenta-beacon}. Esse passo foi necessário para verificar o formato dos pacotes recebidos e também analisar a distância máxima de identificação.
 
 \begin{figure}[htb]
 	\caption{\label{fig:movimenta-beacon}Teste com movimentação do \textit{beacon}}
 	\begin{center}
-		\includegraphics[width=0.5\textwidth]{img/ambiente4.jpg}
+		\includegraphics[width=0.6\textwidth]{img/ambiente4.jpg}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
 
-Com o adaptador Orico BTA-406 e posicionamento na mesa conforme figuras~\ref{fig:inicio-ambiente} e~\ref{fig:movimenta-beacon}, cerca de 1,3 a 1,4 metros de distância entre o \textit{RPi} e o \textit{beacon} os pacotes já começaram a falhar e a leitura não ser tão constante.
+Com o adaptador Orico BTA-406 e posicionamento na mesa conforme \autoref{fig:inicio-ambiente} e \autoref{fig:movimenta-beacon}, cerca de 1,3 a 1,4 metros de distância entre o \textit{RPi} e o \textit{beacon} os pacotes já começaram a falhar e a leitura não ser tão constante.
 
-O posicionamento do \textit{RPi} foi alterado para testes, conforme figura~\ref{fig:posiciona-rpi}. Com essa nova posição notou-se uma melhoria na recepção dos pacotes. A 1,5 metros entre o \textit{RPi} e o \textit{beacon} os pacotes começaram a falhar, com recepção notada até 1,6 metros.
+O posicionamento do \textit{RPi} foi alterado para testes, conforme \autoref{fig:posiciona-rpi}. Notou-se uma melhoria na recepção dos pacotes, a 1,5 metros entre o \textit{RPi} e o \textit{beacon} os pacotes começaram a falhar, com recepção notada até 1,6 metros.
 
 \begin{figure}[htb]
 	\caption{\label{fig:posiciona-rpi}\textit{RPi} posicionado de outra maneira}
 	\begin{center}
-		\includegraphics[width=0.6\textwidth]{img/ambiente2.jpg}
+		\includegraphics[width=0.8\textwidth]{img/ambiente2.jpg}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
 
-Mais experimentos e testes serão feitos durante o andamento do projeto para uma melhor especificação do alcance do \textit{RPi} e \textit{beacon}. Desta forma melhores resultados surgirão.
+Durante essa etapa não foram levado em consideração conexões com LEDs, botões e display LCD para a montagem do protótipo pois esses componentes foram definidos posteriormente. Os estudos e testes desses materiais foram realizados na segunda etapa, para que as escolhas fossem validadas.
+
+% ----------------------------------------------------------
+\section{Segunda Etapa}\label{sec:segunda-etapa}
+% ----------------------------------------------------------
+
+Na segunda etapa iniciou-se o planejamento do protótipo. Para que pudesse ser bem planejado, definiu-se alguns parâmetros:
+
+\begin{alineas}
+	\item deve ter uma interface amigável e simples para interação com o software;
+	\item deve ser bem apresentável, com cores marcantes e boa construção;
+	\item deve mostrar informações relevantes sobre o sistema - aplicação, software e sistema (Linux e \textit{RPi});
+	\item deve ser construído em um único pacote, não muito grande nem muito pequeno;
+\end{alineas}
+
+Seguindo esses parâmetros, a primeira busca foi por um pacote de onde alocar todos os componentes necessários, de forma que tudo ficasse bem protegido. Para tal, escolheu-se uma caixa de metal, derivada de uma antiga caixa de cigarros, apresentado na \autoref{sec:acess-prototipo}.
+
+O material foi cortado primeiramente na parte de baixo de forma que acomode o \textit{RPi} deixando todas as conexões disponíveis para futuro desenvolvimento e facilidade de acessar as portas. Foram realizados furos na parte do fundo para fixação do \textit{RPi} com parafusos, arruelas e porcas, conforme \autoref{fig:rpi-caixa}.
+
+% TODO - FOTO DO FUNDO COM OS PARAFUSOS
+
+\begin{figure}[htb]
+	\caption{\label{fig:rpi-caixa}\textit{RPi} preso na caixa, com as portas acessíveis}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{img/rpi-caixa.jpg}
+	\end{center}
+	\legend{Fonte: elaborado pelo autor}
+\end{figure}
+
+Dessa maneira o RPi ficou bem preso na parte de baixo, liberando a tampa para instalação da interface com o usuário.
+
+No próximo passo definiu-se como seria a interface com o usuário. Para que os parâmetros fossem cumpridos, os seguintes itens necessários foram elencados:
+
+\begin{alineas}
+	\item apresentará uma informação se o sistema está rodando a aplicação corretamente - para tal definiu-se o uso de um LED verde;
+	\item apresentará uma informação se o sistema tem conexão com a internet - para tal definiu-se o uso de um LED amarelo;
+	\item apresentará uma informação se um beacon está no alcance - para tal definiu-se o uso de um LED azul;
+	\item apresentará várias informações textuais sobre o estado atual do sistema, assim como beacons no alcance, histórico, dados do Linux, endereço de IP, temperatura da CPU - para tal, definiu-se o uso de um display LCD de 16 colunas por 2 linhas.
+	\nota{A cor dos LEDs foi definido por praticidade e diversificação.}
+\end{alineas}
+
+Como o display é pequeno e não apresentaria todas as informações de uma só vez, decidiu-se que existiria alguma forma de navegação por páginas, de forma que as informações fossem alteradas conforme mudasse de página. Para que a navegação fosse realizada de maneira agradável e apresentável, os seguintes itens foram escolhidos:
+
+\begin{alineas}
+	\item LEDs indicam qual página o usuário está - definiu-se pelo uso de três LEDs verde, a cor foi escolhida somente por praticidade de já ter os componentes;
+	\item botões do tipo clique foram usados para navegar a direita, esquerda, e entre as páginas, similar ao rolar a página.
+\end{alineas}
+
+Seriam utilizado mais LEDs para mais informações serem apresentadas, como mais páginas no display, porém por limitação da quantidade de GPIOs preferiu-se por manter somente três páginas e LEDs.
+
+Com os componentes bem definidos, em seguida a interface foi desenhada no papel, conforme \autoref{fig:interface-papel}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:interface-papel}\textit{RPi} posicionado de outra maneira}
+	\begin{center}
+		\includegraphics[width=0.52\textwidth]{img/interface-papel.jpg}
+	\end{center}
+	\legend{Fonte: elaborado pelo autor}
+\end{figure}
+
+Definido os componentes que fariam parte da interface, foi necessário realizar testes com os LEDs, display LCD e botões na protoboard de forma que todos esses componentes pudessem ser conectados ao mesmo tempo. 
+
+Nesse momento definiu-se o uso de Node.js (detalhado na \autoref{sec:node-js}) para o desenvolvimento, pois foram encontrados diversos tutoriais\footnote{\url{http://thejackalofjavascript.com/rpi-16x2-lcd-print-stuff/}}\footnote{\url{http://odesenvolvedor.andafter.org/publicacoes/controlando-gpio-do-raspberrypi-com-nodejs.html}}\footnote{\url{https://learn.adafruit.com/node-embedded-development/why-node-dot-js}} e bibliotecas\footnote{\url{https://www.npmjs.com/package/lcd}}\footnote{\url{https://www.npmjs.com/package/onoff}} que facilitariam a conexão com todos os componentes.
+
+\begin{figure}[htb]
+	\centering
+ 	\begin{minipage}{0.47\textwidth}
+		\centering
+		\caption{\label{fig:proto-lcd}Estudo de conexão e programação com display LCD}
+		\includegraphics[width=1\textwidth]{img/proto-lcd.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.47\textwidth}
+		\centering
+		\caption{\label{fig:proto-leds}Conexão com LEDs, display e botão na protoboard}
+		\includegraphics[width=1\textwidth]{img/proto-leds.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+\end{figure}
+
+\begin{figure}[htb]
+	\caption{\label{fig:proto-total}Teste de mesa com todos os componentes}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{img/proto-total.jpg}
+	\end{center}
+	\legend{Fonte: elaborado pelo autor}
+\end{figure}
+
+Após instalar os pacotes necessários (\texttt{onoff} para interagir com os LEDs e botões; \texttt{lcd} para interagir com o LCD), os códigos abaixo serviram de teste:
+
+\begin{center}
+	\centering
+ 	\begin{minipage}{0.45\textwidth}
+		Acender e apagar um LED
+		\begin{verbatim}
+var Gpio = require('onoff').Gpio,
+    led = new Gpio(14, 'out'); 
+// LED conectado a GPIO 14
+    
+led.writeSync(1); // acende o LED
+led.writeSync(0); // apaga o LED
+		\end{verbatim}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.5\textwidth}
+		Clique do botão
+		\begin{verbatim}
+var Gpio = require('onoff').Gpio,
+  btn = new Gpio(4, 'in', 'both');
+// botao conectado a GPIO 4
+ 
+btn.watch(function(err, value) {
+  if(value) 
+      console.log("Pressionado");
+  else console.log("Solto");
+});
+		\end{verbatim}
+	\end{minipage}
+\end{center}
+
+\begin{center}
+	\centering
+	\begin{minipage}{1\textwidth}
+		Escrever texto no LCD
+		\begin{verbatim}
+var Lcd = require('lcd'),
+lcd = new Lcd({
+  rs: 16, // RS na GPIO 16
+  e: 20, // Enable na GPIO 20
+  data: [13, 19, 26, 21],  // Pinos de dados
+  cols: 16, // Quantidade de colunas
+  rows: 2 // Quantidade de linhas
+});
+
+lcd.on('ready', function() {
+  lcd.setCursor(0, 0); // Coloca cursor no início
+  lcd.print("Olá Mundo");
+});
+
+		\end{verbatim}
+	\end{minipage}
+\end{center}
+
+Após realizar todos os estudos e testes de conexão com sucesso, o próximo passo foi a montagem da interface na caixa de metal. Primeiro os cortes foram feitos com uma ferramenta específica tipo esmeril, em seguida a caixa foi pintada com tinta preta fosca (\autoref{fig:pintar-1} e \autoref{fig:pintar-2}) para que o protótipo ficasse com boa construção, cor e amigável.
+
+\begin{figure}[htb]
+	\centering
+ 	\begin{minipage}{0.47\textwidth}
+		\centering
+		\caption{\label{fig:pintar-1}Pintura da caixa de metal - tampa}
+		\includegraphics[width=1\textwidth]{img/pintar-1.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.47\textwidth}
+		\centering
+		\caption{\label{fig:pintar-2}Pintura da caixa de metal - base}
+		\includegraphics[width=1\textwidth]{img/pintar-2.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+\end{figure}
+
+Enquanto a tinta secava foi necessário realizar soldas e montagem dos outros componentes em placas para que tudo ficasse organizado e fácil de ser trocado, caso necessário. De forma que a tampa saísse facilmente optou-se por usar um cabo flat frequentemente usado em HDs antigos (padrão IDE) conectado ao \textit{RPi} e a uma placa central com duas fileiras de 20 pinos.
+
+Utilizando os fios internos de cabo de rede para conexão entre os componentes nas placas, o mesmo cabo flat cortado para conexão entre as placas para uma maior flexibilidade e facilidade de mudanças, criou-se o controle da interface, como pode ser visto na \autoref{fig:interface-traz1} e \autoref{fig:interface-traz2}.
+
+\begin{figure}[htb]
+	\centering
+ 	\begin{minipage}{0.45\textwidth}
+		\centering
+		\caption{\label{fig:interface-traz1}Parte interna da interface - parcialmente desmontada}
+		\includegraphics[width=1\textwidth]{img/interface-traz1.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\caption{\label{fig:interface-traz2}Parte interna da interface - completamente montada}
+		\includegraphics[width=1\textwidth]{img/interface-traz2.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+\end{figure}
+
+As placas internas da interface foram afixadas com cola quente, para que os cabos fossem reforçados e não quebrasse nenhuma conexão. Tampa e base foram conectados com o cabo flat (\autoref{fig:tampa-base}) e o protótipo ficou pronto para desenvolvimento da aplicação.
+
+\begin{figure}[htb]
+	\centering
+ 	\begin{minipage}{0.45\textwidth}
+		\centering
+		\caption{\label{fig:tampa-base}Conexão da tampa com a base}
+		\includegraphics[width=1\textwidth]{img/tampa-base.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\caption{\label{fig:prot-final}Criação e montagem do protótipo finalizada}
+		\includegraphics[width=1\textwidth]{img/prot-final-2.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+\end{figure}
+
+% ---
+\subsection{Problemas Enfrentados}\label{sec:problemas-enfrentados}
+% ---
+
+Durante os estudos e testes dos LEDs na protoboard utilizou-se resistores de 330$\Omega$ para conexão correta. Quanto maior o valor da resistência, menos brilho o LED terá. Como os componentes estavam na protoboard, não percebeu-se que os LEDs utilizados eram de alto brilho.
+
+Para soldagem final dos componentes, preferiu-se por manter os resistores de 330$\Omega$ por questões práticas. Porém os LEDs ficaram com muito brilho, incomodando qualquer pessoa que olhasse diretamente para o protótipo, conforme \autoref{fig:led-forte}.
+
+\begin{figure}[htb]
+	\caption{\label{fig:led-forte}LED de alto brilho}
+	\begin{center}
+		\includegraphics[width=0.7\textwidth]{img/led-forte.jpg}
+	\end{center}
+	\legend{Fonte: elaborado pelo autor}
+\end{figure}
+
+Como os componentes já estavam afixados com cola quente, substituir os resistores levaria muito tempo e possivelmente atrasaria o desenvolvimento do projeto, portanto optou-se por manter dessa maneira. Para um futuro protótipo, resistores maiores, ou LEDs com menos brilho seriam essenciais.
+
+% ----------------------------------------------------------
+\section{Terceira Etapa}\label{sec:terceira-etapa}
+% ----------------------------------------------------------
+
+
+% ----------------------------------------------------------
+
 
 % ----------------------------------------------------------
 % Conclusão
