@@ -392,25 +392,21 @@ Aos meus amigos e familiares, pelo apoio e incentivo na escolha e decorrer do cu
 	\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 	\begin{resumo}
 
-	 		Atualmente a área da internet das coisas tem recebido um foco enorme. Um dos motivos é devido a ser bem nova e também facilitar a integração das pessoas com o mundo real. Essa área tem motivado várias pessoas pela possibilidade de ter um produto concreto após pouco tempo de trabalho. Por conta disso, alguns dispositivos foram criados para auxiliar essas áreas, entre eles o \textit{Arduino} e \textit{Raspberry Pi}. Os \textit{beacons} também são uma criação nova, comunicando com outros dispositivos maiores como o \textit{RPi} para auxiliar a micro-localização dentro de um pequeno espaço, com um baixo custo. O seu foco de uso é pequeno, somente com leituras via \textit{smartphones}. Esse projeto tem como objetivo criar um rastreador de \textit{beacons} utilizando o \textit{Raspberry Pi} para expandir essa capacidade, não necessitando de um celular para que os \textit{beacons} possam ser encontrados.
+	 		FALTA ACERTAR!!!!!! Atualmente a área da internet das coisas tem recebido um foco enorme. Um dos motivos é devido a ser bem nova e também facilitar a integração das pessoas com o mundo real. Essa área tem motivado várias pessoas pela possibilidade de ter um produto concreto após pouco tempo de trabalho. Por conta disso, alguns dispositivos foram criados para auxiliar essas áreas, entre eles o \textit{Arduino} e \textit{Raspberry Pi}. Os \textit{beacons} também são uma criação nova, comunicando com outros dispositivos maiores como o \textit{RPi} para auxiliar a micro-localização dentro de um pequeno espaço, com um baixo custo. O seu foco de uso é pequeno, somente com leituras via \textit{smartphones}. Esse projeto tem como objetivo criar um rastreador de \textit{beacons} utilizando o \textit{Raspberry Pi} para expandir essa capacidade, não necessitando de um celular para que os \textit{beacons} possam ser encontrados.
 
  			\textbf{Palavras-chave}: \textit{Beacon}. Raspberry Pi. Internet das Coisas.
  			
 	\end{resumo}
+	
+	% resumo em inglês
+	\begin{resumo}[Abstract]
+	 	\begin{otherlanguage*}{english}
+			This is the english abstract.
 
-	\ifabstract
-		% resumo em inglês
-		\begin{resumo}[Abstract]
-	 		\begin{otherlanguage*}{english}
-				This is the english abstract.
-
-				\vspace{\onelineskip}
- 
-				\noindent 
-				\textbf{Keywords}: Beacon. Raspberry Pi. Internet of Things.
-			\end{otherlanguage*}
-		\end{resumo}
-	\fi
+			\textbf{Keywords}: Beacon. Raspberry Pi. Internet of Things.
+		\end{otherlanguage*}
+	\end{resumo}
+	
 \fi
 % ----------------------------------------------------------
 
@@ -712,6 +708,8 @@ Git é um software de controle de versão para repositórios. Registra as mudan�
 
 Atualmente o Git é muito utilizado por projetos de código aberto, como por exemplo o Swift\footnote{\url{https://github.com/apple/swift}} que é uma linguagem de programação criada pela Apple voltada para seus sistemas operacionais, e o AngularJS\footnote{\url{https://github.com/angular/angular.js}}, framework Javascript mantido pelo Google.
 
+É possível configurar o repositório local para sincronizar com um repositório remoto, por meio de \texttt{push} (enviar mudanças) e \texttt{pull} (buscar mudanças). Dessa forma promove a divisão do trabalho, removendo o problema de sincronização de código entre diferentes máquinas e pessoas.
+
 % ---
 \subsubsection{GitHub}\label{sec:github}
 % ---
@@ -884,61 +882,6 @@ Nesse momento definiu-se o uso de Node.js (detalhado na \autoref{sec:node-js}) p
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
 
-Após instalar os pacotes necessários (\texttt{onoff} para interagir com os LEDs e botões; \texttt{lcd} para interagir com o LCD), os códigos abaixo serviram de teste:
-
-\begin{center}
-	\centering
- 	\begin{minipage}{0.45\textwidth}
-		Acender e apagar um LED
-		\begin{verbatim}
-var Gpio = require('onoff').Gpio,
-    led = new Gpio(14, 'out'); 
-// LED conectado a GPIO 14
-    
-led.writeSync(1); // acende o LED
-led.writeSync(0); // apaga o LED
-		\end{verbatim}
-	\end{minipage}
-	\hfill
-	\begin{minipage}{0.5\textwidth}
-		Clique do botão
-		\begin{verbatim}
-var Gpio = require('onoff').Gpio,
-  btn = new Gpio(4, 'in', 'both');
-// botao conectado a GPIO 4
- 
-btn.watch(function(err, value) {
-  if(value) 
-      console.log("Pressionado");
-  else console.log("Solto");
-});
-		\end{verbatim}
-	\end{minipage}
-\end{center}
-
-\begin{center}
-	\centering
-	\begin{minipage}{1\textwidth}
-		Escrever texto no LCD
-		\begin{verbatim}
-var Lcd = require('lcd'),
-lcd = new Lcd({
-  rs: 16, // RS na GPIO 16
-  e: 20, // Enable na GPIO 20
-  data: [13, 19, 26, 21],  // Pinos de dados
-  cols: 16, // Quantidade de colunas
-  rows: 2 // Quantidade de linhas
-});
-
-lcd.on('ready', function() {
-  lcd.setCursor(0, 0); // Coloca cursor no início
-  lcd.print("Olá Mundo");
-});
-
-		\end{verbatim}
-	\end{minipage}
-\end{center}
-
 Após realizar todos os estudos e testes de conexão com sucesso, o próximo passo foi a montagem da interface na caixa de metal. Primeiro os cortes foram feitos com uma ferramenta específica tipo esmeril, em seguida a caixa foi pintada com tinta preta fosca (\autoref{fig:pintar-1} e \autoref{fig:pintar-2}) para que o protótipo ficasse com boa construção, cor e amigável.
 
 \begin{figure}[htb]
@@ -958,7 +901,48 @@ Após realizar todos os estudos e testes de conexão com sucesso, o próximo pas
 	\end{minipage}
 \end{figure}
 
-Enquanto a tinta secava foi necessário realizar soldas e montagem dos outros componentes em placas para que tudo ficasse organizado e fácil de ser trocado, caso necessário. De forma que a tampa saísse facilmente optou-se por usar um cabo flat frequentemente usado em HDs antigos (padrão IDE) conectado ao \textit{RPi} e a uma placa central com duas fileiras de 20 pinos.
+Enquanto a tinta secava foi necessário realizar soldas e montagem dos outros componentes em placas para que tudo ficasse organizado e fácil de ser trocado, caso necessário. O rascunho de conexão das GPIOs com os componentes de hardware estão marcados na \autoref{fig:pinout-gpio}.
+
+Cada LED foi conectado a uma GPIO, a um resistor de 330$\Omega$, e ao GND. Os botões foram conectados seguindo o modelo da \autoref{fig:push-btn-sketch}, com um resistor de 10K$\Omega$ e uma GPIO para cada botão. O display foi conectado diretamente a cada GPIO marcada, e também ao +5V e GND para alimentação. 
+
+O modelo de display LCD utilizado também tem um pino que utiliza voltagem variável para iluminar cada caractere (contraste de cada letra), e um pino para a iluminação do fundo (azul). Para essas conexões foram utilizados potenciômetros de 10K, para facilitar mudanças caso necessário. Dessa forma, só é necessário girar o pino do potenciômetro para alterar a saída.
+
+Foram utilizados seis GPIOs para os LEDs, três para os botões e seis para o display, totalizando 15 GPIOs de 17 disponíveis. As GPIOs utilizadas foram:
+
+\begin{alineas}
+	\item Para os LEDs de interface (topo), GPIO 12, 6 e 5, respectivamente 1, 2 e 3;
+	\item Para os LEDs de informação (baixo), GPIO 22, 27 e 17, respectivamente Power, Internet e Beacon;
+	\item Para os botões, GPIOs 24, 23 e 18, respectivamente botão esquerdo, central e direito;
+	\item Para o display de LCD, GPIOs 16, 20, 13, 19, 26, 21, respectivamente Register Select, Enable, Data 1, Data 2, Data 3 e Data 4.
+	\nota{Os números das GPIOs foram escolhidos devido a proximidade e agrupamento dos componentes.}
+\end{alineas}
+
+\begin{figure}[htb]
+	\caption{\label{fig:pinout-gpio}Rascunho de conexão das GPIOs}
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{img/pinout-gpio.jpg}
+	\end{center}
+	\legend{Fonte: elaborado pelo autor}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+ 	\begin{minipage}{0.45\textwidth}
+		\centering
+		\caption{\label{fig:push-btn-sketch}Modelo de conexão dos botões}
+		\includegraphics[width=1\textwidth]{img/push-btn-sketch.png}
+		\legend{Fonte: \cite{push-button}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\caption{\label{fig:potentiometer}Potenciômetros de configuração do display LCD}
+		\includegraphics[width=1\textwidth]{img/potentiometer.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+\end{figure}
+
+De forma que a tampa saísse facilmente optou-se por usar um cabo flat frequentemente usado em HDs antigos (padrão IDE) conectado ao \textit{RPi} e a uma placa central com duas fileiras de 20 pinos.
 
 Utilizando os fios internos de cabo de rede para conexão entre os componentes nas placas, o mesmo cabo flat cortado para conexão entre as placas para uma maior flexibilidade e facilidade de mudanças, criou-se o controle da interface, como pode ser visto na \autoref{fig:interface-traz1} e \autoref{fig:interface-traz2}.
 
@@ -998,18 +982,51 @@ As placas internas da interface foram afixadas com cola quente, para que os cabo
 	\end{minipage}
 \end{figure}
 
+Após o hardware estar totalmente montado, montou-se a estrutura de informações que iriam aparecer nas telas, conforme \autoref{fig:estrutura-telas}. As telas apresentam as seguintes informações:
+
+\begin{alineas}
+	\item A primeira tela mostra informações sobre os beacons no alcance, ou caso não haja nenhum, apresenta o texto "\texttt{Aguardando beacons}". As subtelas apresentam informações sobre quais beacons estão no alcance, sendo o nome atribuidos a eles ou então o texto "\texttt{Desconhecido}"\ caso não esteja no banco de dados. A quantidade de subtelas depende da quantidade de beacons no alcance, por isso não se sabe ao certo a quantidade total;
+	\item A segunda tela apresenta um histórico dos beacons encontrados durante a execução do programa, com um contador da quantidade de beacons no histórico, e as subtelas apresentam o nome do beacon encontrado em ordem numérica. Se um beacon for encontrado diversas vezes, será repetido nas subtelas. Conforme a primeira tela, a quantidade de subtelas depende da quantidade de beacons no histórico, por isso não se sabe ao certo a quantidade total;
+	\item A terceira tela apresenta informações relevantes sobre o sistema, sendo elas:
+	\begin{subalineas}
+		\item Primeira subtela apresenta o \textit{load average}\footnote{Segundo \citeonline{load-average}, essa informação de três números apresenta a média de carga da CPU por um certo tempo. O primeiro número é a média no último minuto, o segundo número é a média nos últimos cinco minutos, e o terceiro número é a média nos últimos quinze minutos} do sistema Linux. É relevante para saber se o sistema está muito carregado ou trabalhando tranquilamente;
+		\item Segunda subtela apresenta a temperatura do processador. É relevante para saber se o sistema está trabalhando a uma temperatura segura ou está sobreaquecendo;
+		\item Terceira subtela apresenta o endereço de IP privado da rede. É de extrema importância para conexão remota, pois é esse endereço que é utilizado para conexão via \textit{SSH};
+		\item Quarta subtela apresenta o endereço de IP público da rede. É relevante para saber se está conectado direto a internet (o IP privado será igual ao IP público) ou em uma subrede, como de uma residência ou do laboratório.
+	\end{subalineas}
+\end{alineas}
+
+\begin{figure}[htb]
+	\caption{\label{fig:estrutura-telas}Definição das informações apresentadas nas telas}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{img/estrutura-telas.jpg}
+	\end{center}
+	\legend{Fonte: elaborado pelo autor}
+\end{figure}
+
+Após todos esses passos o protótipo estava bem definido para o desenvolvimento.\\
+
+
 % ---
 \subsection{Problemas Enfrentados}\label{sec:problemas-enfrentados}
 % ---
 
 Durante os estudos e testes dos LEDs na protoboard utilizou-se resistores de 330$\Omega$ para conexão correta. Quanto maior o valor da resistência, menos brilho o LED terá. Como os componentes estavam na protoboard, não percebeu-se que os LEDs utilizados eram de alto brilho.
 
-Para soldagem final dos componentes, preferiu-se por manter os resistores de 330$\Omega$ por questões práticas. Porém os LEDs ficaram com muito brilho, incomodando qualquer pessoa que olhasse diretamente para o protótipo, conforme \autoref{fig:led-forte}.
+Para soldagem final dos componentes, preferiu-se por manter os resistores de 330$\Omega$ por questões práticas. Porém os LEDs ficaram com muito brilho, incomodando qualquer pessoa que olhasse diretamente para o protótipo, conforme \autoref{fig:led-forte-1} e \autoref{fig:led-forte-2}.
 
 \begin{figure}[htb]
-	\caption{\label{fig:led-forte}LED de alto brilho}
+	\caption{\label{fig:led-forte-1}LED de alto brilho ao olhar diretamente}
 	\begin{center}
-		\includegraphics[width=0.7\textwidth]{img/led-forte.jpg}
+		\includegraphics[width=0.6\textwidth]{img/led-forte-1.jpg}
+	\end{center}
+	\legend{Fonte: elaborado pelo autor}
+\end{figure}
+
+\begin{figure}[htb]
+	\caption{\label{fig:led-forte-2}LEDs de alto brilho refletindo na mesa}
+	\begin{center}
+		\includegraphics[width=0.6\textwidth]{img/led-forte-2.jpg}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
@@ -1020,6 +1037,74 @@ Como os componentes já estavam afixados com cola quente, substituir os resistor
 \section{Terceira Etapa}\label{sec:terceira-etapa}
 % ----------------------------------------------------------
 
+Na terceira etapa realizou-se o desenvolvimento da aplicação, testes e aquisição de dados. A aplicação foi dividida em módulos por maior facilidade de desenvolvimento, testes e descoberta de erros. Um arquivo de configurações globais, nomeado \texttt{globals-config.js}, foi utilizado para todas as definições de constantes de forma a facilitar futuras mudanças, caso necessário. 
+
+% ---
+\subsection{Primeiro Módulo}\label{sec:primeiro-modulo}
+% ---
+
+O primeiro módulo desenvolvido foi a interface, que consiste da conexão com LEDs, botões e display LCD. Optou-se por criar uma biblioteca auxiliar para abstrair métodos repetitivos e também irrelevantes para os outros módulos. Como esse módulo é o meio de acesso do código principal aos componentes de hardware, foram adicionados trechos de teste para acender o LED e apagar o LED pela linha de comando, de forma que os testes de funcionalidade pudessem ser realizados.
+
+Durante a fase de testes do primeiro módulo, um fato interessante ocorreu. Ao clicar uma única vez em um botão, em algumas vezes o código executava dois, três ou até mais cliques de botão. Pesquisando mais a fundo sobre esse erro, uma informação nova surgiu. 
+
+Botões mecânicos não criam ou perdem o contato corretamente, conforme caso ideal e perfeito representado no Gráfico~\ref{fig:debounce-graph-1}. Em vez disso, podem oscilar rapidamente no momento do clique ou ao soltar o botão, conforme Gráfico~\ref{fig:debounce-graph-2}. \cite{debounce-graph}. Esse efeito é conhecido como \textit{bounce}, ou ruído.
+
+\begin{figure}[htb]
+	\centering
+ 	\begin{minipage}{0.45\textwidth}
+		\centering
+		\caption{\label{fig:debounce-graph-1}Gráfico ideal de um clique de botão}
+		\includegraphics[width=0.8\textwidth]{img/debounce-graph-1.jpg}
+		\legend{Fonte: \cite{debounce-graph}}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\caption{\label{fig:debounce-graph-2}Gráfico real de um clique de botão}
+		\includegraphics[width=0.8\textwidth]{img/debounce-graph-2.jpg}
+		\legend{Fonte: \cite{debounce-graph}}
+	\end{minipage}
+\end{figure}
+
+A solução para resolver esse problema (denominada \textit{debounce}) foi de, em seguida a um clique, bloquear todos os próximos cliques via programação por determinado tempo (em milissegundos), de forma que não interferisse diretamente nos cliques reais do usuário. Esse tempo foi determinado por testes repetitivos e de diferentes usuários em 200ms. Esse valor foi considerado ideal por evitar o ruído e não interferir em cliques seguidos do usuário. Valores maiores, como 300ms afetaram o clique do usuário, e valores inferiores como 100ms não evitaram totalmente o ruído.
+
+% ---
+\subsection{Segundo Módulo}\label{sec:segundo-modulo}
+% ---
+
+Páginas e Navegação entre telas
+
+% ---
+\subsection{Terceiro Módulo}\label{sec:terceiro-modulo}
+% ---
+
+Identificação dos Beacons e apresentação nas telas corretas
+
+% ---
+\subsection{Quarto Módulo}\label{sec:quarto-modulo}
+% ---
+
+Procurar beacon no banco de dados local
+
+% ---
+\subsection{Quinto Módulo}\label{sec:quinto-modulo}
+% ---
+
+Salvar beacons encontrados no banco de dados local
+
+% ---
+\subsection{Protótipo Final}\label{sec:prototipo-final}
+% ---
+
+Mostrar logo e falar sobre protótipo final
+
+\begin{figure}[htb]
+	\caption{\label{fig:prod-final}Protótipo finalizado e totalmente funcional}
+	\begin{center}
+		\includegraphics[width=0.8\textwidth]{img/prod-final.jpg}
+	\end{center}
+	\legend{Fonte: elaborado pelo autor}
+\end{figure}
 
 % ----------------------------------------------------------
 
@@ -1030,7 +1115,7 @@ Como os componentes já estavam afixados com cola quente, substituir os resistor
 \chapter{Conclusão}
 % ----------------------------------------------------------
 
-Esse projeto tem como objetivo o aprofundamento na área de Internet das Coisas, pelo estudo das tecnologias de \textit{Bluetooth Low Energy}, \textit{Raspberry Pi} e \textit{beacons}. O resultado final será um protótipo de rastreador de \textit{beacons} utilizando o \textit{Raspberry Pi}, ainda em desenvolvimento.
+FALTA ACERTAR!!!! Esse projeto tem como objetivo o aprofundamento na área de Internet das Coisas, pelo estudo das tecnologias de \textit{Bluetooth Low Energy}, \textit{Raspberry Pi} e \textit{beacons}. O resultado final será um protótipo de rastreador de \textit{beacons} utilizando o \textit{Raspberry Pi}, ainda em desenvolvimento.
 
 A fundamentação teórica realizada por meio de pesquisa bibliográfica no início do projeto foi essencial para entender como os protocolos \textit{beacons} foram propostas e implementadas, como é o comportamento do \textit{Raspberry Pi}, entre outros. Em conjunto, o estudo das tecnologias foi de extrema importância para entender o funcionamento e utilização do \textit{RPi} e \textit{beacon}.
 
