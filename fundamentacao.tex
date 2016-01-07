@@ -21,7 +21,7 @@ A área de IoT está em uma onda crescente, com um grande número de pessoas inv
 \section{Raspberry Pi}\label{sec:raspberry-pi}
 % ---
 
-Quando se pesquisa algo sobre IoT é praticamente impossível não achar relação e links para \textit{Raspberry Pi}, Arduinos, e toda a área de \textit{DIY}. Atualmente existem três modelos, conforme a tabela \autoref{table:comparativo-rpi} e figura \autoref{fig:todos-rpi}. 
+Quando se pesquisa algo sobre IoT é praticamente impossível não achar relação e links para \textit{Raspberry Pi}, Arduinos, e toda a área de \textit{DIY}. Atualmente existem três modelos, conforme a \autoref{table:comparativo-rpi} e \autoref{fig:todos-rpi}. 
 
 \begin{figure}[htb]
 	\caption{\label{fig:todos-rpi}\textit{RPi} A+ (esquerda), B+ (centro) e 2 Modelo B (direita).}
@@ -56,9 +56,9 @@ Quando se pesquisa algo sobre IoT é praticamente impossível não achar relaç�
   	}
 \end{table}
 
-Segundo \citeonline{raspberrypi-rpi}, a fundação responsável por esse pequeno dispositivo criou com intuito de ser utilizado por crianças e pessoas carentes do mundo todo para aprender programação e computação. É facilmente configurável, utilizando um cartão de memória como HD para o sistema operacional e dados.
+Segundo \citeonline{raspberrypi-rpi}, esse pequeno dispositivo foi criado com intuito de ser utilizado por crianças e pessoas carentes do mundo todo para aprender programação e computação. É facilmente configurável, utilizando um cartão de memória como HD para o sistema operacional e dados.
 
-Por meio de suas portas de entrada e saída digitais é possível conectar uma gama ampla de sensores, atuadores, compontentes eletrônicos, ficando a cargo do programador e criador do projeto escolher como esses pinos serão conectados e aproveitados. Atualmente existem diversos módulos para expandir os meios de comunicação entre diferentes \textit{devices}, e um deles é via \textit{bluetooth}.
+Por meio de suas portas de entrada e saída digitais é possível conectar uma gama ampla de sensores, atuadores, componentes eletrônicos, ficando a cargo do programador e criador do projeto escolher como esses pinos serão conectados e aproveitados. Atualmente existem diversos módulos para expandir os meios de comunicação entre diferentes \textit{devices}, e um deles é via \textit{bluetooth}.
 
 Atualmente existem diferentes sistemas operacionais portados para o \textit{RPi}.
 
@@ -75,7 +75,7 @@ Atualmente existem diferentes sistemas operacionais portados para o \textit{RPi}
 
 A tecnologia do \textit{bluetooth} vem sendo amplamente utilizada, principalmente após a criação da versão 4.0, ou \textit{BLE} (\textit{Bluetooth Low Energy} - Bluetooth de Baixa Energia), por conta de ter um baixíssimo gasto energético, podendo preservar a bateria do dispositivo que a utiliza. O \textit{BLE} faz parte da tecnologia nomeada \textit{Bluetooth Smart} inteligente e eficiente energeticamente, voltada para \textit{devices} que usam pequenas fontes de energia. \cite{bluetooth-smart}.
 
-O \textit{BLE} possui similaridades com a versão clássica do \textit{bluetooth}. Ambos utilizam o espectro de frequências de 2.4 GHz (mesmo utilizado pelas redes \textit{WiFi}), mesma modulação GFSK e velocidade de 1 Mbps, porém a indexação de ambos é diferente. A versão clássica possui 79 canais, e a \textit{BLE} possui 40 canais. Além disso, os canais são espaçados de forma diferente, conforme tabela~\ref{table:ble-physical}. \cite{ble-packets}.
+O \textit{BLE} possui similaridades com a versão clássica do \textit{bluetooth}. Ambos utilizam o espectro de frequências de 2.4 GHz (mesmo utilizado pelas redes \textit{WiFi}), mesma modulação GFSK e velocidade de 1 Mbps, porém a indexação de ambos é diferente. A versão clássica possui 79 canais, e a \textit{BLE} possui 40 canais. Além disso, os canais são espaçados de forma diferente, conforme \autoref{table:ble-physical}. \cite{ble-packets}.
 
 \begin{table}[htb]
 	\IBGEtab{%
@@ -100,21 +100,21 @@ O \textit{BLE} possui similaridades com a versão clássica do \textit{bluetooth
   	}
 \end{table}
 
-O espectro de 2.4 GHz para \textit{bluetooth} se extende de 2402 MHz a 2480 MHz, e os canais 37, 38 e 39 (últimos três) são específicos para anúncio (\textit{advertisement}), conforme figura~\ref{fig:banda-channels}.  \cite{ble-packets}. 
+O espectro de 2.4 GHz para \textit{bluetooth} se extende de 2402 MHz a 2480 MHz, e os canais 37, 38 e 39 (últimos três) são específicos para anúncio (\textit{advertisement}), conforme \autoref{fig:banda-channels}.  \cite{ble-packets}. 
 
 \begin{figure}[htb]
 	\caption{\label{fig:banda-channels}Separação da banda 2.4 GHz para bluetooth e WiFi.}
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{img/banda-2-4.png}
+		\includegraphics[width=0.7\textwidth]{img/banda-2-4.png}
 	\end{center}
 	\legend{Fonte: \cite{ble-packets}}
 \end{figure}
 
-Interessante notar que esses canais estão posicionados em forma bastante estratégica, no começo, final e meio da banda de 2.4 GHz. Isso se deve para aumentar a eficácia, evitando todos os canais ficarem lotados ou com muita interferência. \cite{ble-packets}. 
+Interessante notar que esses canais estão posicionados em forma bastante estratégica, no começo, final e meio da banda de 2.4 GHz, com a finalidade de aumentar a eficácia, evitando todos os canais ficarem lotados ou com muita interferência. \cite{ble-packets}. 
 
 Os \textit{BLE Advertisement Packets}, ou pacotes de anúncio \textit{BLE} é uma das formas de conexão do \textit{Bluetooth Smart}. Por meio dos anúncios, um \textit{device} transmite pacotes para todos que estão a sua volta, sem necessariamente necessitar de uma conexão direta entre somente outro dispositivo.
 
-Um \textit{BLE Advertisement Packet} é formado conforme figura~\ref{fig:ble-adv-packet}. O preâmbulo, \textit{access address} e CRC são informações para formação do pacote. Os dados estão de fato dentro do PDU (\textit{Packet Data Unit}). O cabeçalho de 2 bytes informa o tamanho do \textit{payload} (carga de dados), além de informações relevantes como tipo do pacote, tipo de mensagem enviada, entre outros. \cite{ble-packets}.
+Um \textit{BLE Advertisement Packet} é formado conforme \autoref{fig:ble-adv-packet}. O preâmbulo, \textit{access address} e CRC são informações para formação do pacote. Os dados estão de fato dentro do PDU (\textit{Packet Data Unit}). O cabeçalho de 2 bytes informa o tamanho do \textit{payload} (carga de dados), além de informações relevantes como tipo do pacote, tipo de mensagem enviada, entre outros. \cite{ble-packets}.
 
 \begin{figure}[htb]
 	\caption{\label{fig:ble-adv-packet}Modelo de \textit{BLE Advertising Packet}.}
@@ -124,7 +124,7 @@ Um \textit{BLE Advertisement Packet} é formado conforme figura~\ref{fig:ble-adv
 	\legend{Fonte: \cite{ble-packets}}
 \end{figure}
 
-O importante do \textit{BLE Advertising Packet} é o tipo de anúncio feito, ou quais são as informações do pacote. \citeonline{gap-ble} apresenta uma tabela com os possíveis valores e também o significado de cada uma. Por exemplo, o valor 0xFF significa que o pacote contém dados específicos do fabricante, ou seja, existe a flexibilidade de manipular o pacote da forma que for precisa, contanto que mantenha a estrutura original de 6 a 37 bytes de \textit{payload}, conforme figura~\ref{fig:ble-adv-packet}. \cite{ble-packets}.
+O importante do \textit{BLE Advertising Packet} é o tipo de anúncio feito, ou quais são as informações do pacote. \citeonline{gap-ble} apresenta uma tabela com os possíveis valores e também o significado de cada uma. Por exemplo, o valor 0xFF significa que o pacote contém dados específicos do fabricante, ou seja, existe a flexibilidade de manipular o pacote da forma que for precisa, contanto que mantenha a estrutura original de 6 a 37 bytes de \textit{payload}, conforme \autoref{fig:ble-adv-packet}. \cite{ble-packets}.
 
 % ---
 \section{Beacon}\label{sec:beacon}
@@ -158,11 +158,11 @@ A Apple adaptou o pacote genérico de \textit{beacon} para transmitir três dado
 
 \begin{alineas}
 	\item \textbf{UUID}: Identificador único formado de 16 bytes (128 bits). Focado em ser único para cada aplicação. Cada aplicação deve ter um único UUID.
-	\item \textbf{Major}: Identificador de 2 bytes que identifica uma sub-região grande. Usado, por exemplo, para dividir as lojas de um grande varejista.
-	\item \textbf{Minor}: Identificador de 2 bytes que identifica uma sub-divisão de região, ou seja, uma região menor que o Major.
+	\item \textbf{\textit{Major}}: Identificador de 2 bytes que identifica uma sub-região grande. Usado, por exemplo, para dividir as lojas de um grande varejista.
+	\item \textbf{\textit{Minor}}: Identificador de 2 bytes que identifica uma sub-divisão de região, ou seja, uma região menor que o Major.
 \end{alineas}
 
-Um exemplo de aplicação é citado na tabela~\ref{table:stores-apple}. Utiliza-se um único UUID para todas as lojas, um número Major por loja e um Minor por departamento, podendo este último ser repetido entre as lojas.
+Um exemplo de aplicação é citado na \autoref{table:stores-apple}. Utiliza-se um único UUID para todas as lojas, um número \textit{Major} por loja e um \textit{Minor} por departamento, podendo este último ser repetido entre as lojas.
 
 \begin{table}[htb]
 	\IBGEtab{%
@@ -175,13 +175,13 @@ Um exemplo de aplicação é citado na tabela~\ref{table:stores-apple}. Utiliza-
   			\midrule
 				UUID & \multicolumn{3}{c}{D9B9EC1F-3925-43D0-80A9-1E39D4CEA95C} \\
 			\midrule
-				Major & 1 & 2 & 3 \\
+				\textit{Major} & 1 & 2 & 3 \\
 			\midrule 
-				Minor (Roupas) & 10 & 10 & 10 \\
+				\textit{Minor} (Roupas) & 10 & 10 & 10 \\
   			\midrule 
-				Minor (Utilidades Domésticas) & 20 & 20 & 20 \\
+				\textit{Minor} (Utilidades Domésticas) & 20 & 20 & 20 \\
 			\midrule 
-				Minor (Automotivo) & 30 & 30 & 30 \\
+				\textit{Minor} (Automotivo) & 30 & 30 & 30 \\
   			\bottomrule
 		\end{tabular}%
 	}{%
@@ -207,7 +207,7 @@ O pacote \textit{BLE} utilizado pela tecnologia iBeacon pode ser visto na \autor
 	\legend{Fonte: \cite{arm-beacons}}
 \end{figure}
 
-Os \textit{iBeacons} foram criados com intuito de serem descobertos por smartphones. Um exemplo de aplicação é uma cafeteria com um \textit{iBeacon} no balcão próximo ao caixa. Quando um consumidor entra na loja e chega próximo ao caixa, um aplicativo em seu celular identifica o \textit{iBeacon} pela sua UUID, identifica pelo Major que se trata da cafeteria número 12 e encontra uma promoção com o Minor de número 26. Em seguida, apresenta uma notificação ao usuário uma promoção e também um cupom válido de desconto para usar no caixa. \cite{arm-beacons}.
+Os \textit{iBeacons} foram criados com intuito de serem descobertos por smartphones. Um exemplo de aplicação é uma cafeteria com um \textit{iBeacon} no balcão próximo ao caixa. Quando um consumidor entra na loja e chega próximo ao caixa, um aplicativo em seu celular identifica o \textit{iBeacon} pela sua UUID, identifica pelo \textit{Major} que se trata da cafeteria número 12 e encontra uma promoção com o \textit{Minor} de número 26. Em seguida, apresenta uma notificação ao usuário uma promoção e também um cupom válido de desconto para usar no caixa. \cite{arm-beacons}.
 
 Uma outra aplicação interessante citada por \citeonline{arm-beacons} é a possibilidade do smartphone transmitir pacotes \textit{iBeacon}, sem necessidade de um hardware externo. Dessa forma, pode-se por exemplo automatizar o check-in em um evento e rastrear o movimento dos usuários entre os estabelecimentos.
 
@@ -215,7 +215,7 @@ Uma outra aplicação interessante citada por \citeonline{arm-beacons} é a poss
 \subsection{Outros Protocolos}\label{sec:outros-protocolos}
 % ---
 
-Existem mais protocolos baseados na tecnologia \textit{beacon}. Dois se destacam por ser abertos e passíveis de alterações: \textit{AltBeacon} e \textit{Eddystone}, este último criado pela Google. O \textit{AltBeacon} possui um modelo bastante parecido com o \textit{iBeacon}, porém com possibilidade de alterar o número do fabricante, ter possibilidade de código de \textit{beacons} diferentes, e também a possibilidade do fabricante colocar sua informação ao final do pacote, conforme figura~\ref{fig:altbeacon-packet} \cite{arm-beacons}.
+Existem mais protocolos baseados na tecnologia \textit{beacon}. Dois se destacam por ser abertos e passíveis de alterações: \textit{AltBeacon} e \textit{Eddystone}, este último criado pela Google. O \textit{AltBeacon} possui um modelo bastante parecido com o \textit{iBeacon}, porém com possibilidade de alterar o número do fabricante, ter possibilidade de código de \textit{beacons} diferentes, e também a possibilidade do fabricante colocar sua informação ao final do pacote, conforme \autoref{fig:altbeacon-packet} \cite{arm-beacons}.
 
 \begin{figure}[htb]
 	\caption{\label{fig:altbeacon-packet}Pacote do \textit{AltBeacon}.}
