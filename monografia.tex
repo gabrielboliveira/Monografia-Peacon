@@ -438,12 +438,13 @@ Aos meus amigos e familiares, pelo apoio e incentivo na escolha e decorrer do cu
 % ----------------------------------------------------------
 \iffinal
 	\begin{siglas}
-			\item[IoT] \textit{Internet of Things} - Internet das Coisas
-			\item[DIY] \textit{Do It Yourself} - Faça Você Mesmo
-			\item[RPi] \textit{Raspberry Pi}
-			\item[GPIO] \textit{General Input and Output}
 			\item[BLE] \textit{Bluetooth Low Energy}
+			\item[DIY] \textit{Do It Yourself} - Faça Você Mesmo
+			\item[GPIO] \textit{General Input and Output}
+			\item[IoT] \textit{Internet of Things} - Internet das Coisas
 			\item[LTIA] Laboratório de Tecnologia da Informação Aplicada
+			\item[RPi] \textit{Raspberry Pi}
+			\item[SGBD] Sistema Gerenciador de Banco de Dados
 	\end{siglas}
 \fi
 % ----------------------------------------------------------
@@ -539,7 +540,7 @@ Todo o projeto foi desenvolvido no espaço do LTIA\footnote{Laboratório de Tecn
 
 A versão do Raspberry Pi escolhida para o projeto foi a 2 Modelo B, por ter mais processamento e mais memória RAM (\autoref{fig:rpi2-utilizado}), conforme informado na \autoref{sec:raspberry-pi}.
 
-É necessário o uso de um adaptador \textit{WiFi} para conexão a internet sem necessidade de cabo \textit{Ethernet} e também um adaptador Bluetooth 4.0 com suporte a \textit{BLE} para fazer a busca dos pacotes \textit{beacon}. Os modelos de adaptadores usados foram Orico BTA-406 (bluetooth) e EDUP N8508GS (\textit{WiFi}), conforme \autoref{fig:adaptadores}. O \textit{RPi} e os adaptadores são de propriedade do autor.
+É necessário o uso de um adaptador \textit{WiFi} para conexão a internet sem necessidade de cabo \textit{Ethernet} e também um adaptador Bluetooth 4.0 com suporte a \textit{BLE} para fazer a busca dos pacotes \textit{beacon}. Os modelos de adaptadores usados foram Orico BTA-406 (bluetooth) e EDUP N8508GS (\textit{WiFi}), conforme \autoref{fig:adaptadores}.
 
 O sistema operacional executado no RPi foi instalado em um cartão microSD, com no mínimo 4 GB de espaço. O cartão utilizado nesse projeto foi um SanDisk Ultra Class 10 de 8 GB. 
 
@@ -679,26 +680,82 @@ O uso desses componentes foram determinados na segunda etapa, detalhada na \auto
 
 O \textit{RPi} é a tecnologia mais importante desse projeto. Já foi abordado na \autoref{sec:raspberry-pi} e \autoref{sec:rpi-acessorios}, porém nessa seção outros aspectos serão comentados.
 
-% TODO Falar das GPIOs, quantidade de pinos digitais, voltagem 3.3V
+A arquitetura da CPU do \textit{RPi 2 modelo B}, utilizado nesse projeto, é baseada na \textit{arm-v7}. Consequentemente todos os softwares devem ser compilados em \textit{arm} para que possam ser executados com sucesso. 
+
+Alguns softwares foram abordados para utilização, porém não haviam versões \textit{arm} compatíveis ou estáveis para utilização. Entre eles, o banco de dados MongoDB foi descartado pela versão de instalação \textit{arm} não ter sido testada no \textit{RPi}, e gerada pela comunidade. Diversos relatos de \textit{bugs}, mal funcionamentos e incompatibilidade levaram a mudar a tecnologia de banco de dados.
+
+Uma ferramenta muito importante disponível no \textit{Raspberry Pi} são as GPIOs, ou \textit{General Purpose Input/Output} - portas de entrada e saída de uso geral (\autoref{fig:gpio-pins-pi2}).  
+
+\begin{citacao}
+"Esses pinos são a interface física de conexão entre o Pi e o mundo. No mais baixo nível, você pode pensar delas como interruptores que você pode ligar ou desligar (entrada) ou que o Pi possa ligar ou desligar (saída). Dos 40 pinos, 26 são pinos de GPIO e os outros são pinos de energia ou terra.". \cite{rpi-gpio}
+\end{citacao}
+
+Seguem um padrão definido de numeração (\autoref{fig:gpio-numbers-pi2}). Esses números são utilizados diretamente na programação para acessar os pinos e interagir com o que estiver conectado ali.
+
+\begin{figure}[htb]
+	\caption{\label{fig:gpio-pins-pi2}Pinos físicos de conexão}
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{img/gpio-pins-pi2.jpg}
+	\end{center}
+	\legend{Fonte: \cite{rpi-gpio}}
+\end{figure}
+
+\begin{figure}[htb]
+	\caption{\label{fig:gpio-numbers-pi2}Numeração dos pinos de conexão}
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{img/gpio-numbers-pi2.png}
+	\end{center}
+	\legend{Fonte: \cite{rpi-gpio}}
+\end{figure}
 
 
 % ---
 \subsection{Node.js e npm}\label{sec:node-js}
 % ---
 
-Node.js é uma plataforma de aplicações baseada no motor de Javascript do Google Chrome chamado V8. \cite{o-que-e-node}. A linguagem Javascript normalmente é utilizada no navegador, no chamado lado do cliente, porém o Node leva essa linguagem de programação diretamente para o sistema operacional, permitindo que aplicações sejam executadas direto no lado servidor. 
+Node.js\footnote{\url{https://nodejs.org/}} é uma plataforma de aplicações baseada no motor de Javascript do Google Chrome chamado V8. \cite{o-que-e-node}. A linguagem Javascript normalmente é utilizada no navegador, no chamado lado do cliente, porém o Node leva essa linguagem de programação diretamente para o sistema operacional, permitindo que aplicações sejam executadas direto no lado servidor. Seu código fonte está disponível\footnote{\url{https://github.com/nodejs/node}} para acesso, colaboração e comentários.
 
 Utiliza um modelo de aplicações voltado a eventos, ou seja, não bloqueia a execução do código com entrada e saída, cálculos, etc. Em vez disso dispara as funções quando os eventos forem acionados. \cite{o-que-e-node}.
 
-Essa plataforma possui um aplicativo chamado \textit{Node Package Manager} (denominado \textit{npm}).
+Essa plataforma possui um aplicativo chamado \textit{Node Package Manager} (denominado \textit{npm}). Esse aplicativo auxilia a instalação e distribuição de pacotes e bibliotecas auxiliares, normalmente criadas pela comunidade e de código livre. Qualquer pessoa pode criar sua biblioteca, enviar ao GitHub, e enviar ao \textit{npm}.
 
-% TODO falar dos pacotes utilizados, npm
+O \textit{npm} cria o arquivo \textit{packages.json} e salva todas as informações do projeto. Nome do projeto, do criador, link para o repositório no GitHub, dependências de bibliotecas com a versão específica instalada, entre outros. Facilita o trabalho de outra pessoa, pois quando pegar o código fonte, executando o comando \textit{npm install} já baixa e instala todas as dependências para executar aquele aplicativo.
+
+Diversos pacotes foram utilizados no desenvolvimento desse projeto:
+
+\begin{alineas}
+	\item \textbf{\textit{bleacon}}: para descoberta e transmissão de pacotes \textit{beacon};
+	\item \textbf{\textit{lcd}}: auxilia na conexão com displays de LCD;
+	\item \textbf{\textit{nano}}: auxilia na conexão com o banco de dados CouchDB;
+	\item \textbf{\textit{onoff}}: disponibiliza funções para conexões com LEDs, botões e hardwares no geral - específico para Raspberry Pi e BeagleBone\footnote{Computador do tamanho de um cartão de crédito, similar ao Raspberry Pi};
+	\item \textbf{\textit{node-constants}}: facilita o uso de constantes entre arquivos e funções;
+	\item \textbf{\textit{numeral}}: funções para manipulação avançada de números inteiros e floats;
+	\item \textbf{\textit{is-online}}: função para validar conexão com a internet;
+	\item \textbf{\textit{internal-ip}}: funcão para retornar o endereço de IP da rede interna;
+	\item \textbf{\textit{public-ip}}: funcão para retornar o endereço de IP da rede externa, ou IP público;
+\end{alineas}
+
+Quando foi instalado no Raspbian Wheezy, a versão mais recente, compatível e recomendada para o \textit{RPi} era a v0.12.6. Atualmente já existem versões mais novas, porém essa versão permaneceu por questões de compatibilidade com o software desenvolvido.
+
+Para que o sistema executasse constantemente e automaticamente toda vez que o \textit{RPi} fosse ligado, um software desenvolvido em Node.js foi utilizado, denominado pm2\footnote{\url{https://github.com/Unitech/pm2}}. Esse aplicativo permite iniciar um software desenvolvido em Node.js, fornece ferramentas para monitorar, reiniciar, parar, entre outros.
 
 % ---
 \subsection{CouchDB}\label{sec:couchdb}
 % ---
 
+CouchDB\footnote{\url{http://couchdb.org/}} é um sistema gerenciador de banco (SGBD) de dados voltado para a \textit{web} e \textit{apps mobile}. Não é um SGBD baseado em SQL, em vez disso utiliza documentos no formato \textit{JSON} (JavaScript Object Notation)\footnote{Modo de formatação dos dados. Muito leve, utilizada para troca de informações entre máquinas, por ser de fácil interpretação e geração. \cite{json-couch}.}, as conexões e requisições são feitas por HTTP (similar a uma conexão a um site), além de permitir servir páginas web direto do banco de dados.
 
+Esse sistema foi escolhido para o projeto pela facilidade de uso com o Node.js. O pacote \textit{nano} para Node abstrai toda a conexão com o banco de dados, permitindo que pouco código seja utilizado. Os documentos gerados no formato JSON no Javascript são enviados diretamente ao CouchDB sem necessidade de tratamento, manipulação ou configuração.
+
+Disponibiliza uma ferramenta web para acesso aos bancos de dados criados denominada \textit{Futon}, a partir da instalação já funciona normalmente acessando o endereço \textit{http://localhost:5984/\_utils/} (\autoref{fig:futon-overview}).
+
+\begin{figure}[htb]
+	\caption{\label{fig:futon-overview}Futon - manipulação dos bancos de dados CouchDB}
+	\begin{center}
+		\includegraphics[width=0.9\textwidth]{img/futon-overview.png}
+	\end{center}
+	\legend{Fonte: \cite{futon-couch}}
+\end{figure}
 
 % ---
 \subsection{Git}\label{sec:git}
@@ -827,7 +884,7 @@ Dessa maneira o RPi ficou bem preso na parte de baixo, liberando a tampa para in
 O próximo passo foi para definir a interface com o usuário. Para que os parâmetros fossem cumpridos, os seguintes itens necessários foram elencados:
 
 \begin{alineas}
-	\item apresentar informação em que consistia se o sistema está rodando a aplicação corretamente - para tal definiu-se o uso de um LED verde;
+	\item apresentar informação em que consistia se o sistema está executando a aplicação corretamente - para tal definiu-se o uso de um LED verde;
 	\item apresentar informação em que consistia se o sistema tem conexão com a internet - para tal definiu-se o uso de um LED amarelo;
 	\item apresentar informação em que consistia se um beacon está no alcance - para tal definiu-se o uso de um LED azul;
 	\item apresentar várias informações textuais sobre o estado atual do sistema, assim como beacons no alcance, histórico, dados do Linux, endereço de IP, temperatura da CPU - para tal, definiu-se o uso de um display LCD de 16 colunas por 2 linhas.
@@ -911,7 +968,6 @@ O modelo de display LCD utilizado também tem um pino que utiliza voltagem vari�
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
 
-
 Foram utilizados seis GPIOs para os LEDs, três para os botões e seis para o display, totalizando 15 GPIOs de 17 disponíveis. As GPIOs utilizadas foram:
 
 \begin{alineas}
@@ -978,6 +1034,32 @@ Após o hardware estar totalmente montado, as informações apresentadas nas tel
 
 Após todos esses passos o protótipo estava bem definido para o desenvolvimento.
 
+% ---
+\subsection{Logotipo e Nome para o Protótipo}\label{sec:logotipo-prototipo}
+% ---
+
+Por ser um produto, decidiu-se que o protótipo deveria ter um nome e logotipo. Durante algumas reuniões de \textit{brainstorm}, o nome \textit{Peacon} surgiu e foi o escolhido. Esse nome deriva das palavras \textit{Pi}  + \textit{beacon}.
+
+Juntando todos os atributos do Peacon, criou-se um logotipo que identificasse muito bem todas as funcionalidades do protótipo (\autoref{fig:logo-peacon}). Adesivos foram criados para colar no protótipo e identificar o produto. Também foi criado um logotipo menor, para colar em componentes secundários (\autoref{fig:logo-menor-peacon}).
+
+
+\begin{figure}[htb]
+	\centering
+ 	\begin{minipage}{0.45\textwidth}
+		\centering
+		\caption{\label{fig:logo-peacon}Logotipo criado para o protótipo}
+		\includegraphics[width=1\textwidth]{img/logo-peacon.png}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\caption{\label{fig:logo-menor-peacon}Logotipo menor criado para o protótipo}
+		\includegraphics[width=1\textwidth]{img/logo-menor-peacon.png}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+\end{figure}
+
 
 % ---
 \subsection{Problemas Enfrentados}\label{sec:problemas-enfrentados}
@@ -986,6 +1068,8 @@ Após todos esses passos o protótipo estava bem definido para o desenvolvimento
 Durante os estudos e testes dos LEDs na protoboard utilizou-se resistores de 330$\Omega$ para conexão correta. Quanto maior o valor da resistência, menor brilho o LED apresenta. Como os componentes estavam na protoboard, não percebeu-se que os LEDs utilizados eram de alto brilho.
 
 Para soldagem final dos componentes, preferiu-se por manter os resistores de 330$\Omega$ por questões práticas. Porém os LEDs ficaram com muito brilho, incomodando qualquer pessoa que olhasse diretamente para o protótipo, conforme \autoref{fig:led-forte-1} e \autoref{fig:led-forte-2}.
+
+Como os componentes já estavam afixados com cola quente, substituir os resistores levaria muito tempo e possivelmente atrasaria o desenvolvimento do projeto, portanto optou-se por manter dessa maneira. Para um futuro protótipo, resistores maiores, ou LEDs com menos brilho podem ser utilizados.
 
 \begin{figure}[htb]
 	\centering
@@ -1004,8 +1088,6 @@ Para soldagem final dos componentes, preferiu-se por manter os resistores de 330
 	\end{minipage}
 \end{figure}
 
-Como os componentes já estavam afixados com cola quente, substituir os resistores levaria muito tempo e possivelmente atrasaria o desenvolvimento do projeto, portanto optou-se por manter dessa maneira. Para um futuro protótipo, resistores maiores, ou LEDs com menos brilho podem ser utilizados.
-
 % ----------------------------------------------------------
 \section{Terceira Etapa - Desenvolvimento e Testes da Aplicação}\label{sec:terceira-etapa}
 % ----------------------------------------------------------
@@ -1020,7 +1102,7 @@ O primeiro módulo desenvolvido foi a interface, que consiste da conexão com LE
 
 Durante a fase de testes do primeiro módulo, um fato interessante ocorreu. Ao clicar uma única vez em um botão, em algumas vezes o código executava dois, três ou até mais cliques de botão. Pesquisando mais a fundo sobre esse erro, uma informação nova surgiu. 
 
-Botões mecânicos não criam ou perdem o contato corretamente, conforme caso ideal e perfeito representado no Gráfico~\ref{fig:debounce-graph-1}. Em vez disso, podem oscilar rapidamente no momento do clique ou ao soltar o botão, conforme Gráfico~\ref{fig:debounce-graph-2}. \cite{debounce-graph}. Esse efeito é conhecido como \textit{bounce}, ou ruído.
+Botões mecânicos não criam ou perdem o contato corretamente, conforme caso ideal e perfeito representado no gráfico apresentado na \autoref{fig:debounce-graph-1}. Em vez disso, podem oscilar rapidamente no momento do clique ou ao soltar o botão, conforme gráfico apresentado na \autoref{fig:debounce-graph-2}. \cite{debounce-graph}. Esse efeito é conhecido como \textit{bounce}, ou ruído.
 
 \begin{figure}[htb]
 	\centering
@@ -1045,36 +1127,131 @@ A solução para resolver esse problema (denominada \textit{debounce}) foi de bl
 \subsection{Segundo Módulo - Páginas e Navegação}\label{sec:segundo-modulo}
 % ---
 
-Páginas e Navegação entre telas
+O segundo módulo consistiu da criação e navegação entre páginas. Para que as páginas secundárias pudessem ser dinamicamente inseridas nas telas, utilizou-se uma matriz de funções para lidar com a troca de informações na interface. 
+
+Esse método foi muito eficaz e encaixou muito bem na metodologia de desenvolvimento para Node.js. No momento em que se avança na tela, a função na próxima posição do vetor é executada. Isso permitiu que cada tela, com as suas particularidades, fossem de fácil criação e alteração.
+
+Não houveram problemas, erros ou \textit{bugs} nesse módulo, pela sua simplicidade. No desenvolvimento dos métodos futuros, trechos de métodos criados nesse passo sofreram pequenas alterações de adaptação.
 
 % ---
 \subsection{Terceiro Módulo - Identificação dos Beacons}\label{sec:terceiro-modulo}
 % ---
 
-Identificação dos Beacons e apresentação nas telas corretas
+Nesse módulo foram implementadas as funções de identificação dos \textit{beacons}. Quando um \textit{beacon} entra no alcance, é salvo em um vetor auxiliar. 
+
+Como os \textit{beacons} transmitem pacotes de tempos em tempos, houve necessidade de criar uma lógica para verificar se ainda estavam no alcance depois de determinado tempo. Para isso, no momento em que um pacote \textit{beacon} é identificado, dispara um evento a ser executado após um determinado tempo (em segundos). O valor do tempo de espera foi descoberto por meio de seguidos testes, e o valor ideal encontrado é de 3 segundos.
+
+Com a implementação de os beacons entrando e saindo do alcance pronta, o próximo passo foi apresentar nas páginas principais e secundárias a quantidade de beacons atualmente descobertos, e implementar o histórico da aplicação. Nesse módulo os \textit{beacons} ainda não são salvos, permanecendo somente durante a execução do programa.
+
+% ---
+\subsubsection{Problemas Descobertos}\label{sec:problema-quarto-modulo}
+% ---
+
+O módulo de identificação dos beacons apresentou um problema constante em todas as primeiras execuções após reinicialização do \textit{RPi}. O módulo bluetooth não reportava nenhum pacote beacon, e nenhuma descoberta era possível. 
+
+Ao analisar a fundo esse problema, percebeu-se que o \textit{driver} desse módulo estava defeituoso, e nada poderia ser feito. A solução paliativa encontrada foi de reiniciar a interface bluetooth toda vez que o software fosse executado. Com essa solução, os pacotes beacon começaram a aparecer e funcionar normalmente.
+
+Após algumas semanas, ao avançar no desenvolvimento e testes, percebeu-se que o problema se agravou. Em alguns momentos aleatórios durante a execução do programa o módulo parava de funcionar totalmente, sendo necessária a reinicialização da interface.
+
+Essa solução, totalmente paliativa resolvia o problema momentaneamente. Não foram encontrados outros drivers ou solução para o problema, porém como não afetou o desenvolvimento e testes não foi necessário a troca do módulo \textit{bluetooth}.
 
 % ---
 \subsection{Quarto Módulo - Busca no Banco de Dados}\label{sec:quarto-modulo}
 % ---
 
-Procurar beacon no banco de dados local
+Até o momento o software somente apresentava a quantidade de \textit{beacons} no alcance, e não identificava os mesmos. Nesse módulo foi implementado a busca no banco de dados pelas informações do \textit{beacon} para possível identificação.
+
+O CouchDB tem uma busca muito fácil e prática por identificadores de documento. De forma a aproveitar dessa funcionalidade, um padrão de identificadores e documentos foi criado:
+
+\begin{verbatim}
+Documento JSON para beacons conhecidos
+[{
+    "_id": "UUID-Major-Minor",
+    "uuid": "numero-uuid",
+    "major": "numero-major",
+    "minor": "numero-minor",
+    "name": "nome-beacon"
+}]
+\end{verbatim}
+
+O campo \textit{\_id} é formado do número UUID, seguido pelo número \textit{Major}, e finalizado pelo número \textit{Minor}, todos separados pelo caractere - (menos). Exemplo de documento:
+
+\begin{verbatim}
+Exemplo de documento JSON para beacons conhecidos
+[{
+    "_id": "D9B9EC1F392543D080A91E39D4CEA95C-Major-Minor",
+    "uuid": "D9B9EC1F392543D080A91E39D4CEA95C",
+    "major": "2",
+    "minor": "3",
+    "name": "Beacon de LTIA"
+}]
+\end{verbatim}
+
+Dessa forma o terceiro módulo foi aprimorado para apresentar o nome dos \textit{beacons}, permitindo a identificação dos mesmos. Se um \textit{beacon} não fosse encontrado no banco de dados, o texto "\textit{Desconhecido}" seria apresentado.
 
 % ---
 \subsection{Quinto Módulo - Salvar no Banco de Dados}\label{sec:quinto-modulo}
 % ---
 
-Salvar beacons encontrados no banco de dados local
+Para o quinto módulo, último a ser desenvolvido, restou a parte de salvar os \textit{beacons} encontrados. As informações relevantes a serem salvas foram: uuid, \textit{major}, \textit{minor}, data inicial (momento inicial que o beacon foi encontrado), tempo total no alcance (em segundos). 
+
+\begin{verbatim}
+Documento JSON para salvar beacons encontrados
+[{
+    "uuid": "numero-uuid",
+    "major": "numero-major",
+    "minor": "numero-minor",
+    "initialDate": "data-inicial-em-timestamp",
+    "totalTime": "tempo-total-em-segundos",
+}]
+\end{verbatim}
+
+Como o valor de \textit{\_id} não necessita de uma formatação, optou-se por utilizar o CouchDB para gerar um UUID aleatório e atribuir ao \textit{\_id}. Não se deve confundir o UUID gerado pelo CouchDB pelo UUID do \textit{beacon}.
 
 % ---
-\subsection{Protótipo Finalizado}\label{sec:prototipo-final}
+\subsection{Testes e Resultados}\label{sec:testes-resultados}
 % ---
 
-Mostrar logo e falar sobre protótipo final
+Após o desenvolvimento de todos os módulos, a aplicação estava pronta para testes. Como os testes de erros e \textit{bugs} foram realizados após cada módulo, com sucesso, nessa parte somente foi testado a capacidade e geração dos dados.
+
+O software pm2 foi configurado para executar o aplicativo, monitorasse erros, fechamentos inexperados, entre outros, e os testes puderam iniciar:
+
+\begin{alineas}
+	\item \textbf{Primeiro teste}: descoberta de cada \textit{beacon} MPact individualmente, a diferentes distâncias;
+	\item \textbf{Segundo teste}: descoberta de mais de um \textit{beacon} MPact simultaneamente, alternando um, dois e três a diferentes distâncias;
+	\item \textbf{Terceiro teste}: \textit{beacons} MPact em movimento, a diferentes distâncias;
+	\item \textbf{Quarto teste}: mistura de \textit{beacons} MPact com iPad e Moto Maxx, diferentes quantidades e distâncias;
+	\item \textbf{Quinto teste}: diferentes localizações dos \textit{beacons} MPact, no bolso da calça com o usuário parado e em movimento.
+\end{alineas}
+
+Todos os testes foram repetidos durante diferentes momentos do dia, durante duas semanas. Os resultados foram:
+
+\begin{alineas}
+	\item misturar os dispositivos (\textit{beacon MPact} e smartphones/tablets) não afetou em nenhum ponto - a recepção de todos continuava normalmente, sem interferências;
+	\item o protótipo suportou quatro \textit{beacons} no alcance simultaneamente, sendo três MPact e o Moto Maxx transmitindo pacotes;
+	\item \textit{beacons} em movimento apresentaram pouca ou nenhuma recepção - quando parados, recepção constante e mais afastada;
+	\item quando no bolso da calça, o alcance ficou extremamente limitado - inclusive parado, a distância até o protótipo era muito pouca, no máximo 30cm.
+\end{alineas}
+
+% ---
+\subsection{Protótipo Final}\label{sec:prototipo-final}
+% ---
+
+O protótipo foi desenvolvido com sucesso (\autoref{fig:prod-final}), todos os parâmetros foram satisfeitos e os testes e resultados apresentaram uma boa implementação do código. Melhorias para futuros protótipos podem ser elencadas:
+
+\begin{alineas}
+	\item Baterias internas para facilitar a execução em ambientes sem tomada próxima;
+	\item Utilizar LEDs mais fracos ou resistores mais fortes;
+	\item Utilizar um melhor adaptador \textit{bluetooth}, de preferência com antenas removíveis para adaptação das antenas dentro do protótipo;
+	\item Colocar o \textit{RPi} totalmente dentro da caixa, deixando somente as portas necessárias.
+\end{alineas}
+
+Interessante notar que todas essas melhorias não são cruciais, mas para uma evolução e maior praticidade do produto final.
 
 \begin{figure}[htb]
 	\caption{\label{fig:prod-final}Protótipo finalizado e totalmente funcional}
 	\begin{center}
-		\includegraphics[width=0.8\textwidth]{img/prod-final.jpg}
+		\includegraphics[width=0.65\textwidth]{img/prod-final.jpg}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}

@@ -63,9 +63,9 @@ Por meio de suas portas de entrada e saída digitais é possível conectar uma g
 Atualmente existem diferentes sistemas operacionais portados para o \textit{RPi}.
 
 \begin{alineas}
-	\item \textbf{Raspbian}: baseado na distribuição \textit{Linux} chamada \textit{Debian}. Atualmente é a suportada oficialmente pela \textit{RPi Foundation}. \cite{rpi-download}.
-	\item \textbf{Ubuntu Mate}: baseado na distribuição \textit{Linux} chamada \textit{Ubuntu}, juntamente com o software \textit{MATE Desktop} para gerenciamento de janelas. \cite{ubuntu-mate}.
-	\item \textbf{Snappy Ubuntu Core}: distribuição \textit{Linux} voltada a \textit{cloud} e dispositivos. \cite{snappy-ubuntu}.
+	\item \textbf{Raspbian}: baseado na distribuição \textit{Linux} chamada \textit{Debian}. Atualmente é a suportada oficialmente pela \textit{RPi Foundation}. \cite{rpi-download};
+	\item \textbf{Ubuntu Mate}: baseado na distribuição \textit{Linux} chamada \textit{Ubuntu}, juntamente com o software \textit{MATE Desktop} para gerenciamento de janelas. \cite{ubuntu-mate};
+	\item \textbf{Snappy Ubuntu Core}: distribuição \textit{Linux} voltada a \textit{cloud} e dispositivos. \cite{snappy-ubuntu};
 	\item \textbf{Windows 10 for IOT Core}: versão do \textit{Windows} 10 da \textit{Microsoft} para dispositivos voltados a internet das coisas. \cite{windows10-iot}.
 \end{alineas}
 
@@ -157,8 +157,8 @@ O protocolo \textit{iBeacon} foi apresentado pela Apple juntamente com o iOS 7, 
 A Apple adaptou o pacote genérico de \textit{beacon} para transmitir três dados:
 
 \begin{alineas}
-	\item \textbf{UUID}: Identificador único formado de 16 bytes (128 bits). Focado em ser único para cada aplicação. Cada aplicação deve ter um único UUID.
-	\item \textbf{\textit{Major}}: Identificador de 2 bytes que identifica uma sub-região grande. Usado, por exemplo, para dividir as lojas de um grande varejista.
+	\item \textbf{UUID}: Identificador único formado de 16 bytes (128 bits). Focado em ser único para cada aplicação. Cada aplicação deve ter um único UUID;
+	\item \textbf{\textit{Major}}: Identificador de 2 bytes que identifica uma sub-região grande. Usado, por exemplo, para dividir as lojas de um grande varejista;
 	\item \textbf{\textit{Minor}}: Identificador de 2 bytes que identifica uma sub-divisão de região, ou seja, uma região menor que o Major.
 \end{alineas}
 
@@ -192,17 +192,17 @@ Um exemplo de aplicação é citado na \autoref{table:stores-apple}. Utiliza-se 
 O pacote \textit{BLE} utilizado pela tecnologia iBeacon pode ser visto na \autoref{fig:ibeacon-packet}. Segundo \citeonline{arm-beacons}, o prefixo determinado para o protocolo \textit{iBeacon} é:
 
 \begin{alineas}
-	\item \textit{\textbf{Adv Flags}}: determinam que é um pacote \textit{BLE} de descobrimento geral, e que somente transmite e não permite conexões.
-	\item \textit{\textbf{Adv Header}}: determinam que os próximos 26 bytes serão a carga de dados (\textit{payload} de fato). Sempre será 0x1AFF.
-	\item \textit{\textbf{Company ID}}: indica que é o ID da Apple junto com a Bluetooth SIG. Essa informação que faz ser dependente da Apple. Sempre será 0x004C.
-	\item\textit{\textbf{iBeacon Type}}: ID secundário utilizado por todos iBeacons que identificam ser um \textit{beacon} de proximidade. Sempre será 0x02.
+	\item \textit{\textbf{Adv Flags}}: determinam que é um pacote \textit{BLE} de descobrimento geral, e que somente transmite e não permite conexões;
+	\item \textit{\textbf{Adv Header}}: determinam que os próximos 26 bytes serão a carga de dados (\textit{payload} de fato). Sempre será 0x1AFF;
+	\item \textit{\textbf{Company ID}}: indica que é o ID da Apple junto com a Bluetooth SIG. Essa informação que faz ser dependente da Apple. Sempre será 0x004C;
+	\item\textit{\textbf{iBeacon Type}}: ID secundário utilizado por todos iBeacons que identificam ser um \textit{beacon} de proximidade. Sempre será 0x02;
 	\item\textit{\textbf{iBeacon Length}}: identifica quantos bytes terão em seguida. Sempre será 0x15, ou 21 bytes.
 \end{alineas}
 
 \begin{figure}[htb]
 	\caption{\label{fig:ibeacon-packet}\textit{Payload} do pacote iBeacon.}
 	\begin{center}
-		\includegraphics[width=0.9\textwidth]{img/ibeacon-packet.png}
+		\includegraphics[width=1\textwidth]{img/ibeacon-packet.png}
 	\end{center}
 	\legend{Fonte: \cite{arm-beacons}}
 \end{figure}
@@ -217,6 +217,13 @@ Uma outra aplicação interessante citada por \citeonline{arm-beacons} é a poss
 
 Existem mais protocolos baseados na tecnologia \textit{beacon}. Dois se destacam por ser abertos e passíveis de alterações: \textit{AltBeacon} e \textit{Eddystone}, este último criado pela Google. O \textit{AltBeacon} possui um modelo bastante parecido com o \textit{iBeacon}, porém com possibilidade de alterar o número do fabricante, ter possibilidade de código de \textit{beacons} diferentes, e também a possibilidade do fabricante colocar sua informação ao final do pacote, conforme \autoref{fig:altbeacon-packet} \cite{arm-beacons}.
 
+Segundo \citeonline{eddystone-google}, o protocolo \textit{Eddystone} possui três modos de funcionamento:
+\begin{alineas}
+	\item \textit{Eddystone}-UID: transmite um \textit{beacon} ID, composto de 10 bytes identificando um grupo de \textit{beacons} e  6 bytes identificando um único \textit{beacon};
+	\item \textit{Eddystone}-URL: transmite um link comprimido, para que o cliente possa acessar um site na internet;
+	\item \textit{Eddystone}-TLM: transmite informações de telemetria sobre o \textit{beacon}, como por exemplo voltagem da bateria, temperatura e quantos pacotes foram enviados.
+\end{alineas}
+
 \begin{figure}[htb]
 	\caption{\label{fig:altbeacon-packet}Pacote do \textit{AltBeacon}.}
 	\begin{center}
@@ -224,12 +231,5 @@ Existem mais protocolos baseados na tecnologia \textit{beacon}. Dois se destacam
 	\end{center}
 	\legend{Fonte: \cite{arm-beacons}}
 \end{figure}
-
-Segundo \citeonline{eddystone-google}, o protocolo \textit{Eddystone} possui três modos de funcionamento:
-\begin{alineas}
-	\item \textit{Eddystone}-UID: transmite um \textit{beacon} ID, composto de 10 bytes identificando um grupo de \textit{beacons} e  6 bytes identificando um único \textit{beacon}.
-	\item \textit{Eddystone}-URL: transmite um link comprimido, para que o cliente possa acessar um site na internet.
-	\item \textit{Eddystone}-TLM: transmite informações de telemetria sobre o \textit{beacon}, como por exemplo voltagem da bateria, temperatura e quantos pacotes foram enviados.
-\end{alineas}
 
 % ----------------------------------------------------------
