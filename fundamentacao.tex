@@ -127,7 +127,7 @@ Um \textit{BLE Advertisement Packet} é formado conforme \autoref{fig:ble-adv-pa
 O importante do \textit{BLE Advertising Packet} é o tipo de anúncio feito, ou quais são as informações do pacote. \citeonline{gap-ble} apresenta uma tabela com os possíveis valores e também o significado de cada uma. Por exemplo, o valor 0xFF significa que o pacote contém dados específicos do fabricante, ou seja, existe a flexibilidade de manipular o pacote da forma que for precisa, contanto que mantenha a estrutura original de 6 a 37 bytes de \textit{payload}, conforme \autoref{fig:ble-adv-packet}. \cite{ble-packets}.
 
 % ---
-\section{Beacon}\label{sec:beacon}
+\section{\textit{Beacon}}\label{sec:beacon}
 % ---
 
 Os \textit{beacons} são pequenos sensores que são capazes de identificar objetos com precisão dentro de ambientes fechados. \cite{teixeira-beacon}.
@@ -189,18 +189,18 @@ Um exemplo de aplicação é citado na \autoref{table:stores-apple}. Utiliza-se 
   	}
 \end{table}
 
-O pacote \textit{BLE} utilizado pela tecnologia iBeacon pode ser visto na \autoref{fig:ibeacon-packet}. Segundo \citeonline{arm-beacons}, o prefixo determinado para o protocolo \textit{iBeacon} é:
+O pacote \textit{BLE} utilizado pela tecnologia \textit{iBeacon} pode ser visto na \autoref{fig:ibeacon-packet}. Segundo \citeonline{arm-beacons}, o prefixo determinado para o protocolo \textit{iBeacon} é:
 
 \begin{alineas}
 	\item \textit{\textbf{Adv Flags}}: determinam que é um pacote \textit{BLE} de descobrimento geral, e que somente transmite e não permite conexões;
 	\item \textit{\textbf{Adv Header}}: determinam que os próximos 26 bytes serão a carga de dados (\textit{payload} de fato). Sempre será 0x1AFF;
 	\item \textit{\textbf{Company ID}}: indica que é o ID da Apple junto com a Bluetooth SIG. Essa informação que faz ser dependente da Apple. Sempre será 0x004C;
-	\item\textit{\textbf{iBeacon Type}}: ID secundário utilizado por todos iBeacons que identificam ser um \textit{beacon} de proximidade. Sempre será 0x02;
+	\item\textit{\textbf{iBeacon Type}}: ID secundário utilizado por todos \textit{iBeacons} que identificam ser um \textit{beacon} de proximidade. Sempre será 0x02;
 	\item\textit{\textbf{iBeacon Length}}: identifica quantos bytes terão em seguida. Sempre será 0x15, ou 21 bytes.
 \end{alineas}
 
 \begin{figure}[htb]
-	\caption{\label{fig:ibeacon-packet}\textit{Payload} do pacote iBeacon.}
+	\caption{\label{fig:ibeacon-packet}\textit{Payload} do pacote \textit{iBeacon}.}
 	\begin{center}
 		\includegraphics[width=1\textwidth]{img/ibeacon-packet.png}
 	\end{center}

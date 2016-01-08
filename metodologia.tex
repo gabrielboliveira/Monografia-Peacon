@@ -84,7 +84,7 @@ O aplicativo utilizado em ambos foi o \textit{Locate Beacon} da \textit{Radius N
 \end{figure}
 
 % ---
-\subsection{Beacons}\label{sec:beacons-modo}
+\subsection{\textit{Beacons}}\label{sec:beacons-modo}
 % ---
 
 O \textit{beacon} utilizado para testes foi o \textit{Zebra MPact}, conforme \autoref{fig:zebra-mpact}. Utiliza uma bateria CR2450 para alimentação de energia. 
@@ -165,11 +165,11 @@ O uso desses componentes foram determinados na segunda etapa, detalhada na \auto
 \subsection{Raspberry Pi}\label{sec:rpi-tecnologia}
 % ---
 
-O \textit{RPi} é a tecnologia mais importante desse projeto. Já foi abordado na \autoref{sec:raspberry-pi} e \autoref{sec:rpi-acessorios}, porém nessa seção outros aspectos serão comentados.
+O \textit{RPi} é a tecnologia mais importante desse projeto. Já foi abordado na \autoref{sec:raspberry-pi} e \autoref{sec:rpi-acessorios}, porém nessa parte outros aspectos serão abordados.
 
 A arquitetura da CPU do \textit{RPi 2 modelo B}, utilizado nesse projeto, é baseada na \textit{arm-v7}. Consequentemente todos os softwares devem ser compilados em \textit{arm} para que possam ser executados com sucesso. 
 
-Alguns softwares foram abordados para utilização, porém não haviam versões \textit{arm} compatíveis ou estáveis para utilização. Entre eles, o banco de dados MongoDB foi descartado pela versão de instalação \textit{arm} não ter sido testada no \textit{RPi}, e gerada pela comunidade. Diversos relatos de \textit{bugs}, mal funcionamentos e incompatibilidade levaram a mudar a tecnologia de banco de dados.
+Alguns softwares foram selecionados para utilização, porém não haviam versões \textit{arm} compatíveis ou estáveis para utilização. Entre eles, o banco de dados MongoDB foi descartado pela versão de instalação \textit{arm} não ter sido testada no \textit{RPi}, e gerada pela comunidade. Diversos relatos de \textit{bugs}, mal funcionamentos e incompatibilidade levaram a mudar a tecnologia de banco de dados.
 
 Uma ferramenta muito importante disponível no \textit{Raspberry Pi} são as GPIOs, ou \textit{General Purpose Input/Output} - portas de entrada e saída de uso geral (\autoref{fig:gpio-pins-pi2}).  
 
@@ -206,7 +206,7 @@ Utiliza um modelo de aplicações voltado a eventos, ou seja, não bloqueia a ex
 
 Essa plataforma possui um aplicativo chamado \textit{Node Package Manager} (denominado \textit{npm}). Esse aplicativo auxilia a instalação e distribuição de pacotes e bibliotecas auxiliares, normalmente criadas pela comunidade e de código livre. Qualquer pessoa pode criar sua biblioteca, enviar ao GitHub, e enviar ao \textit{npm}.
 
-O \textit{npm} cria o arquivo \textit{packages.json} e salva todas as informações do projeto. Nome do projeto, do criador, link para o repositório no GitHub, dependências de bibliotecas com a versão específica instalada, entre outros. Facilita o trabalho de outra pessoa, pois quando pegar o código fonte, executando o comando \textit{npm install} já baixa e instala todas as dependências para executar aquele aplicativo.
+O \textit{npm} cria o arquivo \textit{packages.json} e salva todas as informações do projeto. Nome do projeto, do criador, link para o repositório no GitHub, dependências de bibliotecas com a versão específica instalada, entre outros. Facilita o trabalho de outra pessoa, pois quando utilizar o código fonte, executando o comando \textit{npm install} o mesmo baixa e instala todas as dependências para executar aquele aplicativo.
 
 Diversos pacotes foram utilizados no desenvolvimento desse projeto:
 
@@ -218,13 +218,13 @@ Diversos pacotes foram utilizados no desenvolvimento desse projeto:
 	\item \textbf{\textit{node-constants}}: facilita o uso de constantes entre arquivos e funções;
 	\item \textbf{\textit{numeral}}: funções para manipulação avançada de números inteiros e floats;
 	\item \textbf{\textit{is-online}}: função para validar conexão com a internet;
-	\item \textbf{\textit{internal-ip}}: funcão para retornar o endereço de IP da rede interna;
-	\item \textbf{\textit{public-ip}}: funcão para retornar o endereço de IP da rede externa, ou IP público;
+	\item \textbf{\textit{internal-ip}}: função para retornar o endereço de IP da rede interna;
+	\item \textbf{\textit{public-ip}}: função para retornar o endereço de IP da rede externa, ou IP público;
 \end{alineas}
 
 Quando foi instalado no Raspbian Wheezy, a versão mais recente, compatível e recomendada para o \textit{RPi} era a v0.12.6. Atualmente já existem versões mais novas, porém essa versão permaneceu por questões de compatibilidade com o software desenvolvido.
 
-Para que o sistema executasse constantemente e automaticamente toda vez que o \textit{RPi} fosse ligado, um software desenvolvido em Node.js foi utilizado, denominado pm2\footnote{\url{https://github.com/Unitech/pm2}}. Esse aplicativo permite iniciar um software desenvolvido em Node.js, fornece ferramentas para monitorar, reiniciar, parar, entre outros.
+Para que o sistema executasse constantemente e automaticamente toda vez que o \textit{RPi} fosse ligado, um software desenvolvido em Node.js foi utilizado, denominado pm2\footnote{\url{https://github.com/Unitech/pm2}}. Esse aplicativo permite iniciar um software desenvolvido em Node.js, fornece ferramentas para monitorar, reiniciar, parar, entre outras funcionalidades.
 
 % ---
 \subsection{CouchDB}\label{sec:couchdb}
@@ -232,7 +232,7 @@ Para que o sistema executasse constantemente e automaticamente toda vez que o \t
 
 CouchDB\footnote{\url{http://couchdb.org/}} é um sistema gerenciador de banco (SGBD) de dados voltado para a \textit{web} e \textit{apps mobile}. Não é um SGBD baseado em SQL, em vez disso utiliza documentos no formato \textit{JSON} (JavaScript Object Notation)\footnote{Modo de formatação dos dados. Muito leve, utilizada para troca de informações entre máquinas, por ser de fácil interpretação e geração. \cite{json-couch}.}, as conexões e requisições são feitas por HTTP (similar a uma conexão a um site), além de permitir servir páginas web direto do banco de dados.
 
-Esse sistema foi escolhido para o projeto pela facilidade de uso com o Node.js. O pacote \textit{nano} para Node abstrai toda a conexão com o banco de dados, permitindo que pouco código seja utilizado. Os documentos gerados no formato JSON no Javascript são enviados diretamente ao CouchDB sem necessidade de tratamento, manipulação ou configuração.
+Esse sistema foi utilizado neste projeto pela facilidade de uso com o Node.js. O pacote \textit{nano} para Node abstrai toda a conexão com o banco de dados, permitindo que pouco código seja utilizado. Os documentos gerados no formato JSON no Javascript são enviados diretamente ao CouchDB sem necessidade de tratamento, manipulação ou configuração.
 
 Disponibiliza uma ferramenta web para acesso aos bancos de dados criados denominada \textit{Futon}, a partir da instalação já funciona normalmente acessando o endereço \textit{http://localhost:5984/\_utils/} (\autoref{fig:futon-overview}).
 
@@ -248,16 +248,11 @@ Disponibiliza uma ferramenta web para acesso aos bancos de dados criados denomin
 \subsection{Git}\label{sec:git}
 % ---
 
-Git é um software de controle de versão para repositórios. Registra as mudanças nos arquivos (ou grupo de arquivos) ao longo do tempo, de forma que as versões possam ser recuperadas futuramente. \cite{pro-git}. Caso necessário voltar algumas versões por \textit{bug} no código, mal funcionamento de uma função recém implementada ou outras razões, as alterações estarão todas salvas.
+Git é um software de controle de versão para repositórios. Registra as mudanças nos arquivos (ou grupo de arquivos) ao longo do tempo, de forma que as versões possam ser recuperadas futuramente. \cite{pro-git}. Caso necessário voltar algumas versões por \textit{bug} no código, mal funcionamento de uma função recém implementada ou outras razões, as alterações estarão documentadas.
 
 Atualmente o Git é muito utilizado por projetos de código aberto, como por exemplo o Swift\footnote{\url{https://github.com/apple/swift}} que é uma linguagem de programação criada pela Apple voltada para seus sistemas operacionais, e o AngularJS\footnote{\url{https://github.com/angular/angular.js}}, framework Javascript mantido pelo Google.
 
-É possível configurar o repositório local para sincronizar com um repositório remoto, por meio de \textit{push} (enviar mudanças) e \textit{pull} (buscar mudanças). Dessa forma promove a divisão do trabalho, removendo o problema de sincronização de código entre diferentes máquinas e pessoas.
-
-% ---
-\subsubsection{GitHub}\label{sec:github}
-% ---
-
+É possível configurar o repositório local para sincronizar com um repositório remoto, por meio de \textit{push} (enviar mudanças) e \textit{pull} (buscar mudanças). Dessa forma promove a divisão do trabalho, removendo o problema de sincronização de código entre diferentes máquinas e usuários.
 
 
 % ---

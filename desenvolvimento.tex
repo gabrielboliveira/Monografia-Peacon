@@ -101,8 +101,8 @@ O próximo passo foi para definir a interface com o usuário. Para que os parâm
 \begin{alineas}
 	\item apresentar informação em que consistia se o sistema está executando a aplicação corretamente - para tal definiu-se o uso de um LED verde;
 	\item apresentar informação em que consistia se o sistema tem conexão com a internet - para tal definiu-se o uso de um LED amarelo;
-	\item apresentar informação em que consistia se um beacon está no alcance - para tal definiu-se o uso de um LED azul;
-	\item apresentar várias informações textuais sobre o estado atual do sistema, assim como beacons no alcance, histórico, dados do Linux, endereço de IP, temperatura da CPU - para tal, definiu-se o uso de um display LCD de 16 colunas por 2 linhas.
+	\item apresentar informação em que consistia se um \textit{beacon} está no alcance - para tal definiu-se o uso de um LED azul;
+	\item apresentar várias informações textuais sobre o estado atual do sistema, assim como \textit{beacons} no alcance, histórico, dados do Linux, endereço de IP, temperatura da CPU - para tal, definiu-se o uso de um display LCD de 16 colunas por 2 linhas.
 \end{alineas}
 
 Como o display era pequeno e não apresentou todas as informações de uma só vez, decidiu-se pela utilização de navegação por páginas, de forma que as informações fossem alteradas conforme avançasse nas páginas. Para que a navegação fosse realizada de maneira agradável e apresentável, os seguintes itens foram escolhidos:
@@ -236,8 +236,8 @@ As placas internas da interface foram afixadas com cola quente, para que os cabo
 Após o hardware estar totalmente montado, as informações apresentadas nas telas foram elaboradas:
 
 \begin{alineas}
-	\item A primeira tela mostra informações sobre os beacons no alcance, ou caso não haja nenhum, apresenta o texto "\textit{Aguardando beacons}". As subtelas apresentam informações sobre quais beacons estão no alcance, sendo o nome atribuidos a eles ou então o texto "\textit{Desconhecido}"\ caso não esteja no banco de dados. A quantidade de subtelas depende da quantidade de beacons no alcance, por isso não se sabe ao certo a quantidade total;
-	\item A segunda tela apresenta um histórico dos beacons encontrados durante a execução do programa, com um contador da quantidade de beacons no histórico, e as subtelas apresentam o nome do beacon encontrado em ordem numérica. Se um beacon for encontrado diversas vezes, será repetido nas subtelas. Conforme a primeira tela, a quantidade de subtelas depende da quantidade de beacons no histórico, por isso não se sabe ao certo a quantidade total;
+	\item A primeira tela mostra informações sobre os \textit{beacons} no alcance, ou caso não haja nenhum, apresenta o texto "\textit{Aguardando beacons}". As subtelas apresentam informações sobre quais \textit{beacons} estão no alcance, sendo o nome atribuidos a eles ou então o texto "\textit{Desconhecido}"\ caso não esteja no banco de dados. A quantidade de subtelas depende da quantidade de \textit{beacons} no alcance, por isso não se sabe ao certo a quantidade total;
+	\item A segunda tela apresenta um histórico dos \textit{beacons} encontrados durante a execução do programa, com um contador da quantidade de \textit{beacons} no histórico, e as subtelas apresentam o nome do \textit{beacon} encontrado em ordem numérica. Se um \textit{beacon} for encontrado diversas vezes, será repetido nas subtelas. Conforme a primeira tela, a quantidade de subtelas depende da quantidade de \textit{beacons} no histórico, por isso não se sabe ao certo a quantidade total;
 	\item A terceira tela apresenta informações relevantes sobre o sistema, sendo elas:
 	\begin{subalineas}
 		\item Primeira subtela apresenta o \textit{load average}\footnote{Segundo \citeonline{load-average}, essa informação de três números apresenta a média de carga da CPU por um certo tempo. O primeiro número é a média no último minuto, o segundo número é a média nos últimos cinco minutos, e o terceiro número é a média nos últimos quinze minutos} do sistema Linux. É relevante para saber se o sistema está muito carregado ou trabalhando tranquilamente;
@@ -344,31 +344,31 @@ A solução para resolver esse problema (denominada \textit{debounce}) foi de bl
 
 O segundo módulo consistiu da criação e navegação entre páginas. Para que as páginas secundárias pudessem ser dinamicamente inseridas nas telas, utilizou-se uma matriz de funções para lidar com a troca de informações na interface. 
 
-Esse método foi muito eficaz e encaixou muito bem na metodologia de desenvolvimento para Node.js. No momento em que se avança na tela, a função na próxima posição do vetor é executada. Isso permitiu que cada tela, com as suas particularidades, fossem de fácil criação e alteração.
+Esse método foi muito eficaz e adaptou-se muito bem na metodologia de desenvolvimento para Node.js. O ato de mudar a tela executa a função na próxima posição do vetor. Isso permite que cada tela, com as suas particularidades, seja de fácil criação e alteração, incluindo-se ou retirando-se páginas primárias e secundárias.
 
-Não houveram problemas, erros ou \textit{bugs} nesse módulo, pela sua simplicidade. No desenvolvimento dos métodos futuros, trechos de métodos criados nesse passo sofreram pequenas alterações de adaptação.
+Nos testes desse módúlo não surgiram problemas, erros ou \textit{bugs}, pela sua simplicidade de desenvolvimento. Nos próximos métodos, trechos criados nesse passo sofreram apenas pequenas alterações de adaptação.
 
 % ---
-\subsection{Terceiro Módulo - Identificação dos Beacons}\label{sec:terceiro-modulo}
+\subsection{Terceiro Módulo - Identificação dos \textit{Beacons}}\label{sec:terceiro-modulo}
 % ---
 
 Nesse módulo foram implementadas as funções de identificação dos \textit{beacons}. Quando um \textit{beacon} entra no alcance, é salvo em um vetor auxiliar. 
 
-Como os \textit{beacons} transmitem pacotes de tempos em tempos, houve necessidade de criar uma lógica para verificar se ainda estavam no alcance depois de determinado tempo. Para isso, no momento em que um pacote \textit{beacon} é identificado, dispara um evento a ser executado após um determinado tempo (em segundos). O valor do tempo de espera foi descoberto por meio de seguidos testes, e o valor ideal encontrado é de 3 segundos.
+Como os \textit{beacons} transmitem pacotes de tempos em tempos, houve necessidade de criar uma lógica para verificar se ainda estavam no alcance depois de determinado tempo. Para isso, no momento em que um pacote \textit{beacon} é identificado, dispara um evento a ser executado após um determinado tempo (em segundos). O valor do tempo de espera foi descoberto por meio de seguidos testes, e o valor ideal encontrado foi de 3 segundos.
 
-Com a implementação de os beacons entrando e saindo do alcance pronta, o próximo passo foi apresentar nas páginas principais e secundárias a quantidade de beacons atualmente descobertos, e implementar o histórico da aplicação. Nesse módulo os \textit{beacons} ainda não são salvos, permanecendo somente durante a execução do programa.
+O próximo passo foi apresentar nas páginas principais e secundárias a quantidade de \textit{beacons} descobertos, e implementar o histórico da aplicação. Nesse módulo os \textit{beacons} descobertos ainda não são salvos, permanecendo somente durante a execução do programa.
 
 % ---
-\subsubsection{Problemas Descobertos}\label{sec:problema-quarto-modulo}
+\subsubsection{Problemas Enfrentados}\label{sec:problema-quarto-modulo}
 % ---
 
-O módulo de identificação dos beacons apresentou um problema constante em todas as primeiras execuções após reinicialização do \textit{RPi}. O módulo bluetooth não reportava nenhum pacote beacon, e nenhuma descoberta era possível. 
+O módulo de identificação dos \textit{beacons} apresentou um problema constante em todas as primeiras execuções após reinicialização do \textit{RPi}. O módulo bluetooth não reportava nenhum pacote \textit{beacon}, e nenhuma descoberta era possível. 
 
-Ao analisar a fundo esse problema, percebeu-se que o \textit{driver} desse módulo estava defeituoso, e nada poderia ser feito. A solução paliativa encontrada foi de reiniciar a interface bluetooth toda vez que o software fosse executado. Com essa solução, os pacotes beacon começaram a aparecer e funcionar normalmente.
+Ao analisar a fundo esse problema, percebeu-se que o \textit{driver} desse módulo estava defeituoso, e nada poderia ser feito. A solução encontrada foi de reiniciar a interface bluetooth toda vez que o software fosse executado. Com essa solução, os pacotes \textit{beacon} apareceram e o software funcionava normalmente.
 
 Após algumas semanas, ao avançar no desenvolvimento e testes, percebeu-se que o problema se agravou. Em alguns momentos aleatórios durante a execução do programa o módulo parava de funcionar totalmente, sendo necessária a reinicialização da interface.
 
-Essa solução, totalmente paliativa resolvia o problema momentaneamente. Não foram encontrados outros drivers ou solução para o problema, porém como não afetou o desenvolvimento e testes não foi necessário a troca do módulo \textit{bluetooth}.
+Essa solução resolvia o problema momentaneamente. Não foram encontrados outros drivers ou solução para o problema, porém como não afetou o desenvolvimento e testes do protótipo não foi necessário a troca do módulo \textit{bluetooth}.
 
 % ---
 \subsection{Quarto Módulo - Busca no Banco de Dados}\label{sec:quarto-modulo}
@@ -376,7 +376,7 @@ Essa solução, totalmente paliativa resolvia o problema momentaneamente. Não f
 
 Até o momento o software somente apresentava a quantidade de \textit{beacons} no alcance, e não identificava os mesmos. Nesse módulo foi implementado a busca no banco de dados pelas informações do \textit{beacon} para possível identificação.
 
-O CouchDB tem uma busca muito fácil e prática por identificadores de documento. De forma a aproveitar dessa funcionalidade, um padrão de identificadores e documentos foi criado:
+O CouchDB tem uma busca muito fácil e prática por identificadores de documento. Para aproveitar essa funcionalidade, um padrão de identificadores e documentos foi criado:
 
 \begin{verbatim}
 Documento JSON para beacons conhecidos
@@ -402,7 +402,7 @@ Exemplo de documento JSON para beacons conhecidos
 }]
 \end{verbatim}
 
-Dessa forma o terceiro módulo foi aprimorado para apresentar o nome dos \textit{beacons}, permitindo a identificação dos mesmos. Se um \textit{beacon} não fosse encontrado no banco de dados, o texto "\textit{Desconhecido}" seria apresentado.
+Dessa forma o terceiro módulo foi aprimorado para apresentar o nome dos \textit{beacons}, permitindo a identificação dos mesmos. Se um \textit{beacon} não fosse encontrado no banco de dados, o texto "\textit{Desconhecido}"\ seria apresentado.
 
 % ---
 \subsection{Quinto Módulo - Salvar no Banco de Dados}\label{sec:quinto-modulo}
@@ -429,7 +429,7 @@ Como o valor de \textit{\_id} não necessita de uma formatação, optou-se por u
 
 Após o desenvolvimento de todos os módulos, a aplicação estava pronta para testes. Como os testes de erros e \textit{bugs} foram realizados após cada módulo, com sucesso, nessa parte somente foi testado a capacidade e geração dos dados.
 
-O software pm2 foi configurado para executar o aplicativo, monitorasse erros, fechamentos inexperados, entre outros, e os testes puderam iniciar:
+O software pm2 foi configurado para executar o aplicativo, monitorar erros, fechamentos inexperados, entre outros, e os testes foram iniciados na seguinte sequência:
 
 \begin{alineas}
 	\item \textbf{Primeiro teste}: descoberta de cada \textit{beacon} MPact individualmente, a diferentes distâncias;
@@ -442,10 +442,10 @@ O software pm2 foi configurado para executar o aplicativo, monitorasse erros, fe
 Todos os testes foram repetidos durante diferentes momentos do dia, durante duas semanas. Os resultados foram:
 
 \begin{alineas}
-	\item misturar os dispositivos (\textit{beacon MPact} e smartphones/tablets) não afetou em nenhum ponto - a recepção de todos continuava normalmente, sem interferências;
-	\item o protótipo suportou quatro \textit{beacons} no alcance simultaneamente, sendo três MPact e o Moto Maxx transmitindo pacotes;
-	\item \textit{beacons} em movimento apresentaram pouca ou nenhuma recepção - quando parados, recepção constante e mais afastada;
-	\item quando no bolso da calça, o alcance ficou extremamente limitado - inclusive parado, a distância até o protótipo era muito pouca, no máximo 30cm.
+	\item misturar os dispositivos (\textit{beacon} MPact e smartphones/tablets) não afetou em nenhum ponto - a recepção de todos continuavam normalmente, sem interferência;
+	\item o protótipo suportou quatro \textit{beacons} no alcance, simultaneamente, sendo três MPact e o Moto Maxx transmitindo pacotes;
+	\item \textit{beacons} em movimento apresentaram pouca ou nenhuma recepção - quando parados, apresentavam recepção constante e também um maior alcance;
+	\item quando no bolso da calça, o alcance ficou extremamente limitado - inclusive parado, a distância até o protótipo era muito pouca, no máximo 30cm. Isso se deve pelo \textit{beacon} ser de baixa potência.
 \end{alineas}
 
 % ---
