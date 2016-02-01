@@ -8,7 +8,7 @@
 \section{Internet das Coisas}\label{sec:internet-das-coisas}
 % ---
 
-A área de IoT está em uma onda crescente, com um grande número de pessoas investindo nesse mercado, e um bom número de profissionais migrando para essa área. Há uma estimativa de que existem 19 milhões de profissionais trabalhando na indústria de desenvolvimento de software, e desses, 19\% trabalham em algum projeto relacionado a IoT. \cite{cw-iot}.
+A área de IoT está em uma onda crescente, com um grande número de pessoas investindo nesse mercado, e um bom número de profissionais migrando para essa área. Há uma estimativa de que existam 19 milhões de profissionais trabalhando na indústria de desenvolvimento de software, e desses, 19\% trabalham em algum projeto relacionado a IoT. \cite{cw-iot}.
 
 \begin{citacao}
 ''A próxima onda na era da computação será fora do domínio do ambiente de trabalho tradicional. No paradigma da IoT, muitos dos objetos que nos rodeiam estarão na rede de uma forma ou de outra. RFID (Radio Frequency Identification - Identificadores via Rádio Frequência) e as tecnologias de redes de sensores crescerão para enfrentar este novo desafio, em que os sistemas de informação e comunicação estão embutidos nos ambientes que nos rodeiam, de forma invisível.''. \cite{iot-article}. 
@@ -112,7 +112,7 @@ O espectro de 2.4 GHz para \textit{bluetooth} se extende de 2402 MHz a 2480 MHz,
 
 Interessante notar que esses canais estão posicionados em forma bastante estratégica, no começo, final e meio da banda de 2.4 GHz, com a finalidade de aumentar a eficácia, evitando todos os canais ficarem lotados ou com muita interferência. \cite{ble-packets}. 
 
-Os \textit{BLE Advertisement Packets}, ou pacotes de anúncio \textit{BLE} é uma das formas de conexão do \textit{Bluetooth Smart}. Por meio dos anúncios, um \textit{device} transmite pacotes para todos que estão a sua volta, sem necessariamente necessitar de uma conexão direta entre somente outro dispositivo.
+Os \textit{BLE Advertisement Packets}, ou pacotes de anúncio \textit{BLE} é uma das formas de conexão do \textit{Bluetooth Smart}. Por meio de \textit{broadcast} (ou anúncio), um \textit{device} transmite pacotes em um dos canais, e quem estiver no alcance pode receber as informações sem necessitar de uma conexão direta com outro dispositivo.
 
 Um \textit{BLE Advertisement Packet} é formado conforme \autoref{fig:ble-adv-packet}. O preâmbulo, \textit{access address} e CRC são informações para formação do pacote. Os dados estão de fato dentro do PDU (\textit{Packet Data Unit}). O cabeçalho de 2 bytes informa o tamanho do \textit{payload} (carga de dados), além de informações relevantes como tipo do pacote, tipo de mensagem enviada, entre outros. \cite{ble-packets}.
 
@@ -135,14 +135,6 @@ Os \textit{beacons} são pequenos sensores que são capazes de identificar objet
 \begin{citacao}
 Como muitos espaços fechados (restaurantes, museus, shopping centers, casas de show) possuem estrutura metálica ou utilizam algum tipo de metal em sua construção, é comum que o sinal de GPS fique enfraquecido quando os usuários estão dentro daquele local. Nesse caso, os \textit{Beacons} são uma ótima solução: um hardware relativamente barato, e pequeno o suficiente para ser plugado na parede ou instalado sobre um balcão. \cite{teixeira-beacon}.
 \end{citacao}
-
-\begin{figure}[htb]
-	\caption{\label{fig:beacon-mpact}Modelo de \textit{beacon} proprietário: MPact, da Zebra Technologies Corporation.}
-	\begin{center}
-		\includegraphics[width=0.6\textwidth]{img/beacon-mpact.jpg}
-	\end{center}
-	\legend{Fonte: elaborado pelo autor}
-\end{figure}
 
 Segundo \citeonline{teixeira-beacon}, os \textit{beacons} utilizam o \textit{BLE} para detectar um dispositivo próximo e transmitir seu identificador único e avisar que está ali presente. \citeonline{teixeira-beacon} também diz que os \textit{beacons} não são inteligentes, toda a interação deve depender do dispositivo que recebe a informação do identificador único.
 
@@ -207,7 +199,7 @@ O pacote \textit{BLE} utilizado pela tecnologia \textit{iBeacon} pode ser visto 
 	\legend{Fonte: \cite{arm-beacons}}
 \end{figure}
 
-Os \textit{iBeacons} foram criados com intuito de serem descobertos por smartphones. Um exemplo de aplicação é uma cafeteria com um \textit{iBeacon} no balcão próximo ao caixa. Quando um consumidor entra na loja e chega próximo ao caixa, um aplicativo em seu celular identifica o \textit{iBeacon} pela sua UUID, identifica pelo \textit{Major} que se trata da cafeteria número 12 e encontra uma promoção com o \textit{Minor} de número 26. Em seguida, apresenta uma notificação ao usuário uma promoção e também um cupom válido de desconto para usar no caixa. \cite{arm-beacons}.
+Os \textit{iBeacons} foram criados com intuito de serem descobertos por smartphones. Um exemplo de aplicação é uma cafeteria com um \textit{iBeacon} no balcão próximo ao caixa. Quando um consumidor entra na loja e chega próximo ao caixa, um aplicativo em seu celular identifica o \textit{iBeacon} pela sua UUID, identifica pelo \textit{Major} que se trata da cafeteria número 12 e encontra uma promoção com o \textit{Minor} de número 26. Em seguida, apresenta uma notificação ao usuário, uma promoção e também um cupom válido de desconto para usar no caixa. \cite{arm-beacons}.
 
 Uma outra aplicação interessante citada por \citeonline{arm-beacons} é a possibilidade do smartphone transmitir pacotes \textit{iBeacon}, sem necessidade de um hardware externo. Dessa forma, pode-se por exemplo automatizar o check-in em um evento e rastrear o movimento dos usuários entre os estabelecimentos.
 

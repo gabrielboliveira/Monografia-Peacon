@@ -8,14 +8,11 @@
 \section{Métodos e Etapas}\label{sec:metodos-etapas}
 % ----------------------------------------------------------
 
-O projeto foi dividido em três etapas para facilitar o desenvolvimento completo. A primeira etapa foi o levantamento bibliográfico relacionado ao tema, realizadas buscas relacionadas aos assuntos: \textit{Raspberry Pi}, comunicação via \textit{Bluetooth Low Energy}, \textit{beacons}. Concomitantemente foi realizado o estudo prático das tecnologias, levando em conta suas capacidades, limitações, e aplicações.
+O projeto e desenvolvimento do Peacon foi dividido em três etapas. A primeira foi o levantamento bibliográfico relacionado ao tema, na qual foram realizadas buscas relacionadas aos assuntos: \textit{Raspberry Pi}, comunicação via \textit{Bluetooth Low Energy}, \textit{beacons}. Concomitantemente foi realizado o estudo prático das tecnologias, levando em conta suas capacidades, limitações, e aplicações.
 
-A segunda etapa foi planejar o projeto baseado na análise do levantamento bibliográfico, assim como a definição de sua estrutura. Essa etapa foi necessária para facilitar e agilizar a implementação e testes dos componentes nas próximas etapas, definindo assim um escopo inicial de funcionalidades que o sistema terá, assim como outras tarefas a serem realizadas. O processo está detalhado no \autoref{cap:desenvolvimento} - \nameref{cap:desenvolvimento}.
+A segunda etapa foi projetar o Peacon baseado na análise do levantamento bibliográfico, assim como a definição de sua estrutura. Essa etapa foi necessária para facilitar e agilizar a implementação e testes dos componentes nas próximas etapas, definindo assim um escopo inicial de funcionalidades que o sistema terá, assim como outras tarefas a serem realizadas. O processo está detalhado no \autoref{cap:desenvolvimento}.
 
-A terceira etapa foi a implementação e testes do protótipo. As funcionalidades foram divididas em módulos para facilitar os testes e detectar possíveis erros e \textit{bugs}.
-
-Todo o projeto foi desenvolvido no espaço do LTIA\footnote{Laboratório de Tecnologia da Informação Aplicada - \url{http://www.ltia.fc.unesp.br/}}, da Universidade Estadual Paulista "Júlio de Mesquita Filho"\ - Campus Bauru.
-
+A terceira etapa foi a implementação e testes do Peacon. As funcionalidades foram divididas em módulos para facilitar os testes e detectar possíveis erros e \textit{bugs}.
 
 % ----------------------------------------------------------
 \section{Materiais Utilizados}\label{sec:materiais-utilizados}
@@ -31,25 +28,27 @@ A versão do Raspberry Pi escolhida para o projeto foi a 2 Modelo B, por ter mai
 
 O sistema operacional executado no RPi foi instalado em um cartão microSD, com no mínimo 4 GB de espaço. O cartão utilizado nesse projeto foi um SanDisk Ultra Class 10 de 8 GB. 
 
-O sistema utilizado foi o Raspbian Wheezy. Durante o desenvolvimento do projeto, a versão Raspbian Jessie foi lançada, com inúmeras melhorias, porém preferiu-se por permanecer na versão Wheezy para evitar possíveis incompatibilidades com os softwares utilizados.
+O sistema utilizado foi o Raspbian Wheezy. Durante o desenvolvimento do projeto, a versão Raspbian Jessie foi lançada, com inúmeras melhorias, porém preferiu-se permanecer na versão Wheezy para evitar possíveis incompatibilidades com os softwares utilizados.
+
+Na \autoref{sec:rpi-tecnologia} aborda-se como o \textit{RPi} funciona na prática, como foi utilizado para esse projeto e como suas capacidades foram aproveitadas.
 
 \begin{figure}[htb]
-	\caption{\label{fig:rpi2-utilizado}\textit{RPi} 2 modelo B utilizado nesse projeto.}
-	\begin{center}
-		\includegraphics[width=0.7\textwidth]{img/rpi2.jpg}
-	\end{center}
-	\legend{Fonte: elaborado pelo autor}
+	\label{teste}
+	\centering
+ 	\begin{minipage}{0.47\textwidth}
+		\centering
+		\caption{\label{fig:rpi2-utilizado}\textit{RPi} 2 modelo B utilizado nesse projeto.}
+		\includegraphics[width=1\textwidth]{img/rpi2.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.45\textwidth}
+		\centering
+		\caption{\label{fig:adaptadores}Orico BTA-406 a esquerda e EDUP N8508GS a direita.}
+		\includegraphics[width=1\textwidth]{img/adaptadores.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
 \end{figure}
-
-\begin{figure}[htb]
-	\caption{\label{fig:adaptadores}Orico BTA-406 a esquerda e EDUP N8508GS a direita.}
-	\begin{center}
-		\includegraphics[width=0.5\textwidth]{img/adaptadores.jpg}
-	\end{center}
-	\legend{Fonte: elaborado pelo autor}
-\end{figure}
-
-Na \autoref{sec:tecnologias-ferramentas} - \nameref{sec:tecnologias-ferramentas}, \autoref{sec:rpi-tecnologia} - \nameref{sec:rpi-tecnologia} aborda-se como o \textit{RPi} funciona na prática, como foi utilizado para esse projeto e como suas capacidades foram aproveitadas.
 
 % ---
 \subsection{Computadores e Softwares}\label{sec:comp-softwares}
@@ -62,7 +61,7 @@ Nesse sistema o uso de \textit{SSH} é simples, basta abrir o aplicativo Termina
 \begin{figure}[htb]
 	\caption{\label{fig:ex-terminal}Conexão com o \textit{RPi} via \textit{SSH}.}
 	\begin{center}
-		\includegraphics[width=0.9\textwidth]{img/terminal-pi.png}
+		\includegraphics[width=0.6\textwidth]{img/terminal-pi.png}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
@@ -71,14 +70,14 @@ Nesse sistema o uso de \textit{SSH} é simples, basta abrir o aplicativo Termina
 \subsection{Smartphones e Tablets}\label{sec:smartphone-tablets}
 % ---
 
-Foi utilizado o smartphone Moto Maxx com sistema Android 5.0.1 e o tablet iPad mini Retina com sistema iOS 8.4 confirme \autoref{fig:motomaxx-ipad}. 
+Foram utilizados o smartphone Moto Maxx com sistema Android 5.0.1 e o tablet iPad mini Retina com sistema iOS 8.4 mostrados na \autoref{fig:motomaxx-ipad}. 
 
 O aplicativo utilizado em ambos foi o \textit{Locate Beacon} da \textit{Radius Networks}, que nos permite identificar os \textit{beacons} e também simular um, para realizar os testes com diferentes tipos, podendo alterar os valores de UUID, Major, Minor e potência de transmissão. 
 
 \begin{figure}[htb]
 	\caption{\label{fig:motomaxx-ipad}Moto Maxx (esquerda) e iPad Mini (direita).}
 	\begin{center}
-		\includegraphics[width=0.7\textwidth]{img/motomaxx-ipad.jpg}
+		\includegraphics[width=0.8\textwidth]{img/motomaxx-ipad.jpg}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
@@ -87,50 +86,50 @@ O aplicativo utilizado em ambos foi o \textit{Locate Beacon} da \textit{Radius N
 \subsection{\textit{Beacons}}\label{sec:beacons-modo}
 % ---
 
-O \textit{beacon} utilizado para testes foi o \textit{Zebra MPact}, conforme \autoref{fig:zebra-mpact}. Utiliza uma bateria CR2450 para alimentação de energia. 
+O \textit{beacon} utilizado para testes foi o \textit{Zebra MPact}, conforme \autoref{fig:zebra-mpact}, que utiliza uma bateria CR2450 para alimentação de energia. 
+
+A empresa \textit{Zebra} tem um sistema de administração e gerenciamento nomeado \textit{MPact Toolbox}, instalado em um servidor com sistema Debian 8.1. Esse sistema foi utilizado neste projeto somente para conhecimento da tecnologia \textit{beacon} e atualização do \textit{firmware}, disponível somente via \textit{Toolbox}. Esse software também apresenta a porcentagem de bateria, conforme \autoref{fig:exemplo-toolbox}. Permite a configuração de vários \textit{beacons} simultaneamente, além de alterar o modo de funcionamento, de \textit{iBeacon} para \textit{MPact}, protocolo criado pela fabricante.
 
 \begin{figure}[htb]
-	\caption{\label{fig:zebra-mpact}\textit{Beacon} Zebra MPact utilizado para testes.}
-	\begin{center}
-		\includegraphics[width=0.6\textwidth]{img/beacon-mpact2.jpg}
-	\end{center}
-	\legend{Fonte: elaborado pelo autor}
-\end{figure}
-
-A empresa \textit{Zebra} tem um sistema de administração e gerenciamento nomeado \textit{MPact Toolbox}, instalado em um servidor do LTIA com sistema Debian 8.1. Esse sistema foi utilizado neste projeto somente para conhecimento da tecnologia \textit{beacon} e atualização do \textit{firmware}, disponível somente via \textit{Toolbox}. Esse software também apresenta a porcentagem de bateria, conforme \autoref{fig:exemplo-toolbox}. 
-
-Permite a configuração de vários \textit{beacons} simultaneamente, além de alterar o modo de funcionamento, de \textit{iBeacon} para \textit{MPact}, protocolo criado pela fabricante.
-
-\begin{figure}[htb]
-	\caption{\label{fig:exemplo-toolbox}\textit{Beacon} configurado na \textit{Toolbox} apresentando a porcentagem de bateria.}
-	\begin{center}
-		\includegraphics[width=0.7\textwidth]{img/toolbox-exemplo.png}
-	\end{center}
-	\legend{Fonte: elaborado pelo autor}
+	\label{teste}
+	\centering
+ 	\begin{minipage}{0.40\textwidth}
+		\centering
+		\caption{\label{fig:zebra-mpact}\textit{Beacon} Zebra MPact utilizado para testes.}
+		\includegraphics[width=1\textwidth]{img/beacon-mpact2.jpg}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.47\textwidth}
+		\centering
+		\caption{\label{fig:exemplo-toolbox}\textit{Beacon} configurado na \textit{Toolbox} apresentando a porcentagem de bateria.}
+		\includegraphics[width=0.9\textwidth]{img/toolbox-exemplo.png}
+		\legend{Fonte: elaborado pelo autor}
+	\end{minipage}
 \end{figure}
 
 % ---
-\subsection{Acessórios para o Protótipo}\label{sec:acess-prototipo}
+\subsection{Acessórios para o Desenvolvimento do Peacon}\label{sec:acess-prototipo}
 % ---
 
-O protótipo foi adaptado em uma caixa de metal (\autoref{fig:caixa-metal}), furada conforme projeto e pintada de preto. Esse processo está detalhado na \autoref{sec:segunda-etapa}. 
+O Peacon foi adaptado em uma caixa de metal (\autoref{fig:caixa-metal}), furada conforme projeto e pintada de preto. Esse processo está detalhado na \autoref{sec:segunda-etapa}. 
 
 \begin{figure}[htb]
-	\caption{\label{fig:caixa-metal}Caixa de metal utilizada para o protótipo}
+	\caption{\label{fig:caixa-metal}Caixa de metal utilizada para o Peacon}
 	\begin{center}
-		\includegraphics[width=0.7\textwidth]{img/caixa-metal.jpg}
+		\includegraphics[width=0.5\textwidth]{img/caixa-metal.jpg}
 	\end{center}
 	\legend{Fonte: elaborado pelo autor}
 \end{figure}
 
-Para o protótipo final foram utilizados seis LEDs, resistores, barra de pinos, um display azul de 16 colunas por 2 linhas, três botões do tipo clique, cabos \textit{flat} do tipo IDE e \textit{floppy}, placas com furação para soldagem de componentes, cabos finos removidos de um cabo de rede \textit{ethernet} para ligações entre os componentes e cola quente para fixação dos componentes internos. Esses materiais podem ser vistos na \autoref{fig:prot-interno}.
+Foram utilizados seis LEDs, três resistores de 10K$\Omega$, seis resistores de 330$\Omega$, duas barras de 20 pinos, um display azul de 16 colunas por 2 linhas, três botões do tipo clique, cabos \textit{flat} do tipo IDE e \textit{floppy}, placas com furação para soldagem de componentes, cabos finos removidos de um cabo de rede \textit{ethernet} para ligações entre os componentes e cola quente para fixação dos componentes internos. Esses materiais podem ser vistos na \autoref{fig:prot-interno}.
 
 \begin{figure}[htb]
 	\label{teste}
 	\centering
  	\begin{minipage}{0.43\textwidth}
 		\centering
-		\caption{\label{fig:prot-interno}Parte interna do protótipo}
+		\caption{\label{fig:prot-interno}Parte interna do hardware do Peacon}
 		\includegraphics[width=0.7\textwidth]{img/prot-interno.jpg}
 		\legend{Fonte: elaborado pelo autor}
 	\end{minipage}
@@ -157,7 +156,7 @@ O uso desses componentes foram determinados na segunda etapa, detalhada na \auto
 
 
 % ----------------------------------------------------------
-\section{Tecnologias e Ferramentas}\label{sec:tecnologias-ferramentas}
+\section{Tecnologias e Ferramentas Utilizadas}\label{sec:tecnologias-ferramentas}
 % ----------------------------------------------------------
 
 
@@ -165,7 +164,7 @@ O uso desses componentes foram determinados na segunda etapa, detalhada na \auto
 \subsection{Raspberry Pi}\label{sec:rpi-tecnologia}
 % ---
 
-O \textit{RPi} é a tecnologia mais importante desse projeto. Já foi abordado na \autoref{sec:raspberry-pi} e \autoref{sec:rpi-acessorios}, porém nessa parte outros aspectos serão abordados.
+O \textit{RPi} é a tecnologia mais importante desse projeto. Já foi abordado na \autoref{sec:raspberry-pi} e \autoref{sec:rpi-acessorios}, porém nessa subseção outros aspectos serão abordados.
 
 A arquitetura da CPU do \textit{RPi 2 modelo B}, utilizado nesse projeto, é baseada na \textit{arm-v7}. Consequentemente todos os softwares devem ser compilados em \textit{arm} para que possam ser executados com sucesso. 
 
@@ -174,7 +173,7 @@ Alguns softwares foram selecionados para utilização, porém não haviam versõ
 Uma ferramenta muito importante disponível no \textit{Raspberry Pi} são as GPIOs, ou \textit{General Purpose Input/Output} - portas de entrada e saída de uso geral (\autoref{fig:gpio-pins-pi2}).  
 
 \begin{citacao}
-"Esses pinos são a interface física de conexão entre o Pi e o mundo. No mais baixo nível, você pode pensar delas como interruptores que você pode ligar ou desligar (entrada) ou que o Pi possa ligar ou desligar (saída). Dos 40 pinos, 26 são pinos de GPIO e os outros são pinos de energia ou terra.". \cite{rpi-gpio}
+"Esses pinos são a interface física de conexão entre o Pi e o mundo. No mais baixo nível, você pode pensar desses pinos como interruptores que você pode ligar ou desligar (entrada) ou que o Pi possa ligar ou desligar (saída). Dos 40 pinos, 26 são pinos de GPIO e os outros são pinos de energia ou terra.". \cite{rpi-gpio}
 \end{citacao}
 
 Seguem um padrão definido de numeração (\autoref{fig:gpio-numbers-pi2}). Esses números são utilizados diretamente na programação para acessar os pinos e interagir com o que estiver conectado ali.
@@ -182,7 +181,7 @@ Seguem um padrão definido de numeração (\autoref{fig:gpio-numbers-pi2}). Esse
 \begin{figure}[htb]
 	\caption{\label{fig:gpio-pins-pi2}Pinos físicos de conexão}
 	\begin{center}
-		\includegraphics[width=0.9\textwidth]{img/gpio-pins-pi2.jpg}
+		\includegraphics[width=0.8\textwidth]{img/gpio-pins-pi2.jpg}
 	\end{center}
 	\legend{Fonte: \cite{rpi-gpio}}
 \end{figure}
@@ -190,7 +189,7 @@ Seguem um padrão definido de numeração (\autoref{fig:gpio-numbers-pi2}). Esse
 \begin{figure}[htb]
 	\caption{\label{fig:gpio-numbers-pi2}Numeração dos pinos de conexão}
 	\begin{center}
-		\includegraphics[width=0.9\textwidth]{img/gpio-numbers-pi2.png}
+		\includegraphics[width=0.8\textwidth]{img/gpio-numbers-pi2.png}
 	\end{center}
 	\legend{Fonte: \cite{rpi-gpio}}
 \end{figure}
@@ -219,10 +218,10 @@ Diversos pacotes foram utilizados no desenvolvimento desse projeto:
 	\item \textbf{\textit{numeral}}: funções para manipulação avançada de números inteiros e floats;
 	\item \textbf{\textit{is-online}}: função para validar conexão com a internet;
 	\item \textbf{\textit{internal-ip}}: função para retornar o endereço de IP da rede interna;
-	\item \textbf{\textit{public-ip}}: função para retornar o endereço de IP da rede externa, ou IP público;
+	\item \textbf{\textit{public-ip}}: função para retornar o endereço de IP da rede externa, ou IP público.
 \end{alineas}
 
-Quando foi instalado no Raspbian Wheezy, a versão mais recente, compatível e recomendada para o \textit{RPi} era a v0.12.6. Atualmente já existem versões mais novas, porém essa versão permaneceu por questões de compatibilidade com o software desenvolvido.
+Quando foi instalado no Raspbian Wheezy, a versão mais recente compatível e recomendada para o \textit{RPi} era a v0.12.6. Atualmente já existem versões mais novas, porém essa versão permaneceu por questões de compatibilidade com o software desenvolvido.
 
 Para que o sistema executasse constantemente e automaticamente toda vez que o \textit{RPi} fosse ligado, um software desenvolvido em Node.js foi utilizado, denominado pm2\footnote{\url{https://github.com/Unitech/pm2}}. Esse aplicativo permite iniciar um software desenvolvido em Node.js, fornece ferramentas para monitorar, reiniciar, parar, entre outras funcionalidades.
 
@@ -230,7 +229,7 @@ Para que o sistema executasse constantemente e automaticamente toda vez que o \t
 \subsection{CouchDB}\label{sec:couchdb}
 % ---
 
-CouchDB\footnote{\url{http://couchdb.org/}} é um sistema gerenciador de banco (SGBD) de dados voltado para a \textit{web} e \textit{apps mobile}. Não é um SGBD baseado em SQL, em vez disso utiliza documentos no formato \textit{JSON} (JavaScript Object Notation)\footnote{Modo de formatação dos dados. Muito leve, utilizada para troca de informações entre máquinas, por ser de fácil interpretação e geração. \cite{json-couch}.}, as conexões e requisições são feitas por HTTP (similar a uma conexão a um site), além de permitir servir páginas web direto do banco de dados.
+CouchDB\footnote{\url{http://couchdb.org/}} é um sistema gerenciador de banco (SGBD) de dados voltado para a \textit{web} e \textit{apps mobile}. Não é um SGBD baseado em SQL, em vez disso utiliza documentos no formato \textit{JSON} (JavaScript Object Notation)\footnote{Modo de formatação dos dados muito leve, utilizado para troca de informações entre máquinas, por ser de fácil interpretação e geração. \cite{json-couch}.}, as conexões e requisições são feitas por HTTP (similar a uma conexão a um site), além de permitir servir páginas web direto do banco de dados.
 
 Esse sistema foi utilizado neste projeto pela facilidade de uso com o Node.js. O pacote \textit{nano} para Node abstrai toda a conexão com o banco de dados, permitindo que pouco código seja utilizado. Os documentos gerados no formato JSON no Javascript são enviados diretamente ao CouchDB sem necessidade de tratamento, manipulação ou configuração.
 
@@ -239,7 +238,7 @@ Disponibiliza uma ferramenta web para acesso aos bancos de dados criados denomin
 \begin{figure}[htb]
 	\caption{\label{fig:futon-overview}Futon - manipulação dos bancos de dados CouchDB}
 	\begin{center}
-		\includegraphics[width=0.9\textwidth]{img/futon-overview.png}
+		\includegraphics[width=0.75\textwidth]{img/futon-overview.png}
 	\end{center}
 	\legend{Fonte: \cite{futon-couch}}
 \end{figure}
@@ -253,13 +252,6 @@ Git é um software de controle de versão para repositórios. Registra as mudan�
 Atualmente o Git é muito utilizado por projetos de código aberto, como por exemplo o Swift\footnote{\url{https://github.com/apple/swift}} que é uma linguagem de programação criada pela Apple voltada para seus sistemas operacionais, e o AngularJS\footnote{\url{https://github.com/angular/angular.js}}, framework Javascript mantido pelo Google.
 
 É possível configurar o repositório local para sincronizar com um repositório remoto, por meio de \textit{push} (enviar mudanças) e \textit{pull} (buscar mudanças). Dessa forma promove a divisão do trabalho, removendo o problema de sincronização de código entre diferentes máquinas e usuários.
-
-
-% ---
-\subsection{Outras Ferramentas}\label{sec:outras-ferramentas}
-% ---
-
-Durante o desenvolvimento desse trabalho foi necessário a criação de uma proposta e um relatório parcial, ambos para a disciplina de Projeto e Implementação de Sistemas I. Para tal, o autor utilizou a ferramenta denominada LaTeX. Como não está entre os objetivos desse projeto, mas houve um grande crescimento no seu uso, está detalhada no \autoref{ap:latex}.
 
 
 % ----------------------------------------------------------

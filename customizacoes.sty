@@ -25,24 +25,23 @@
 \newcommand{\ImprimirAutor}{\expandafter\MakeUppercase\expandafter{\imprimirautor}}
 \newcommand{\ImprimirLocal}{\expandafter\MakeUppercase\expandafter{\imprimirlocal}}
 \newcommand{\ImprimirTitulo}{\expandafter\MakeUppercase\expandafter{\imprimirtitulo}}
+\addto\captionsbrazil{
+	\renewcommand{\listfigurename}{Lista de Figuras}
+}
 
 % alterando a capa
 \renewcommand{\imprimircapa}{%
   \begin{capa}%
       \center
       \ABNTEXchapterfont{
-        { \uppercase {\textbf{Universidade Estadual Paulista\\"Júlio de Mesquita Filho"}} \\Faculdade de Ciências - Campus Bauru}
-
-        \vspace*{0.5cm}
-
-        { \uppercase {Departamento de Computação}}
-
-        \vspace*{0.5cm}
-
+        { \uppercase {\textbf{Universidade Estadual Paulista "Júlio de Mesquita Filho"} } } \\
+        { \uppercase {Faculdade de Ciências - Campus Bauru}}\\
+        { \uppercase {Departamento de Computação} }\\
         { \uppercase {Bacharelado em Ciência da Computação}}
-
-        %{\ABNTEXchapterfont\large\ImprimirAutor}
-
+        
+        \vfill
+        {\ImprimirAutor}
+        
         \vfill
           \begin{center}
             \bfseries \large \ImprimirTitulo
@@ -77,15 +76,13 @@
         \hspace{.45\textwidth}
         \begin{minipage}{.5\textwidth}
           \SingleSpacing
-          \imprimirpreambulo
+          \imprimirpreambulo \\
+          \imprimirorientadorRotulo~\imprimirorientador \\
+      	   \abntex@ifnotempty{\imprimircoorientador}{%
+             \imprimircoorientadorRotulo~\imprimircoorientador
+          }%
         \end{minipage}%
         \vspace*{\fill}
-      }%
-
-      {\large\imprimirorientadorRotulo~\imprimirorientador}
-
-      \abntex@ifnotempty{\imprimircoorientador}{%
-        {\large\imprimircoorientadorRotulo~\imprimircoorientador}%
       }%
 
       \vspace*{\fill}

@@ -5,19 +5,19 @@
 %\addcontentsline{toc}{chapter}{Introdução}
 % ----------------------------------------------------------
 
-A internet cresce dia após dia e cada vez mais diferentes tipos de dispositivos são conectados a essa imensa rede. Há uma estimativa de 26 bilhões de ''coisas'' conectadas a internet até 2020, comparado a 6 bilhões na década de 2000. Isso foi possível graças ao custo do acesso a internet e banda larga ter diminuído 40 vezes nos últimos 10 anos. Esse \textit{boom} de crescimento também é influenciado pela IoT (\textit{Internet of Things} - Internet das Coisas). \cite{goldmansachs-iot}. 
+A internet cresce dia após dia e cada vez mais diferentes tipos de dispositivos são conectados a essa imensa rede. Há uma estimativa de 26 bilhões de ''coisas'' conectadas a internet até 2020, comparado a 6 bilhões na década de 2000. Isso foi possível graças ao custo do acesso a internet e banda larga terem diminuído 40 vezes nos últimos 10 anos. Esse \textit{boom} de crescimento também é influenciado pela IoT (\textit{Internet of Things} - Internet das Coisas). \cite{goldmansachs-iot}. 
 
-Segundo \citeonline{ashton-iot} o termo IoT surgiu como título de sua apresentação a Procter \& Gamble (P\&G) em 1999. Esse termo se dá ao uso de internet em diferentes tipos de dispositivos. 
+Segundo \citeonline{ashton-iot} o termo IoT surgiu como título de sua apresentação à Procter \& Gamble (P\&G) em 1999. Esse termo advém do uso de internet em diferentes tipos de dispositivos. 
 
 \begin{citacao}
 ''(...) a Internet das Coisas é um conceito no qual dispositivos de nosso dia a dia são equipados com sensores capazes de captar aspectos do mundo real, como por exemplo, temperatura, umidade, presença, etc, e envia-los a centrais que recebem estas informações e as utilizam de forma inteligente.'' \cite{nascimento-iot}.
 \end{citacao}
 
-Como exemplo podemos citar: geladeira ligada a internet informando a falta de condimentos, caixa de remédio conectada a internet prevendo o término da caixa de remédio para avisar ao consumidor, entre diversos outros. Um bom exemplo é interligar uma casa por meio de sensores, como termostatos, sistemas de segurança, iluminação, sistemas de entretenimento com uma inteligência por trás para diversas aplicações. \cite{goldmansachs-iot}
+Como exemplo podemos citar: geladeira ligada a internet informando a falta de condimentos, caixa de remédio conectada a internet prevendo o término de remédio para avisar ao consumidor, entre diversos outros. Um bom exemplo é interligar uma casa por meio de sensores, como termostatos, sistemas de segurança, iluminação, sistemas de entretenimento com uma inteligência por trás para diversas aplicações. \cite{goldmansachs-iot}
 
-Diversas áreas tiveram o seu crescimento alavancado por conta da IoT. O mais marcante é o ramo do DIY (\textit{Do It Yourself}, ou faça você mesmo), em que pessoas criam ou adaptam coisas para suas necessidades. Isso se dá por conta de ter aparecido no mercado dispositivos e componentes que auxiliam a criação e adaptação de eletrônicos e outros. Um ótimo exemplo é o Arduino, um dispositivo que nos ajuda a criar os projetos de eletrônica que consiste de duas partes: o hardware e o software. Com eles é possível construir praticamente de tudo, desde um LED piscante a um robô que envia um \textit{tweet} quando sua planta está sem água. \cite{ben-arduino}. \cite{sorrel-arduino}.
+Diversas áreas tiveram o seu crescimento alavancado por conta da IoT. O mais marcante é o ramo do DIY (\textit{Do It Yourself}, ou faça você mesmo), em que pessoas criam ou adaptam coisas para suas necessidades. Isso se dá por conta de ter aparecido no mercado dispositivos e componentes que auxiliam a criação e adaptação de eletrônicos e outros. Um ótimo exemplo é o Arduino, um dispositivo que ajuda a criar os projetos de eletrônica e que é composto de duas partes: o hardware e o software. Com eles é possível construir praticamente de tudo, desde um LED piscante a um robô que envia um \textit{tweet} quando sua planta está sem água. \cite{ben-arduino}. \cite{sorrel-arduino}.
 
-Além do Arduino existem diversos outros \textit{devices} com funcionalidades similares ou até complementares. Podemos citar o \textit{Raspberry Pi}, um computador do tamanho de um cartão de crédito e de baixo custo. \cite{raspberrypi-rpi}. Por ser um computador é possível executar um sistema operacional (como Linux, \textit{RISC OS}, \textit{Windows 10 for IoT09}). Dependendo do modelo possui portas USB (1 a 4) para conexão com periféricos (como mouse, teclado, adaptador WiFi, Bluetooth), e também porta Ethernet para conexão a internet cabeada (exceto modelo A e A+). Também possui de 26 (modelo A e B) a 40 pinos (modelo A+, B+ e 2) para conexões gerais de entrada e saída digitais (GPIO - \textit{General Input and Output}). 
+Além do Arduino existem diversos outros \textit{devices} com funcionalidades similares ou até complementares. Podemos citar o \textit{Raspberry Pi}, um computador do tamanho de um cartão de crédito e de baixo custo. \cite{raspberrypi-rpi}. Por ser um computador é possível executar um sistema operacional (como Linux, \textit{RISC OS}, \textit{Windows 10 for IoT}). Dependendo do modelo possui portas USB (1 a 4) para conexão com periféricos (como mouse, teclado, adaptador WiFi, Bluetooth), e também porta Ethernet para conexão a internet cabeada (exceto modelo A e A+). Também possui de 26 (modelo A e B) a 40 pinos (modelo A+, B+ e 2) para conexões gerais de entrada e saída digitais (GPIO - \textit{General Input and Output}). 
 
 Através desses pinos pode-se conectar uma diversidade de componentes eletrônicos como sensores, atuadores, outros dispositivos para comunicação. Dessa forma, suas funcionalidades são expandidas de uma forma absurda, ficando a cargo de cada pessoa montar uma nova aplicação. Uma boa aplicação é a conexão de um adaptador bluetooth pela USB para comunicação com smartphones, tablets, PCs e outros dispositivos tipo sensores sem fio.
 
@@ -29,6 +29,54 @@ Os \textit{beacons} foram pouco explorados até o momento, seu uso está sendo m
 ''A Apple (...) já está utilizando a tecnologia em 254 lojas nos EUA. As funcionalidades já estão embutidas na versão oficial do aplicativo da Apple Store para iOS [, sistema operacional de seus smartphones e tablets]. (...) Quando o usuário se aproxima de uma loja física, o aplicativo oferece toda uma camada extra de informações e serviços que são específicos para aquela unidade – como por exemplo ofertas locais, tamanho da fila para ser atendido no Genius Bar, eventos e treinamentos que estão agendados ali na loja etc.'' \cite{teixeira-beacon}.
 \end{citacao}
 
-A Macy's (grande rede norte americana de loja de departamentos) está realizando testes em algumas de suas lojas para enviar alertas a pessoas que entrarem em suas lojas, com promoções e melhores indicações, utilizando o padrão \textit{iBeacon} da Apple. Até o momento esse teste está limitado a usuários de iPhone, e somente quando entrar na loja. Em um teste futuro espera-se que seja possível separar por departamentos, para que quando um usuário percorra a loja apareça as notícias relativo ao local da loja que ela está. \cite{kastrenakes-macys-beacon}
+A Macy's (grande rede norte americana de loja de departamentos) realizou testes em algumas de suas lojas para enviar alertas a pessoas que entrarem em suas lojas, com promoções e melhores indicações, utilizando o padrão \textit{iBeacon} da Apple. Os testes foram limitados a usuários de iPhone, e somente quando entraram na loja. Em um futuro teste espera-se que seja possível separar por departamentos, para que quando um usuário percorra a loja apareça as notícias relativas ao local da loja que ela está. \cite{kastrenakes-macys-beacon}
+
+
+% ---
+% Objetivos
+% ---
+\section{Objetivos}\label{cap:objetivos-justificativa}
+% ---
+
+% ---
+% Objetivos Gerais
+% ---
+\subsection{Objetivos Gerais}\label{sec:objetivos-gerais}
+% ---
+
+O objetivo geral desse projeto é projetar e desenvolver um dispositivo rastreador de \textit{iBeacons} utilizando o \textit{Raspberry Pi}.
+
+% ---
+
+% ---
+\subsection{Objetivos Específicos}\label{sec:objetivos-especificos}
+% ---
+
+\begin{alineas}
+	\item Estudar o funcionamento de \textit{beacons}, comunicação via \textit{bluetooth low energy} e \textit{Raspberry Pi}, assim como suas aplicações;
+	\item Identificar os requerimentos básicos de funcionamento de \textit{beacons} e \textit{Raspberry Pi};
+	\item Definir os elementos para desenvolvimento do protótipo;
+	\item Planejar a estrutura do sistema;
+	\item Implementar o protótipo de acordo com a estrutura e elementos planejados.
+\end{alineas}
+
+% ---
+
+
+% ---
+\section{Logotipo e Nome para o Dispositivo}\label{sec:logotipo-prototipo}
+% ---
+
+Por ser um produto, decidiu-se que o dispositivo deveria ter um nome e logotipo. Durante algumas reuniões de \textit{brainstorm}, o nome \textit{Peacon} surgiu e foi o escolhido. Esse nome deriva das palavras \textit{Pi}  + \textit{beacon}. Nos próximos capítulos o dispositivo rastreador será referido conforme seu nome.
+
+Juntando todos os atributos do Peacon, criou-se um logotipo\footnote{O logotipo foi criado por Henrique Lopes Silva Santos, aluno do curso de Design da Faculdade de Arquitetura, Artes e Comunicação da UNESP de Bauru.} que identificasse muito bem todas as suas funcionalidades (\autoref{fig:logo-peacon}). Adesivos foram criados para colar no protótipo e identificar o produto.
+
+\begin{figure}[htb]
+	\caption{\label{fig:logo-peacon}Logotipo criado para o protótipo}
+	\begin{center}
+		\includegraphics[width=0.5\textwidth]{img/logo-peacon.png}
+	\end{center}
+	\legend{Fonte: elaborado pelo autor}
+\end{figure}
 
 % ----------------------------------------------------------

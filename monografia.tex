@@ -73,7 +73,7 @@
 % Informações de dados para CAPA e FOLHA DE ROSTO
 % ----------------------------------------------------------
 
-\titulo{Desenvolvimento de um Protótipo de Rastreador de Beacons utilizando o Raspberry Pi}
+\titulo{Projeto e Desenvolvimento de um Dispositivo Rastreador de Beacons utilizando o Raspberry Pi}
 \autor{Gabriel Luiz Bastos Oliveira}
 \local{Bauru}
 \data{2015}
@@ -89,7 +89,7 @@
 % O preambulo deve conter o tipo do trabalho, o objetivo, 
 % o nome da instituição e a área de concentração 
 % foi necessário utilizar \~{a} e etc para os acentos por problemas na geração do PDF
-\preambulo{Trabalho de Conclus\~{a}o de Curso apresentado ao Departamento de Computa\c{c}\~{a}o da Faculdade de Ci\^{e}ncias da Universidade Estadual Paulista ``J\'{ú}lio de Mesquita Filho'' – UNESP, C\^{a}mpus de Bauru.}
+\preambulo{Trabalho de Conclus\~{a}o do Curso de Bacharelado em Ciência da Computação apresentado ao Departamento de Computa\c{c}\~{a}o da Faculdade de Ci\^{e}ncias da Universidade Estadual Paulista ``J\'{ú}lio de Mesquita Filho'' – UNESP, C\^{a}mpus de Bauru.}
 
 % ----------------------------------------------------------
 
@@ -298,25 +298,22 @@
 			\imprimirpreambulo
 		\end{minipage}%
 		\vspace*{\fill}
-     
-		%Trabalho aprovado. \imprimirlocal, 24 de novembro de 2012:
-   
-		\uppercase{Banca examinadora}
 	\end{center}
 	
-	Aprovado em \detokenize{___/___/___}.
+	Aprovado em \detokenize{21/01/2016}.
+	
+	\vspace*{\fill}
+	\begin{center}
+		\uppercase{Banca examinadora}
+	\end{center}
 
 	\assinatura{\textbf{\imprimirorientador} \\ Orientador} 
 	\assinatura{\textbf{Prof. Dr. Aparecido Nilceu Marana}}
 	\assinatura{\textbf{Profa. Dra. Márcia A. Z. Meira e Silva}}
 	%\assinatura{\textbf{Professor} \\ Convidado 3}
 	%\assinatura{\textbf{Professor} \\ Convidado 4}
-	
-	\vspace*{0.5cm}
-	\hspace{.5\textwidth}
-	\begin{center} 
-		{ \ImprimirLocal \\ \imprimirdata }
-	\end{center}
+	\vspace*{\fill}
+
 \end{folhadeaprovacao}
 % ----------------------------------------------------------
 
@@ -392,9 +389,9 @@ Aos meus amigos e familiares, pelo apoio e incentivo na escolha e decorrer do cu
 	\setlength{\absparsep}{18pt} % ajusta o espaçamento dos parágrafos do resumo
 	\begin{resumo}
 
-		Atualmente a área da Internet das Coisas tem sido foco de muitos estudos e aplicações. Essa área tem motivado várias pessoas pela possibilidade de ter um produto concreto após pouco tempo de trabalho. Por conta disso, alguns dispositivos foram criados para auxiliar essas áreas, entre eles o \textit{Arduino} e \textit{Raspberry Pi}. Os \textit{beacons} também são recentes, permitindo a comunicação com outros dispositivos como o \textit{RPi} para auxiliar a micro-localização dentro de um pequeno espaço, com um baixo custo. O seu foco de uso é pequeno, somente com leituras via \textit{smartphones}. Esse projeto teve como objetivo criar um rastreador de \textit{beacons} utilizando o \textit{Raspberry Pi} para expandir a capacidade de identificação. Divido em etapas de estudo e levantamento, planejamento e desenvolvimento, o protótipo foi concebido de componentes de baixo custo, permitindo uma futura utilização em massa. Trabalhou-se com Node.js para o desenvolvimento da aplicação e CouchDB como banco de dados do histórico de identificação dos \textit{beacons}. Testes foram executados, comprovando a eficiência do projeto. O protótipo pode ser facilmente expandido para outras  aplicações em várias áreas de atuação.
+		Atualmente a área da Internet das Coisas tem sido foco de muitos estudos e aplicações. Aplicações de casas, cidade, carros inteligentes conectados a internet estão surgindo, facilitando em alguns aspectos a vida das pessoas. Por conta disso, alguns dispositivos foram criados para auxiliar essas áreas, entre eles o \textit{Arduino} e \textit{Raspberry Pi}. Os \textit{beacons} também é uma tecnologia recente, permitindo a comunicação com outros dispositivos como o \textit{RPi} para auxiliar a micro-localização dentro de um pequeno espaço, com um baixo custo. O seu foco de uso é pequeno, somente com leituras via \textit{smartphones}. Esse projeto teve como objetivo criar um rastreador de \textit{beacons} utilizando o \textit{Raspberry Pi} para expandir a capacidade de identificação. Divido nas etapas de estudo, planejamento do hardware, planejamento do software e desenvolvimento, o dispositivo rastreador (denominado Peacon) foi concebido de componentes de baixo custo, permitindo uma futura utilização em massa. Trabalhou-se com Node.js para o desenvolvimento da aplicação e CouchDB como banco de dados do histórico de identificação dos \textit{beacons}. Testes e avaliações foram executados, comprovando a eficiência do projeto. Concluiu-se, portanto, que o dispositivo pode ser facilmente expandido para outras aplicações em várias áreas de atuação.
 
- 			\textbf{Palavras-chave}: \textit{Beacon}. Raspberry Pi. Internet das Coisas.
+ 			\textbf{Palavras-chave}: \textit{Beacon}, Raspberry Pi, Internet das Coisas.
  			
 	\end{resumo}
 	
@@ -402,7 +399,7 @@ Aos meus amigos e familiares, pelo apoio e incentivo na escolha e decorrer do cu
 	\begin{resumo}[Abstract]
 	 	\begin{otherlanguage*}{english}
 			
-			Currently the area of the Internet of Things has been the focus of many studies and applications. This area has motivated several people because it makes possible to have an specific product after a short time job. For this reason, some devices were created to assist these areas, including the Arduino and Raspberry Pi. The beacons are also recent, allowing communication with other devices like the RPi to help micro-locating within a small space at a low cost. Its usage focus is small, only with readings via smartphones. This project aimed to create a beacon tracker using the Raspberry Pi to expand its identification capacity. Divided into study steps and survey, planning and development, the prototype was designed to use low-cost components, allowing future mass usage. It was developed with Node.js and with CouchDB database for the beacons identification history. Test were executed, proving efficiency to the project. The prototype can be easily expanded to other applications in various fields.
+			Currently the area of ​​the “Internet of Things” has been the focus of many studies and applications. Applications about houses, cities and smart cars connected to the Internet are emerging, bringing ease to people’s lives in certain areas. Because of such applications, some devices were created to assist these areas, including the Arduino and Raspberry Pi. The beacon is also a recent technology, allowing communication with other devices, such as RPI for auxiliary micro-location, within a small space with low cost. Their focus of use is small, only with readings via smartphones. This project aimed to create a tracker beacon using the Raspberry Pi to expand the ability of identification. This study was divided in study steps, hardware design and software development and planning, the tracker device (called Peacon) is designed for low-cost components, allowing future use in mass. Node.js was used to develop the application and CouchDB was used as database for the beacons’ ID history. Tests and evaluations were executed, proving the design efficiency. It was concluded, therefore, that the device can be easily expanded to other applications in various fields.
 
 			\textbf{Keywords}: \textit{Beacon}. Raspberry Pi. Internet of Things.
 		\end{otherlanguage*}
@@ -495,15 +492,6 @@ Aos meus amigos e familiares, pelo apoio e incentivo na escolha e decorrer do cu
 
 
 % ----------------------------------------------------------
-% Objetivos
-% ----------------------------------------------------------
-
-\include{objetivos} % inclui o arquivo objetivos.tex
-
-% ----------------------------------------------------------
-
-
-% ----------------------------------------------------------
 % Fundamentação Teórica
 % ----------------------------------------------------------
 
@@ -531,6 +519,15 @@ Aos meus amigos e familiares, pelo apoio e incentivo na escolha e decorrer do cu
 
 
 % ----------------------------------------------------------
+% Avaliação
+% ----------------------------------------------------------
+
+\include{avaliacao} % inclui o arquivo avaliacao.tex
+
+% ----------------------------------------------------------
+
+
+% ----------------------------------------------------------
 % Conclusão
 % ----------------------------------------------------------
 \chapter{Conclusão}
@@ -538,7 +535,7 @@ Aos meus amigos e familiares, pelo apoio e incentivo na escolha e decorrer do cu
 
 Esse projeto teve como objetivo o aprofundamento na área de Internet das Coisas, estudo das tecnologias de \textit{Bluetooth Low Energy}, \textit{Raspberry Pi} e \textit{beacons}. O resultado final é um protótipo de rastreador de \textit{beacons} utilizando o \textit{Raspberry Pi} totalmente funcional, cumprindo com os parâmetros definidos na fase de planejamento.
 
-A fundamentação teórica realizada por meio de pesquisa bibliográfica no início do projeto foi essencial para entender como os protocolos \textit{beacons} foram propostas e implementadas, como é o comportamento do \textit{Raspberry Pi}, entre outros. Em conjunto, o estudo das tecnologias foi de extrema importância para entender o funcionamento e utilização do \textit{RPi} e \textit{beacon}.
+A fundamentação teórica realizada por meio de pesquisa bibliográfica no início do projeto foi essencial para entender como os protocolos \textit{beacons} foram propostos e implementados, como é o comportamento do \textit{Raspberry Pi}, entre outros. Em conjunto, o estudo das tecnologias foi de extrema importância para entender o funcionamento e utilização do \textit{RPi} e \textit{beacon}.
 
 A etapa de planejamento do protótipo auxiliou na etapa de desenvolvimento, pois com a estrutura criada foi possível dividir a aplicação em módulos e acelerar a programação e testes do produto final. O protótipo apresentou-se eficaz nos aspectos propostos. 
 
@@ -556,22 +553,6 @@ A etapa de planejamento do protótipo auxiliou na etapa de desenvolvimento, pois
 % Referências bibliográficas
 % ----------------------------------------------------------
 \bibliography{referencias}
-% ----------------------------------------------------------
-
-% ----------------------------------------------------------
-% Apêndices
-% ----------------------------------------------------------
-
-% ---
-% Inicia os apêndices
-% ---
-\begin{apendicesenv}
-
-\include{latex}
-
-\end{apendicesenv}
-% ---
-
 % ----------------------------------------------------------
 
 
