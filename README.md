@@ -2,7 +2,7 @@
 
 Monografia em desenvolvimento como exigência da disciplina de Projeto e Implementação de Sistemas 1 e 2, 1º e 2º semestre de 2015, Prof. Dr. Nilceu Marana, na Universidade Estadual Paulista "Júlio de Mesquita Filho" - Faculdade de Ciências - Campus Bauru.
 
-Relata o projeto denominado "Desenvolvimento de um Protótipo de Rastreador de Beacons Utilizando o Raspberry Pi", também ainda em desenvolvimento. Ou melhor, [Peacon](https://github.com/gabrielboliveira/peacon).
+Relata o projeto denominado "Projeto e Desenvolvimento de um Dispositivo Rastreador de Beacons utilizando o Raspberry Pi". O projeto está hospedado no GitHub: [Peacon](https://github.com/gabrielboliveira/peacon).
 
 ## Versões
 
