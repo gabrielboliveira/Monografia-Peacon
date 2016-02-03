@@ -8,10 +8,10 @@ Relata o projeto denominado "Projeto e Desenvolvimento de um Dispositivo Rastrea
 
 | Número | Objetivo | Arquivo |
 | ------ | -------- | ------- |
-| v0.1 | Projeto de pesquisa entregue para avaliação | [Link](https://github.com/gabrielboliveira/Monografia-Peacon/blob/4c547ca085d6b837a7e838cc99305f4a8f63b0fe/gabriel.pdf) |
-| v0.2 | Relatório Parcial | [Link](https://github.com/gabrielboliveira/Monografia-Peacon/blob/d7f0c5c8fb23a78f39741d5c461e8be90b76698a/gabriel.pdf) |
-| v0.3 | Relatório Final | [Link](https://github.com/gabrielboliveira/Monografia-Peacon/blob/41fab2036ec96c0930023d4ecbbacddc916a454f/monografia.pdf) |
-| v0.4 | Relatório Final - Banca | [Link](https://github.com/gabrielboliveira/Monografia-Peacon/blob/445dc19d53e3addcc76b8752d86b75430a7b2a61/monografia.pdf) |
+| v0.1 | Projeto de pesquisa entregue para avaliação | [Link](https://github.com/gabrielboliveira/Monografia-Peacon/raw/4c547ca085d6b837a7e838cc99305f4a8f63b0fe/gabriel.pdf) |
+| v0.2 | Relatório Parcial | [Link](https://github.com/gabrielboliveira/Monografia-Peacon/raw/d7f0c5c8fb23a78f39741d5c461e8be90b76698a/gabriel.pdf) |
+| v0.3 | Relatório Final | [Link](https://github.com/gabrielboliveira/Monografia-Peacon/raw/41fab2036ec96c0930023d4ecbbacddc916a454f/monografia.pdf) |
+| v0.4 | Relatório Final - Banca | [Link](https://github.com/gabrielboliveira/Monografia-Peacon/raw/445dc19d53e3addcc76b8752d86b75430a7b2a61/monografia.pdf) |
 
 ## Copyright
 
